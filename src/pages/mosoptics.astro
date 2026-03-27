@@ -1,0 +1,390 @@
+---
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mosoptics — Computer Vision Step Library for mosaigo</title>
+    <meta
+      name="description"
+      content="mosoptics is a computer vision step library for mosaigo. Face detection, gaze estimation, stereo capture, and GPU-accelerated inference — all as composable, typed pipeline steps."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <style is:inline>
+      :root {
+        --primary: #2A7FBF;
+        --deep: #1B4F7A;
+        --light: #6DB3E0;
+        --accent: #C8982A;
+        --error: #B53030;
+        --success: #3A8F5C;
+        --muted: #6B6B78;
+        --bg: #1a1a22;
+        --bg-card: #22222c;
+        --bg-code: #1e1e28;
+        --text: #e4e4ea;
+        --text-secondary: #9d9da8;
+        --text-muted: #6B6B78;
+        --border: #2e2e3a;
+        --border-hover: #3e3e4e;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        background: var(--bg); color: var(--text); line-height: 1.65; font-size: 15px;
+      }
+      .topnav {
+        position: fixed; top: 0; left: 0; right: 0; height: 56px;
+        background: #16161e; border-bottom: 1px solid var(--border);
+        display: flex; align-items: center; padding: 0 24px; z-index: 100;
+      }
+      .topnav-logo {
+        display: flex; align-items: center; gap: 10px;
+        text-decoration: none; color: var(--text);
+        font-weight: 700; font-size: 1.1rem; letter-spacing: -0.02em; margin-right: 32px;
+      }
+      .logo-icon {
+        width: 28px; height: 28px; background: var(--primary);
+        border-radius: 6px; display: flex; align-items: center; justify-content: center;
+      }
+      .logo-icon::after {
+        content: ''; width: 12px; height: 12px;
+        background: var(--accent); border-radius: 2px; transform: rotate(45deg);
+      }
+      .topnav-links { display: flex; gap: 24px; align-items: center; }
+      .topnav-link {
+        color: var(--text-secondary); text-decoration: none;
+        font-size: 0.88rem; font-weight: 500; transition: color 0.15s;
+      }
+      .topnav-link:hover { color: var(--text); }
+      .topnav-link.active { color: var(--primary); }
+      .topnav-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+      .gh-link { color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; font-weight: 500; }
+      .gh-link:hover { color: var(--text); }
+      .license-badge {
+        font-size: 0.68rem; padding: 2px 7px; border-radius: 4px;
+        background: rgba(58,143,92,0.15); color: var(--success); font-weight: 600;
+      }
+      .hero {
+        padding: 120px 24px 60px; text-align: center;
+        position: relative; overflow: hidden;
+      }
+      .hero::before {
+        content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+        background: radial-gradient(ellipse at 50% 0%, rgba(42,127,191,0.08) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .hero-badge {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 4px 14px; border-radius: 20px; border: 1px solid var(--border);
+        font-size: 0.78rem; color: var(--text-secondary); margin-bottom: 20px;
+      }
+      .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
+      .hero h1 {
+        font-size: 3.4rem; font-weight: 800; letter-spacing: -0.04em;
+        line-height: 1.1; margin-bottom: 16px; max-width: 700px; margin-left: auto; margin-right: auto;
+      }
+      .hero h1 .accent { color: var(--primary); }
+      .hero .tagline {
+        font-size: 1.2rem; color: var(--text-secondary);
+        max-width: 600px; margin: 0 auto 32px; line-height: 1.5;
+      }
+      .hero-actions { display: flex; gap: 12px; justify-content: center; margin-bottom: 24px; }
+      .btn {
+        display: inline-flex; align-items: center; gap: 6px;
+        padding: 11px 24px; border-radius: 8px; font-size: 0.92rem;
+        font-weight: 600; text-decoration: none; transition: all 0.15s;
+      }
+      .btn-primary { background: var(--primary); color: #fff; border: 1px solid var(--primary); }
+      .btn-primary:hover { background: var(--deep); border-color: var(--deep); }
+      .btn-secondary { background: transparent; color: var(--text); border: 1px solid var(--border); }
+      .btn-secondary:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.03); }
+      .hero-install {
+        display: inline-flex; align-items: center; gap: 8px;
+        background: var(--bg-code); border: 1px solid var(--border);
+        border-radius: 8px; padding: 10px 18px;
+        font-family: 'JetBrains Mono', monospace; font-size: 0.86rem; color: var(--text);
+      }
+      .hero-install .prompt { color: var(--accent); user-select: none; }
+      .section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+      .section-label {
+        font-size: 0.72rem; font-weight: 700; text-transform: uppercase;
+        letter-spacing: 0.08em; color: var(--primary); margin-bottom: 8px;
+      }
+      .section h2 { font-size: 2rem; font-weight: 700; letter-spacing: -0.03em; margin-bottom: 8px; }
+      .section .section-desc {
+        font-size: 1.05rem; color: var(--text-secondary);
+        max-width: 600px; margin-bottom: 36px; line-height: 1.5;
+      }
+      .diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .diff-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 12px; padding: 28px; transition: border-color 0.15s;
+      }
+      .diff-card:hover { border-color: var(--border-hover); }
+      .diff-icon {
+        width: 44px; height: 44px; border-radius: 10px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.3rem; margin-bottom: 16px;
+      }
+      .diff-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+      .diff-card p { font-size: 0.86rem; color: var(--text-secondary); line-height: 1.55; }
+      .eco-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .eco-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 12px; padding: 24px; transition: border-color 0.15s;
+      }
+      .eco-card:hover { border-color: var(--border-hover); }
+      .eco-badge {
+        display: inline-block; padding: 2px 8px; border-radius: 4px;
+        font-size: 0.7rem; font-weight: 700; margin-bottom: 12px;
+      }
+      .eco-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+      .eco-card p { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; }
+      .pkg-grid {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+        max-width: 800px; margin: 0 auto;
+      }
+      .pkg-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 10px; padding: 18px 14px; text-align: center;
+      }
+      .pkg-name {
+        font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
+        font-weight: 600; color: var(--primary); margin-bottom: 4px;
+      }
+      .pkg-desc { font-size: 0.78rem; color: var(--text-secondary); }
+      .arch-visual { display: flex; flex-direction: column; gap: 4px; max-width: 560px; margin: 0 auto; }
+      .arch-layer {
+        padding: 18px 24px; border-radius: 10px;
+        text-align: center; font-weight: 600; font-size: 0.95rem;
+      }
+      .arch-layer .desc { font-weight: 400; font-size: 0.8rem; opacity: 0.8; margin-top: 3px; }
+      .arch-arrow { text-align: center; color: var(--text-muted); font-size: 0.8rem; padding: 2px 0; }
+      .arch-caption { text-align: center; color: var(--text-muted); font-size: 0.82rem; margin-top: 20px; }
+      .stats-row {
+        display: flex; justify-content: center; gap: 48px; padding: 48px 24px;
+        border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      }
+      .stat { text-align: center; }
+      .stat .num { font-size: 2rem; font-weight: 800; letter-spacing: -0.03em; color: var(--primary); }
+      .stat .label { font-size: 0.82rem; color: var(--text-muted); margin-top: 2px; }
+      .cta { text-align: center; padding: 80px 24px; }
+      .cta h2 { font-size: 2rem; font-weight: 700; margin-bottom: 8px; }
+      .cta p {
+        color: var(--text-secondary); font-size: 1.05rem;
+        margin-bottom: 28px; max-width: 500px; margin-left: auto; margin-right: auto;
+      }
+      .footer {
+        padding: 32px 24px; border-top: 1px solid var(--border);
+        text-align: center; color: var(--text-muted); font-size: 0.82rem;
+      }
+      .footer a { color: var(--text-secondary); text-decoration: none; }
+      .footer a:hover { color: var(--text); }
+      .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; }
+      @media (max-width: 768px) {
+        .diff-grid, .eco-grid { grid-template-columns: 1fr; }
+        .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+        .hero h1 { font-size: 2.2rem; }
+        .stats-row { flex-wrap: wrap; gap: 24px; }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="topnav">
+      <a href="/" class="topnav-logo">
+        <div class="logo-icon"></div>
+        mosaigo
+      </a>
+      <div class="topnav-links">
+        <a href="/getting-started/" class="topnav-link">Docs</a>
+        <a href="/mosoptics/" class="topnav-link active">mosoptics</a>
+        <a href="/eyemia/" class="topnav-link">EyeMia</a>
+      </div>
+      <div class="topnav-right">
+        <a href="https://github.com/mosaigoio/mosoptics" class="gh-link">GitHub</a>
+        <span class="license-badge">Apache-2.0</span>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-badge"><span class="dot"></span> Go + CGo &middot; GoCV &middot; ONNX Runtime &middot; Apache-2.0</div>
+      <h1>See the world through <span class="accent">pipelines</span></h1>
+      <p class="tagline">mosoptics is a computer vision step library for mosaigo. Face detection, gaze estimation, stereo capture, and GPU-accelerated inference — all as composable, typed pipeline steps.</p>
+      <div class="hero-actions">
+        <a href="/mosoptics/" class="btn btn-primary">Read the Docs</a>
+        <a href="https://github.com/mosaigoio/mosoptics" class="btn btn-secondary">View on GitHub</a>
+      </div>
+      <div class="hero-install">
+        <span class="prompt">$</span> go get github.com/mosaigoio/mosoptics@latest
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">The challenge</div>
+      <h2>Vision is hard. Experimentation should be easy.</h2>
+      <p class="section-desc">Real-time computer vision means juggling cameras, models, GPU drivers, frame rates, and latency. mosoptics handles the plumbing so you can focus on the science.</p>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">&#128247;</div>
+          <h3>Parallel Camera Streams</h3>
+          <p>Run multiple cameras simultaneously with independent pipelines. Stereo capture, multi-angle recording, or mixed resolution — each stream is an engine with its own frame rate.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">&#9889;</div>
+          <h3>GPU-Accelerated Inference</h3>
+          <p>ONNX Runtime with CUDA, TensorRT on NVIDIA Jetson, CoreML/Metal on Apple M-series. Build-tag gated: same step code, hardware-specific acceleration at build time.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">&#128257;</div>
+          <h3>Rapid Model Experimentation</h3>
+          <p>Swap detection models by changing one step name. UltraFace or MediaPipe for face detection? L2CS-Net or 6DRepNet for gaze? Try both, compare with MarkTime, keep the winner.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">&#128065;</div>
+          <h3>Full Gaze Pipeline</h3>
+          <p>Camera capture, face detection, face mesh, eye region extraction, pupil tracking, gaze estimation, stereo triangulation, focal point mapping. Every stage is a replaceable step.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">&#127919;</div>
+          <h3>60-120fps Real-Time</h3>
+          <p>Pre-allocated frame buffers, zero-copy payload passing, batched CGo calls. Designed for Jetson Orin Nano at 60fps, Apple M-series at 120fps.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">&#128300;</div>
+          <h3>Studio Visualization</h3>
+          <p>Live pipeline visualization showing per-step frame rates, latency heatmaps, and annotated video output. Debug gaze vectors and face mesh overlays in real time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <div class="section-label">Packages</div>
+      <h2>Every vision task is a step</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">mosoptics packages map directly to pipeline steps. Import what you need, compose the pipeline you want.</p>
+      <div class="pkg-grid">
+        <div class="pkg-card">
+          <div class="pkg-name">cam/</div>
+          <div class="pkg-desc">Camera enumeration, V4L2, macOS capture</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-name">frame/</div>
+          <div class="pkg-desc">Frame types, DualFrame, stereo pairs</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-name">face/</div>
+          <div class="pkg-desc">Face detection, mesh, recognition</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-name">eye/</div>
+          <div class="pkg-desc">Eye region, pupil tracking, corneal reflection</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-name">gaze/</div>
+          <div class="pkg-desc">Gaze estimation, calibration, smoothing</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-name">pose/</div>
+          <div class="pkg-desc">Head pose estimation, yaw/pitch/roll</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-name">stereo/</div>
+          <div class="pkg-desc">Stereo triangulation, camera calibration</div>
+        </div>
+        <div class="pkg-card">
+          <div class="pkg-name">onnx/</div>
+          <div class="pkg-desc">ONNX Runtime wrapper, model loading</div>
+        </div>
+      </div>
+      <div style="display:flex;gap:12px;max-width:800px;margin:16px auto 0;justify-content:center;">
+        <div class="pkg-card" style="flex:1;">
+          <div class="pkg-name" style="color:var(--accent);">gpu/</div>
+          <div class="pkg-desc">TensorRT, VPI, CUDA (build-tag gated)</div>
+        </div>
+        <div class="pkg-card" style="flex:1;">
+          <div class="pkg-name" style="color:var(--accent);">display/</div>
+          <div class="pkg-desc">Display steps, annotated overlays</div>
+        </div>
+        <div class="pkg-card" style="flex:1;">
+          <div class="pkg-name" style="color:var(--accent);">record/</div>
+          <div class="pkg-desc">Recording, playback, session management</div>
+        </div>
+        <div class="pkg-card" style="flex:1;">
+          <div class="pkg-name" style="color:var(--accent);">stream/</div>
+          <div class="pkg-desc">MJPEG, RTSP, HLS streaming</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">AI models</div>
+      <h2>Plug in any model, compare everything</h2>
+      <p class="section-desc">mosoptics wraps each model in a standard mosaigo step. Swap models by name, measure with MarkTime, keep the one that works.</p>
+      <div class="eco-grid">
+        <div class="eco-card">
+          <div class="eco-badge" style="background:rgba(42,127,191,0.15);color:var(--primary);">face detection</div>
+          <h3>UltraFace &middot; MediaPipe &middot; SCRFD</h3>
+          <p>Lightweight face detection optimized for edge devices. UltraFace at ~2ms/frame on Jetson, MediaPipe with full 468-point mesh. Each model is a drop-in step replacement.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-badge" style="background:rgba(200,152,42,0.15);color:var(--accent);">gaze estimation</div>
+          <h3>L2CS-Net &middot; 6DRepNet &middot; GazeML</h3>
+          <p>Appearance-based gaze estimation from eye crops. L2CS-Net for direct gaze vector, 6DRepNet for head pose, combined for focal point estimation.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-badge" style="background:rgba(58,143,92,0.15);color:var(--success);">hardware targets</div>
+          <h3>Jetson Orin &middot; Apple M-series &middot; x86 CUDA</h3>
+          <p>Same pipeline definition, hardware-optimized execution. TensorRT on Jetson (INT8/FP16), CoreML on macOS, CUDA on workstations. Build tags select the right backend.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <div class="section-label">Architecture</div>
+      <h2>Built on mosaigo, focused on vision</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">mosoptics is a collection of Go packages that each export mosaigo steps. The CGo boundary lives here — mosaigo stays pure Go.</p>
+      <div class="arch-visual">
+        <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          Your Application <span class="desc">— EyeMia, research tools, custom products</span>
+        </div>
+        <div class="arch-arrow">imports &#8595;</div>
+        <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+          mosoptics <span class="desc">— cam, face, eye, gaze, pose, stereo, onnx, gpu (CGo)</span>
+        </div>
+        <div class="arch-arrow">built on &#8595;</div>
+        <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          mosaigo <span class="desc">— Engine, pipeline, typed steps, topics, config, validation, Studio (pure Go)</span>
+        </div>
+      </div>
+      <p class="arch-caption">mosoptics contains all CGo dependencies. mosaigo never touches CGo. Your application chooses which mosoptics packages to import.</p>
+    </section>
+
+    <div class="stats-row">
+      <div class="stat"><div class="num">12+</div><div class="label">Vision step packages</div></div>
+      <div class="stat"><div class="num">60-120</div><div class="label">FPS target</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">GPU backends</div></div>
+      <div class="stat"><div class="num">0</div><div class="label">Allocations in Process()</div></div>
+      <div class="stat"><div class="num">Apache-2.0</div><div class="label">License</div></div>
+    </div>
+
+    <section class="cta">
+      <h2>Start building vision pipelines</h2>
+      <p>Browse the step catalog, set up your cameras, or explore the architecture.</p>
+      <div class="hero-actions">
+        <a href="/mosoptics/" class="btn btn-primary">Read the Docs</a>
+        <a href="https://github.com/mosaigoio/mosoptics" class="btn btn-secondary">Star on GitHub</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="/">mosaigo</a>
+        <a href="/mosoptics/">Docs</a>
+        <a href="https://github.com/mosaigoio/mosoptics">GitHub</a>
+      </div>
+      <p>Apache-2.0 License &middot; Part of the <a href="/">mosaigoio</a> family</p>
+    </footer>
+  </body>
+</html>

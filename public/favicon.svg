@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <!-- Mosaic tile background -->
+  <rect width="128" height="128" rx="24" fill="#2A7FBF"/>
+  <!-- Inner diamond (accent grout) -->
+  <rect x="40" y="40" width="48" height="48" rx="6" fill="#C8982A" transform="rotate(45 64 64)"/>
+  <!-- Mozzy head silhouette (simplified gopher) -->
+  <circle cx="64" cy="58" r="22" fill="#F2F0EB"/>
+  <!-- Eyes -->
+  <circle cx="56" cy="54" r="4" fill="#2D2D36"/>
+  <circle cx="72" cy="54" r="4" fill="#2D2D36"/>
+  <!-- Eye highlights -->
+  <circle cx="57.5" cy="52.5" r="1.5" fill="#F2F0EB"/>
+  <circle cx="73.5" cy="52.5" r="1.5" fill="#F2F0EB"/>
+  <!-- Nose -->
+  <ellipse cx="64" cy="62" rx="3" ry="2" fill="#C8982A"/>
+  <!-- Ears -->
+  <circle cx="44" cy="44" r="8" fill="#F2F0EB"/>
+  <circle cx="84" cy="44" r="8" fill="#F2F0EB"/>
+  <circle cx="44" cy="44" r="4" fill="#6DB3E0"/>
+  <circle cx="84" cy="44" r="4" fill="#6DB3E0"/>
+</svg>
