@@ -9,9 +9,14 @@ export default defineConfig({
       customCss: ["./src/styles/custom.css"],
       defaultLocale: "root",
       logo: {
-        src: "./public/favicon.svg",
+        src: "./public/images/favicon-32x32.png",
         replacesTitle: false,
       },
+      favicon: "/favicon.ico",
+      head: [
+        { tag: "link", attrs: { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" } },
+        { tag: "link", attrs: { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" } },
+      ],
       social: {
         github: "https://github.com/mosaigoio",
       },
