@@ -1,0 +1,243 @@
+---
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>mosoptics — Computer Vision Step Library for mosaigo</title>
+    <meta
+      name="description"
+      content="mosoptics is a computer vision step library for mosaigo. Face detection, gaze estimation, stereo capture, and GPU-accelerated inference as composable, typed pipeline steps."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+  </head>
+  <body class="no-sidebar is-preload">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <section id="header">
+
+        <!-- Logo -->
+        <h1><a href="/hub/">mosaigo</a></h1>
+
+        <!-- Nav -->
+        <nav id="nav">
+          <ul>
+            <li><a href="/hub/">Home</a></li>
+            <li class="current"><a href="/hub/mosoptics/">mosoptics</a></li>
+            <li><a href="/hub/eyemia/">EyeMia</a></li>
+            <li>
+              <a href="#">Docs</a>
+              <ul>
+                <li><a href="/getting-started/">Getting Started</a></li>
+                <li><a href="/steps/">Step Catalog</a></li>
+                <li><a href="/docs-mosoptics/">mosoptics Docs</a></li>
+                <li><a href="/docs-eyemia/">EyeMia Docs</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/mosaigoio/mosoptics">GitHub</a></li>
+          </ul>
+        </nav>
+
+        <!-- Banner -->
+        <section id="banner">
+          <header>
+            <h2>See the world through <strong>pipelines</strong></h2>
+            <p>
+              Computer vision step library for mosaigo. Face detection, gaze estimation,
+              stereo capture, and GPU-accelerated inference, all as composable pipeline steps.
+            </p>
+          </header>
+        </section>
+
+      </section>
+
+      <!-- Main -->
+      <section id="main">
+        <div class="container">
+
+          <!-- Hero image -->
+          <div class="row">
+            <div class="col-12">
+              <section class="box">
+                <a href="/docs-mosoptics/" class="image featured"><img src="/images/portfolio-vision.webp" alt="Computer vision with gaze tracking" /></a>
+                <header>
+                  <h3>Vision is hard. Experimentation should be easy.</h3>
+                </header>
+                <p>Real-time computer vision means juggling cameras, models, GPU drivers, frame rates, and latency. mosoptics handles the plumbing so you can focus on the science. Swap models by changing one step name. Compare with MarkTime. Keep the winner.</p>
+              </section>
+            </div>
+          </div>
+
+          <!-- Capabilities -->
+          <div class="row">
+            <div class="col-12">
+              <section>
+                <header class="major">
+                  <h2>What mosoptics does</h2>
+                </header>
+                <div class="row">
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="#" class="image featured"><img src="/images/portfolio-hardware.webp" alt="Edge device with stereo camera" /></a>
+                      <header>
+                        <h3>Parallel Camera Streams</h3>
+                      </header>
+                      <p>Run multiple cameras at once with independent pipelines. Stereo capture, multi-angle recording, or mixed resolution. Each stream is its own engine with its own frame rate.</p>
+                    </section>
+                  </div>
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="#" class="image featured"><img src="/images/portfolio-studio.webp" alt="Studio observability dashboard" /></a>
+                      <header>
+                        <h3>Studio Visualization</h3>
+                      </header>
+                      <p>Live pipeline visualization showing per-step frame rates, latency heatmaps, and annotated video output. Debug gaze vectors and face mesh overlays in real time.</p>
+                    </section>
+                  </div>
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="#" class="image featured"><img src="/images/portfolio-steps.webp" alt="Step catalog" /></a>
+                      <header>
+                        <h3>Composable Steps</h3>
+                      </header>
+                      <p>Camera capture, face detection, eye region extraction, gaze estimation, stereo triangulation, screen mapping. Every stage is a replaceable step you can swap by name.</p>
+                    </section>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- Packages -->
+          <div class="row">
+            <div class="col-12">
+              <section>
+                <header class="major">
+                  <h2>Packages</h2>
+                </header>
+                <p>mosoptics packages map directly to pipeline steps. Import what you need, compose the pipeline you want.</p>
+                <div class="row">
+                  <div class="col-3 col-6-medium col-12-small">
+                    <ul class="default">
+                      <li><strong>cam/</strong> Camera enumeration, V4L2, macOS capture</li>
+                      <li><strong>frame/</strong> Frame types, DualFrame, stereo pairs</li>
+                      <li><strong>face/</strong> Face detection, mesh, recognition</li>
+                    </ul>
+                  </div>
+                  <div class="col-3 col-6-medium col-12-small">
+                    <ul class="default">
+                      <li><strong>eye/</strong> Eye region, pupil tracking</li>
+                      <li><strong>gaze/</strong> Gaze estimation, calibration, smoothing</li>
+                      <li><strong>pose/</strong> Head pose, yaw/pitch/roll</li>
+                    </ul>
+                  </div>
+                  <div class="col-3 col-6-medium col-12-small">
+                    <ul class="default">
+                      <li><strong>stereo/</strong> Stereo triangulation, calibration</li>
+                      <li><strong>onnx/</strong> ONNX Runtime wrapper, model loading</li>
+                      <li><strong>gpu/</strong> TensorRT, CUDA (build-tag gated)</li>
+                    </ul>
+                  </div>
+                  <div class="col-3 col-6-medium col-12-small">
+                    <ul class="default">
+                      <li><strong>display/</strong> Debug overlays, annotations</li>
+                      <li><strong>record/</strong> Session recording and playback</li>
+                      <li><strong>stream/</strong> MJPEG, WebSocket streaming</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- Models -->
+          <div class="row">
+            <div class="col-12">
+              <section>
+                <header class="major">
+                  <h2>AI Models</h2>
+                </header>
+                <p>Each model is wrapped in a standard mosaigo step. Swap models by name, measure with MarkTime, keep the one that works best for your use case.</p>
+                <div class="row">
+                  <div class="col-4 col-12-small">
+                    <section class="box">
+                      <header>
+                        <h3>Face Detection</h3>
+                      </header>
+                      <p><strong>UltraFace, MediaPipe, SCRFD.</strong> Lightweight face detection optimized for edge devices. UltraFace runs at about 2ms per frame on Jetson. Each model is a drop-in replacement.</p>
+                    </section>
+                  </div>
+                  <div class="col-4 col-12-small">
+                    <section class="box">
+                      <header>
+                        <h3>Gaze Estimation</h3>
+                      </header>
+                      <p><strong>L2CS-Net, 6DRepNet, GazeML.</strong> Appearance-based gaze estimation from eye crops. L2CS-Net for direct gaze vector, 6DRepNet for head pose, combined for focal point estimation.</p>
+                    </section>
+                  </div>
+                  <div class="col-4 col-12-small">
+                    <section class="box">
+                      <header>
+                        <h3>Hardware Targets</h3>
+                      </header>
+                      <p><strong>Jetson Orin, Apple M-series, x86 CUDA.</strong> Same pipeline definition, hardware-optimized execution. Build tags select the right backend. No code changes needed.</p>
+                    </section>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="row">
+            <div class="col-12">
+              <section class="box" style="text-align: center;">
+                <header>
+                  <h2>Start building vision pipelines</h2>
+                  <p>Browse the step catalog, set up your cameras, or explore the architecture.</p>
+                </header>
+                <ul class="actions special">
+                  <li><a href="/docs-mosoptics/" class="button large">Read the Docs</a></li>
+                  <li><a href="https://github.com/mosaigoio/mosoptics" class="button alt large">View on GitHub</a></li>
+                </ul>
+              </section>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <section id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+              <div id="copyright">
+                <ul class="links">
+                  <li>&copy; 2025-present mosaigoio contributors</li>
+                  <li>Apache-2.0 License</li>
+                  <li>Part of the <a href="/hub/">mosaigo</a> family</li>
+                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script is:inline src="/assets/js/jquery.min.js"></script>
+    <script is:inline src="/assets/js/jquery.dropotron.min.js"></script>
+    <script is:inline src="/assets/js/browser.min.js"></script>
+    <script is:inline src="/assets/js/breakpoints.min.js"></script>
+    <script is:inline src="/assets/js/util.js"></script>
+    <script is:inline src="/assets/js/main.js"></script>
+
+  </body>
+</html>

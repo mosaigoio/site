@@ -1,0 +1,362 @@
+---
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>mosaigo — Event-Driven Pipeline Framework for Go</title>
+    <meta
+      name="description"
+      content="mosaigo is a modular, event-driven pipeline framework for Go. Compose type-safe processing steps, observe everything in real time, and swap any piece without touching the rest."
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="stylesheet" href="/assets/css/main.css" />
+    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+  </head>
+  <body class="homepage is-preload">
+    <div id="page-wrapper">
+
+      <!-- Header -->
+      <section id="header">
+
+        <!-- Logo -->
+        <h1><a href="/hub/">mosaigo</a></h1>
+
+        <!-- Nav -->
+        <nav id="nav">
+          <ul>
+            <li class="current"><a href="/hub/">Home</a></li>
+            <li><a href="/hub/mosoptics/">mosoptics</a></li>
+            <li><a href="/hub/eyemia/">EyeMia</a></li>
+            <li>
+              <a href="#">Docs</a>
+              <ul>
+                <li><a href="/getting-started/">Getting Started</a></li>
+                <li><a href="/steps/">Step Catalog</a></li>
+                <li><a href="/docs-mosoptics/">mosoptics Docs</a></li>
+                <li><a href="/docs-eyemia/">EyeMia Docs</a></li>
+              </ul>
+            </li>
+            <li><a href="https://github.com/mosaigoio/mosaigo">GitHub</a></li>
+          </ul>
+        </nav>
+
+        <!-- Banner -->
+        <section id="banner">
+          <header>
+            <h2>Build pipelines like <strong>mosaics</strong></h2>
+            <p>
+              A modular, event-driven pipeline framework for Go.
+              Compose type-safe processing steps, observe everything in real time,
+              and swap any piece without touching the rest.
+            </p>
+          </header>
+        </section>
+
+        <!-- Intro -->
+        <section id="intro" class="container">
+          <div class="row">
+            <div class="col-4 col-12-medium">
+              <section class="first">
+                <i class="icon solid featured fa-puzzle-piece"></i>
+                <header>
+                  <h2>Type-Safe Steps</h2>
+                </header>
+                <p>Generic steps catch payload mismatches at compile time. Every step declares its input, output, and config through a single StepDef.</p>
+              </section>
+            </div>
+            <div class="col-4 col-12-medium">
+              <section class="middle">
+                <i class="icon solid featured alt fa-bolt"></i>
+                <header>
+                  <h2>Zero-Alloc Hot Path</h2>
+                </header>
+                <p>Pre-allocated buffers and zero-copy passing. Init() allocates, Process() is allocation-free. Built for 120fps camera pipelines, not batch ETL.</p>
+              </section>
+            </div>
+            <div class="col-4 col-12-medium">
+              <section class="last">
+                <i class="icon solid featured alt2 fa-chart-bar"></i>
+                <header>
+                  <h2>Built-In Observability</h2>
+                </header>
+                <p>Every step tracks latency automatically. Topic pub/sub powers multi-engine architectures. Studio shows live pipeline graphs with per-step timing.</p>
+              </section>
+            </div>
+          </div>
+          <footer>
+            <ul class="actions">
+              <li><a href="/getting-started/" class="button large">Get Started</a></li>
+              <li><a href="https://github.com/mosaigoio/mosaigo" class="button alt large">View on GitHub</a></li>
+            </ul>
+          </footer>
+        </section>
+
+      </section>
+
+      <!-- Main -->
+      <section id="main">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+
+              <!-- Portfolio -->
+              <section>
+                <header class="major">
+                  <h2>What you can build</h2>
+                </header>
+                <div class="row">
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="/getting-started/" class="image featured"><img src="/images/portfolio-pipeline.webp" alt="Data pipeline visualization" /></a>
+                      <header>
+                        <h3>Composable Pipelines</h3>
+                      </header>
+                      <p>Type-safe steps snap together like tiles. Build complex data flows from simple, reusable pieces that validate at compile time.</p>
+                      <footer>
+                        <ul class="actions">
+                          <li><a href="/getting-started/" class="button alt">Get Started</a></li>
+                        </ul>
+                      </footer>
+                    </section>
+                  </div>
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="/hub/mosoptics/" class="image featured"><img src="/images/portfolio-vision.webp" alt="Computer vision and gaze tracking" /></a>
+                      <header>
+                        <h3>Computer Vision</h3>
+                      </header>
+                      <p>Face detection, gaze estimation, and stereo processing. All as pipeline steps through mosoptics, the vision library for mosaigo.</p>
+                      <footer>
+                        <ul class="actions">
+                          <li><a href="/hub/mosoptics/" class="button alt">Learn More</a></li>
+                        </ul>
+                      </footer>
+                    </section>
+                  </div>
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="/hub/eyemia/" class="image featured"><img src="/images/portfolio-eyemia.webp" alt="Eye gaze communication board" /></a>
+                      <header>
+                        <h3>Assistive Communication</h3>
+                      </header>
+                      <p>EyeMia turns eye gaze into communication for people with Rett Syndrome and other motor disabilities. Open source and affordable.</p>
+                      <footer>
+                        <ul class="actions">
+                          <li><a href="/hub/eyemia/" class="button alt">Learn More</a></li>
+                        </ul>
+                      </footer>
+                    </section>
+                  </div>
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="/hub/mosoptics/" class="image featured"><img src="/images/portfolio-hardware.webp" alt="Edge computing device with stereo camera" /></a>
+                      <header>
+                        <h3>Edge Hardware</h3>
+                      </header>
+                      <p>Run on Jetson Orin, Raspberry Pi, or any edge device. GPU-accelerated inference with TensorRT, CoreML, or CUDA at the edge.</p>
+                      <footer>
+                        <ul class="actions">
+                          <li><a href="/hub/mosoptics/" class="button alt">Learn More</a></li>
+                        </ul>
+                      </footer>
+                    </section>
+                  </div>
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="#" class="image featured"><img src="/images/portfolio-studio.webp" alt="Studio observability dashboard" /></a>
+                      <header>
+                        <h3>Studio Dashboard</h3>
+                      </header>
+                      <p>Live pipeline visualization with per-step latency, throughput metrics, and camera preview. See what's happening inside your pipeline.</p>
+                      <footer>
+                        <ul class="actions">
+                          <li><a href="/getting-started/" class="button alt">Learn More</a></li>
+                        </ul>
+                      </footer>
+                    </section>
+                  </div>
+                  <div class="col-4 col-6-medium col-12-small">
+                    <section class="box">
+                      <a href="/steps/" class="image featured"><img src="/images/portfolio-steps.webp" alt="Step catalog mosaic" /></a>
+                      <header>
+                        <h3>Step Catalog</h3>
+                      </header>
+                      <p>Browse, compose, and configure from a growing library of self-describing pipeline steps. Each one comes with full metadata built in.</p>
+                      <footer>
+                        <ul class="actions">
+                          <li><a href="/steps/" class="button alt">Browse Steps</a></li>
+                        </ul>
+                      </footer>
+                    </section>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+            <div class="col-12">
+
+              <!-- Blog / Features -->
+              <section>
+                <header class="major">
+                  <h2>Get Going</h2>
+                </header>
+                <div class="row">
+                  <div class="col-6 col-12-small">
+                    <section class="box">
+                      <a href="/getting-started/" class="image featured"><img src="/images/feature-getstarted.webp" alt="Quick start with Go code" /></a>
+                      <header>
+                        <h3>Quick Start Guide</h3>
+                      </header>
+                      <p>Install mosaigo, create your first pipeline, and see it run. The framework handles the wiring so you can focus on your domain logic. Three ways to build: Go API, YAML config, or REST endpoint.</p>
+                      <footer>
+                        <ul class="actions">
+                          <li><a href="/getting-started/" class="button icon solid fa-file-alt">Read the Guide</a></li>
+                        </ul>
+                      </footer>
+                    </section>
+                  </div>
+                  <div class="col-6 col-12-small">
+                    <section class="box">
+                      <a href="/getting-started/" class="image featured"><img src="/images/feature-architecture.webp" alt="Three-layer architecture" /></a>
+                      <header>
+                        <h3>Architecture Overview</h3>
+                      </header>
+                      <p>Understand the three-layer design: the engine framework at the bottom, domain step libraries in the middle, and your product on top. Clean boundaries, clear contracts, no leaky abstractions.</p>
+                      <footer>
+                        <ul class="actions">
+                          <li><a href="/getting-started/" class="button icon solid fa-file-alt">Read More</a></li>
+                        </ul>
+                      </footer>
+                    </section>
+                  </div>
+                </div>
+              </section>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <section id="footer">
+        <div class="container">
+          <div class="row">
+            <div class="col-8 col-12-medium">
+              <section>
+                <header>
+                  <h2>Why mosaigo?</h2>
+                </header>
+                <div class="row">
+                  <div class="col-6">
+                    <ul class="default">
+                      <li><strong>Composition over configuration.</strong> Pipelines are assembled from independent steps, not configured from a mega-YAML.</li>
+                      <li><strong>The compiler is your first reviewer.</strong> Go generics catch payload mismatches at build time.</li>
+                      <li><strong>Metadata is not optional.</strong> Every step describes itself completely. That powers validation, catalogs, Studio, and the API.</li>
+                    </ul>
+                  </div>
+                  <div class="col-6">
+                    <ul class="default">
+                      <li><strong>Steps don't know where they live.</strong> A step works with domain types, not infrastructure. Ports define contracts.</li>
+                      <li><strong>Fail comprehensively, not fast.</strong> The validator collects every issue into a serializable list. You see all problems at once.</li>
+                      <li><strong>Stdlib unless proven otherwise.</strong> slog, not logrus. net/http, not fiber. Every dependency earns its place.</li>
+                    </ul>
+                  </div>
+                </div>
+              </section>
+            </div>
+            <div class="col-4 col-12-medium">
+              <section>
+                <header>
+                  <h2>About the project</h2>
+                </header>
+                <a href="#" class="image featured"><img src="/images/about-mosaic.webp" alt="Mosaic tiles forming an eye" /></a>
+                <p>
+                  A mosaic is made of many small tiles, each simple on its own, that together form something meaningful.
+                  That's how we think about pipelines. The "go" is for Go, the language that makes it possible.
+                  Open source, Apache-2.0 licensed.
+                </p>
+                <footer>
+                  <ul class="actions">
+                    <li><a href="https://github.com/mosaigoio" class="button">GitHub</a></li>
+                  </ul>
+                </footer>
+              </section>
+            </div>
+            <div class="col-4 col-6-medium col-12-small">
+              <section>
+                <header>
+                  <h2>Projects</h2>
+                </header>
+                <ul class="divided">
+                  <li><a href="/hub/">mosaigo &middot; Pipeline engine framework (pure Go)</a></li>
+                  <li><a href="/hub/mosoptics/">mosoptics &middot; Computer vision step library</a></li>
+                  <li><a href="/hub/eyemia/">EyeMia &middot; Eye gaze communication system</a></li>
+                  <li><a href="/steps/">Step Catalog &middot; Browse available steps</a></li>
+                  <li><a href="/getting-started/">Getting Started &middot; Your first pipeline</a></li>
+                </ul>
+              </section>
+            </div>
+            <div class="col-4 col-6-medium col-12-small">
+              <section>
+                <header>
+                  <h2>At a glance</h2>
+                </header>
+                <ul class="divided">
+                  <li>Pure Go core, zero CGo</li>
+                  <li>Three pipeline construction modes</li>
+                  <li>Zero allocations in Process()</li>
+                  <li>100% self-describing steps</li>
+                  <li>Apache-2.0 license</li>
+                  <li>Go 1.24+</li>
+                </ul>
+              </section>
+            </div>
+            <div class="col-4 col-12-medium">
+              <section>
+                <header>
+                  <h2>Connect</h2>
+                </header>
+                <ul class="social">
+                  <li><a class="icon brands fa-github" href="https://github.com/mosaigoio"><span class="label">GitHub</span></a></li>
+                </ul>
+                <ul class="contact">
+                  <li>
+                    <h3>License</h3>
+                    <p>Apache-2.0</p>
+                  </li>
+                  <li>
+                    <h3>Install</h3>
+                    <p><code>go get github.com/mosaigoio/mosaigo@latest</code></p>
+                  </li>
+                </ul>
+              </section>
+            </div>
+            <div class="col-12">
+
+              <!-- Copyright -->
+              <div id="copyright">
+                <ul class="links">
+                  <li>&copy; 2025-present mosaigoio contributors</li>
+                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Scripts -->
+    <script is:inline src="/assets/js/jquery.min.js"></script>
+    <script is:inline src="/assets/js/jquery.dropotron.min.js"></script>
+    <script is:inline src="/assets/js/browser.min.js"></script>
+    <script is:inline src="/assets/js/breakpoints.min.js"></script>
+    <script is:inline src="/assets/js/util.js"></script>
+    <script is:inline src="/assets/js/main.js"></script>
+
+  </body>
+</html>
