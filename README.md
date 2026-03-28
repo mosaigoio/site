@@ -1,7 +1,9 @@
 # site
 
 [![CI](https://github.com/mosaigoio/site/actions/workflows/ci.yml/badge.svg)](https://github.com/mosaigoio/site/actions/workflows/ci.yml)
-[![Pages](https://github.com/mosaigoio/site/actions/workflows/pages.yml/badge.svg)](https://github.com/mosaigoio/site/actions/workflows/pages.yml)
+[![Deploy](https://github.com/mosaigoio/site/actions/workflows/pages.yml/badge.svg)](https://github.com/mosaigoio/site/actions/workflows/pages.yml)
+![Astro](https://img.shields.io/badge/Astro-4.x-BC52EE?logo=astro&logoColor=white)
+[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](LICENSE)
 
 Documentation and landing pages for the mosaigoio projects. Built with [Starlight](https://starlight.astro.build) (Astro), deployed to [mosaigo.io](https://mosaigo.io) via GitHub Pages.
 
