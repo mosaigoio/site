@@ -79,8 +79,9 @@
       }
       .hero::before {
         content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-        background: radial-gradient(ellipse at 50% 0%, rgba(42,127,191,0.08) 0%, transparent 70%);
-        pointer-events: none;
+        background: url('/images/hero-bg.webp') center top / cover no-repeat,
+                    radial-gradient(ellipse at 50% 0%, rgba(42,127,191,0.08) 0%, transparent 70%);
+        opacity: 0.15; pointer-events: none;
       }
       .hero-badge {
         display: inline-flex; align-items: center; gap: 6px;
@@ -231,10 +232,57 @@
       .footer a:hover { color: var(--text); }
       .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; }
 
+      /* PORTFOLIO */
+      .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+      .portfolio-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 12px; overflow: hidden; transition: border-color 0.15s;
+      }
+      .portfolio-card:hover { border-color: var(--border-hover); }
+      .portfolio-card img {
+        width: 100%; height: 180px; object-fit: cover;
+        border-bottom: 1px solid var(--border);
+      }
+      .portfolio-card .card-body { padding: 20px; }
+      .portfolio-card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 6px; }
+      .portfolio-card p { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; }
+
+      /* FEATURE IMAGES */
+      .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+      .feature-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 12px; overflow: hidden; transition: border-color 0.15s;
+      }
+      .feature-card:hover { border-color: var(--border-hover); }
+      .feature-card img {
+        width: 100%; height: 220px; object-fit: cover;
+        border-bottom: 1px solid var(--border);
+      }
+      .feature-card .card-body { padding: 24px; }
+      .feature-card h3 { font-size: 1.15rem; font-weight: 600; margin-bottom: 8px; }
+      .feature-card p { font-size: 0.88rem; color: var(--text-secondary); line-height: 1.55; }
+      .feature-card .btn { margin-top: 14px; font-size: 0.84rem; padding: 8px 18px; }
+
+      /* ABOUT MOSAIC */
+      .about-section {
+        display: flex; gap: 40px; align-items: center;
+        max-width: 900px; margin: 0 auto;
+      }
+      .about-section img {
+        width: 280px; height: 280px; object-fit: cover;
+        border-radius: 12px; border: 1px solid var(--border); flex-shrink: 0;
+      }
+      .about-text h3 { font-size: 1.3rem; font-weight: 600; margin-bottom: 8px; }
+      .about-text p { font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; }
+
       @media (max-width: 768px) {
         .diff-grid, .eco-grid { grid-template-columns: 1fr; }
+        .portfolio-grid { grid-template-columns: 1fr; }
+        .feature-grid { grid-template-columns: 1fr; }
         .principle-grid { grid-template-columns: 1fr; }
         .code-showcase { grid-template-columns: 1fr; }
+        .about-section { flex-direction: column; text-align: center; }
+        .about-section img { width: 200px; height: 200px; }
         .hero h1 { font-size: 2.2rem; }
         .stats-row { flex-wrap: wrap; gap: 24px; }
       }
@@ -382,6 +430,80 @@
     </div>
 
     <section class="section">
+      <div class="section-label">Ecosystem</div>
+      <h2>What you can build with mosaigo</h2>
+      <p class="section-desc">From data pipelines to real-time computer vision — mosaigo provides the composable foundation.</p>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <img src="/images/portfolio-pipeline.webp" alt="Data pipeline visualization" loading="lazy" />
+          <div class="card-body">
+            <h3>Composable Pipelines</h3>
+            <p>Type-safe steps snap together like tiles. Build complex data flows from simple, reusable pieces.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-vision.webp" alt="Computer vision and gaze tracking" loading="lazy" />
+          <div class="card-body">
+            <h3>Computer Vision</h3>
+            <p>Face detection, gaze estimation, and stereo processing — all as pipeline steps via mosoptics.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-eyemia.webp" alt="Eye gaze communication board" loading="lazy" />
+          <div class="card-body">
+            <h3>Assistive Communication</h3>
+            <p>EyeMia turns eye gaze into communication for people with Rett Syndrome and motor disabilities.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-hardware.webp" alt="Edge computing device with stereo camera" loading="lazy" />
+          <div class="card-body">
+            <h3>Edge Hardware</h3>
+            <p>Run on Jetson Orin, Raspberry Pi, or any edge device. GPU-accelerated inference at the edge.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-studio.webp" alt="Studio observability dashboard" loading="lazy" />
+          <div class="card-body">
+            <h3>Studio Dashboard</h3>
+            <p>Live pipeline visualization with per-step latency, throughput metrics, and camera preview.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-steps.webp" alt="Step catalog mosaic" loading="lazy" />
+          <div class="card-body">
+            <h3>Step Catalog</h3>
+            <p>Browse, compose, and configure from a growing library of self-describing pipeline steps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Get started</div>
+      <h2>From zero to pipeline in minutes</h2>
+      <p class="section-desc">Pick your path — build from code or explore the architecture.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <img src="/images/feature-getstarted.webp" alt="Quick start with Go code" loading="lazy" />
+          <div class="card-body">
+            <h3>Quick Start Guide</h3>
+            <p>Install mosaigo, create your first pipeline, and see it run — all in a few minutes. The framework handles the wiring.</p>
+            <a href="/getting-started/" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="/images/feature-architecture.webp" alt="Three-layer architecture" loading="lazy" />
+          <div class="card-body">
+            <h3>Architecture Guide</h3>
+            <p>Understand the three-layer design: engine framework, domain step libraries, and your product on top. Clean boundaries, clear contracts.</p>
+            <a href="/getting-started/" class="btn btn-secondary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
       <div class="section-label">Iterate fast</div>
       <h2>Build alternatives, not commitments</h2>
       <p class="section-desc">Mosaigo is built for experimentation. Don't pick an algorithm — try three. Steps are cheap to write, fast to swap, and the framework measures everything so you can compare empirically.</p>
@@ -460,6 +582,17 @@
       <div class="hero-actions">
         <a href="/getting-started/" class="btn btn-primary">Read the Docs</a>
         <a href="https://github.com/mosaigoio/mosaigo" class="btn btn-secondary">Star on GitHub</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="about-section">
+        <img src="/images/about-mosaic.webp" alt="Mosaic tiles forming an eye — the mosaigo identity" loading="lazy" />
+        <div class="about-text">
+          <h3>Why "mosaigo"?</h3>
+          <p>A mosaic is made of many small tiles, each simple on its own, that together form something meaningful. That's how we think about pipelines — composable pieces that create a bigger picture. The "go" is for Go, the language that makes it possible.</p>
+          <p style="margin-top:12px;">mosaigo is open source, built in the open, and designed for real-time systems where every frame matters.</p>
+        </div>
       </div>
     </section>
 

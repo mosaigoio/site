@@ -73,8 +73,13 @@
       }
       .hero::before {
         content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-        background: radial-gradient(ellipse at 50% 0%, rgba(42,127,191,0.08) 0%, transparent 70%);
-        pointer-events: none;
+        background: url('/images/hero-bg.webp') center top / cover no-repeat,
+                    radial-gradient(ellipse at 50% 0%, rgba(42,127,191,0.08) 0%, transparent 70%);
+        opacity: 0.12; pointer-events: none;
+      }
+      .hero-img {
+        max-width: 700px; width: 100%; margin: 32px auto 0;
+        border-radius: 12px; border: 1px solid var(--border);
       }
       .hero-badge {
         display: inline-flex; align-items: center; gap: 6px;
@@ -184,9 +189,25 @@
       .footer a { color: var(--text-secondary); text-decoration: none; }
       .footer a:hover { color: var(--text); }
       .footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; }
+      .showcase-row {
+        display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+        margin-top: 40px;
+      }
+      .showcase-card {
+        background: var(--bg-card); border: 1px solid var(--border);
+        border-radius: 12px; overflow: hidden;
+      }
+      .showcase-card img {
+        width: 100%; height: 200px; object-fit: cover;
+        border-bottom: 1px solid var(--border);
+      }
+      .showcase-card .card-body { padding: 18px; }
+      .showcase-card h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+      .showcase-card p { font-size: 0.84rem; color: var(--text-secondary); line-height: 1.5; }
       @media (max-width: 768px) {
         .diff-grid, .eco-grid { grid-template-columns: 1fr; }
         .pkg-grid { grid-template-columns: repeat(2, 1fr); }
+        .showcase-row { grid-template-columns: 1fr; }
         .hero h1 { font-size: 2.2rem; }
         .stats-row { flex-wrap: wrap; gap: 24px; }
       }
@@ -220,6 +241,7 @@
       <div class="hero-install">
         <span class="prompt">$</span> go get github.com/mosaigoio/mosoptics@latest
       </div>
+      <img src="/images/portfolio-vision.webp" alt="Computer vision with gaze tracking" class="hero-img" loading="lazy" />
     </section>
 
     <section class="section">
@@ -256,6 +278,22 @@
           <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">&#128300;</div>
           <h3>Studio Visualization</h3>
           <p>Live pipeline visualization showing per-step frame rates, latency heatmaps, and annotated video output. Debug gaze vectors and face mesh overlays in real time.</p>
+        </div>
+      </div>
+      <div class="showcase-row">
+        <div class="showcase-card">
+          <img src="/images/portfolio-hardware.webp" alt="Edge device with stereo camera" loading="lazy" />
+          <div class="card-body">
+            <h3>Edge-First Design</h3>
+            <p>Built for Jetson Orin Nano, Raspberry Pi, and embedded Linux with stereo camera support.</p>
+          </div>
+        </div>
+        <div class="showcase-card">
+          <img src="/images/portfolio-studio.webp" alt="Studio observability dashboard" loading="lazy" />
+          <div class="card-body">
+            <h3>Live Studio Dashboard</h3>
+            <p>Real-time pipeline visualization with per-step latency heatmaps and annotated video output.</p>
+          </div>
         </div>
       </div>
     </section>
