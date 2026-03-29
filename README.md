@@ -15,7 +15,7 @@ Documentation and landing pages for the mosaigoio projects. Built with [Starligh
 |------|-----|-------------|
 | `index.astro` | [mosaigo.io](https://mosaigo.io) | mosaigo pipeline framework |
 | `mosoptics.astro` | [mosaigo.io/mosoptics](https://mosaigo.io/mosoptics) | Vision tracking step library |
-| `eyemia.astro` | [mosaigo.io/eyemia](https://mosaigo.io/eyemia) | Assistive communication product |
+| `mosii.astro` | [mosaigo.io/mosii](https://mosaigo.io/mosii) | Assistive communication product |
 
 **Documentation** (`src/content/docs/`) -- Starlight-powered Markdown docs:
 
@@ -24,7 +24,7 @@ docs/
   getting-started/    Installation and quick start
   steps/              Step catalog reference
   docs-mosoptics/     mosoptics library docs
-  docs-eyemia/        EyeMia product docs
+  docs-mosii/          Mosii product docs
 ```
 
 Additional sidebar sections (concepts, architecture, api, studio, guides) are configured in `astro.config.mjs` but not yet populated.
@@ -108,7 +108,7 @@ Pushes to `main` trigger the GitHub Pages workflow (`.github/workflows/pages.yml
 |---------|-------------|
 | [mosaigo](https://github.com/mosaigoio/mosaigo) | Pipeline engine framework (pure Go) |
 | [mosoptics](https://github.com/mosaigoio/mosoptics) | Vision tracking step library |
-| [eyemia](https://github.com/mosaigoio/eyemia) | Assistive communication overlay |
+| [mosii](https://github.com/mosaigoio/mosii) | Assistive communication overlay |
 
 ## License
 

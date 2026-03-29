@@ -35,7 +35,7 @@ These appear as project/capability showcase cards on the homepage.
 > periwinkle blue (#6C8CE3) overlays on a light background. Conveys computer
 > vision and eye tracking.
 
-### 3. `public/images/portfolio-eyemia.webp`
+### 3. `public/images/portfolio-mosii.webp`
 > A communication board (AAC grid) with simple word/icon tiles viewed from
 > a slight angle. A soft lime green (#7DC903) gaze cursor dot hovers over one
 > tile, with a gentle radial glow indicating selection. Warm, accessible feel.
@@ -114,7 +114,7 @@ If you want a subtle background texture for the hero/banner section:
 |------|---------------------|
 | `portfolio-pipeline.webp` | Homepage portfolio grid, card 1 |
 | `portfolio-vision.webp` | Homepage portfolio grid, card 2 |
-| `portfolio-eyemia.webp` | Homepage portfolio grid, card 3 |
+| `portfolio-mosii.webp` | Homepage portfolio grid, card 3 |
 | `portfolio-hardware.webp` | Homepage portfolio grid, card 4 |
 | `portfolio-studio.webp` | Homepage portfolio grid, card 5 |
 | `portfolio-steps.webp` | Homepage portfolio grid, card 6 |

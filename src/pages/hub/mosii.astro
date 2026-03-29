@@ -1,0 +1,171 @@
+---
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mosii — Open-Source Eye Gaze Communication</title>
+    <meta
+      name="description"
+      content="mosii is an open-source eye gaze communication project aiming to make assistive communication accessible and affordable for people with motor disabilities."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <style is:inline>
+      .hero::before {
+        background: radial-gradient(ellipse at 50% 0%, rgba(200,152,42,0.06) 0%, transparent 70%);
+      }
+      .hero-badge { border-color: rgba(200,152,42,0.3); }
+      .hero-badge .dot { background: var(--accent); }
+      .section-label { color: var(--accent); }
+      .btn-primary { background: var(--accent); border-color: var(--accent); }
+      .btn-primary:hover { opacity: 0.9; background: var(--accent); border-color: var(--accent); }
+      .diff-grid { grid-template-columns: repeat(2, 1fr); }
+    </style>
+  </head>
+  <body>
+    <nav class="topnav">
+      <a href="/hub/" class="topnav-logo">
+        <img src="/images/mozzy-icon.webp" alt="mosaigo" />
+        mosaigo
+      </a>
+      <div class="topnav-links">
+        <a href="/getting-started/" class="topnav-link">Docs</a>
+        <a href="/hub/mosoptics/" class="topnav-link">mosoptics</a>
+        <a href="/hub/mosii/" class="topnav-link active">mosii</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-badge"><span class="dot"></span> Open source &middot; Pre-release</div>
+      <h1>Every eye tells a <span style="color:var(--accent);">story</span></h1>
+      <p class="tagline">mosii is an open-source project working toward eye gaze communication for people with motor disabilities. The ambition: your eyes become your voice.</p>
+      <div class="hero-actions">
+        <a href="/docs-mosii/" class="btn btn-primary">Read the Docs</a>
+      </div>
+      <img src="/images/mosii-eyes1.webp" alt="Mosii eye gaze communication" class="hero-img" style="max-width:600px;" loading="lazy" />
+    </section>
+
+    <section class="section">
+      <div class="callout">
+        <span style="font-size:1.3rem;">&#9829;</span>
+        <div><strong>Why this exists:</strong> Many people with severe motor disabilities have full cognitive ability but no way to speak. Eye gaze is their voice. Commercial eye-tracking systems cost $10,000+ and lock families into proprietary ecosystems. mosii aims to make eye gaze communication accessible, affordable, and open to everyone.</div>
+      </div>
+
+      <div class="section-label">The vision</div>
+      <h2>Communication is a right, not a luxury</h2>
+      <p class="section-desc">Individuals with severe motor disabilities rely on assistive technology to communicate. mosii provides an open-source alternative that puts families and caregivers in control.</p>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">&#128483;</div>
+          <h3>For Non-Verbal People</h3>
+          <p>Communicate needs, wants, and feelings through eye gaze. Select symbols, words, and phrases by looking at them. Generate speech from selections. Engage with the world through your eyes.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">&#128101;</div>
+          <h3>For Caregivers &amp; Family</h3>
+          <p>Understand what your loved one needs. Configure communication boards, adjust sensitivity, track usage patterns. A caregiver app gives control without technical expertise.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">&#127891;</div>
+          <h3>For Teachers &amp; Therapists</h3>
+          <p>Customize symbol grids for learning objectives. Track dwell time patterns to understand attention and progress. Integrate into classroom routines with a dedicated device.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">&#128161;</div>
+          <h3>Open Source &amp; Affordable</h3>
+          <p>No $10,000 proprietary device. Run on low-power edge hardware with dual USB cameras and a touchscreen. Open source means anyone can improve, adapt, and share it.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <div class="section-label">Capabilities</div>
+      <h2>What mosii will do</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">A complete eye gaze communication system, from camera to speech, running on affordable edge hardware.</p>
+      <div class="cap-grid">
+        <div class="cap-card">
+          <div class="cap-title">Real-Time Gaze Tracking</div>
+          <div class="cap-desc">Dual camera gaze detection with precision and jitter smoothing in high and low light conditions</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title">Text-to-Speech</div>
+          <div class="cap-desc">Vocalize selected symbols, words, and sentences, turning gaze selections into spoken communication</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title">Face Recognition</div>
+          <div class="cap-desc">Recognize registered users to personalize communication boards and greetings</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title">Head &amp; Movement Tracking</div>
+          <div class="cap-desc">Detect head position and stereotypic movements, alert on seizures based on facial gestures</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title">AI Image Generation</div>
+          <div class="cap-desc">Generate vibrant images associated with word meanings for engaging communication boards</div>
+        </div>
+        <div class="cap-card">
+          <div class="cap-title">Adaptive Calibration</div>
+          <div class="cap-desc">One-time calibration that adapts over time as the system learns the user's gaze patterns</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <div class="section-label">Architecture</div>
+      <h2>Three layers, clear boundaries</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">mosii is built on mosaigo and mosoptics. The gaze pipeline runs on edge hardware, the overlay renders the communication UI, and the caretaker app provides remote control.</p>
+      <div class="arch-visual">
+        <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          mosii <span class="desc">Overlay UI + Caretaker app (communication, calibration, settings)</span>
+        </div>
+        <div class="arch-arrow">controls &#8595;</div>
+        <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+          mosoptics <span class="desc">Gaze pipeline (cam, face, eye, gaze, stereo, real-time on device)</span>
+        </div>
+        <div class="arch-arrow">built on &#8595;</div>
+        <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          mosaigo <span class="desc">Engine, pipeline, typed steps, topics, config, validation</span>
+        </div>
+      </div>
+      <p class="arch-caption">The overlay renders on a dedicated display. The caretaker app connects over the local network. All gaze processing happens on-device, no cloud dependency.</p>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <img src="/images/mosii1.webp" alt="Mosii" class="mascot-img" loading="lazy" />
+      <div class="section-label" style="margin-top:24px;">Meet Mosii</div>
+      <h2>She sees with mosaic eyes</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">She sees the world through mosaic-patterned eyes and speaks with her gaze.</p>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <div class="section-label">Project status</div>
+      <h2>Where we are</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">
+        mosii is in active early development. The core pipeline framework (mosaigo) and vision library (mosoptics) are being built first. The communication overlay and caretaker app will follow.
+      </p>
+      <div class="status-badge">Pre-release &middot; Active Development</div>
+    </section>
+
+    <section class="cta">
+      <h2>Help build the future of accessible communication</h2>
+      <p>mosii is open source and welcomes contributors. Whether you're a developer, therapist, caregiver, or researcher, there's a place for you.</p>
+      <div class="hero-actions">
+        <a href="/docs-mosii/" class="btn btn-primary">Read the Docs</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="/hub/">mosaigo</a>
+        <a href="/docs-mosii/">Docs</a>
+      </div>
+      <p>Part of the <a href="/hub/">mosaigoio</a> family</p>
+    </footer>
+  </body>
+</html>

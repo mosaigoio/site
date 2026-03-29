@@ -249,7 +249,7 @@ body {
 }
 .pkg-desc { font-size: 0.78rem; color: var(--text-secondary); }
 
-/* CAPABILITIES (mosi) */
+/* CAPABILITIES (mosii) */
 .cap-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
   max-width: 900px; margin: 0 auto; text-align: left;
