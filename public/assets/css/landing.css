@@ -72,8 +72,8 @@ body {
 }
 .hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--success); }
 .hero h1 {
-  font-size: 3.4rem; font-weight: 800; letter-spacing: -0.04em;
-  line-height: 1.1; margin-bottom: 16px; max-width: 700px; margin-left: auto; margin-right: auto;
+  font-size: 2.8rem; font-weight: 800; letter-spacing: -0.04em;
+  line-height: 1.1; margin-bottom: 16px; white-space: nowrap; margin-left: auto; margin-right: auto;
 }
 .hero h1 .accent { color: var(--primary); }
 .hero .tagline {
@@ -333,6 +333,6 @@ body {
   .cap-grid { grid-template-columns: 1fr; }
   .about-section { flex-direction: column; text-align: center; }
   .about-section img { width: 200px; height: 200px; }
-  .hero h1 { font-size: 2.2rem; }
+  .hero h1 { font-size: 2.2rem; white-space: normal; }
   .stats-row { flex-wrap: wrap; gap: 24px; }
 }
