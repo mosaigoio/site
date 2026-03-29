@@ -27,7 +27,7 @@ Many people with severe motor disabilities have full cognitive ability but no wa
 
 ## Architecture
 
-mosii is built on [mosaigo](/getting-started/) and [mosoptics](/mosoptics/). The gaze pipeline runs on edge hardware, the overlay renders the communication UI, and the caretaker app provides remote control.
+mosii is built on [mosaigo](/getting-started/) and [mosoptics](/docs-mosoptics/). The gaze pipeline runs on edge hardware, the overlay renders the communication UI, and the caretaker app provides remote control.
 
 ## Project status
 

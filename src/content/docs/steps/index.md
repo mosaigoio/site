@@ -16,7 +16,7 @@ The step catalog lists all registered `StepDef` instances across the mosaigoio p
 
 ## mosoptics vision steps
 
-See the [mosoptics documentation](/mosoptics/) for the full list of vision step packages including camera capture, face detection, gaze estimation, and GPU-accelerated inference.
+See the [mosoptics documentation](/docs-mosoptics/) for the full list of vision step packages including camera capture, face detection, gaze estimation, and GPU-accelerated inference.
 
 ---
 

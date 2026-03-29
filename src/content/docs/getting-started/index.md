@@ -42,6 +42,4 @@ func main() {
 
 ## Next steps
 
-- Learn about [core concepts](/concepts/) — engines, steps, payloads, and topics
 - Browse the [step catalog](/steps/) for available processing steps
-- Explore the [architecture](/architecture/) for deeper understanding
