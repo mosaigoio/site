@@ -9,7 +9,7 @@ export default defineConfig({
       customCss: ["./src/styles/custom.css"],
       defaultLocale: "root",
       logo: {
-        src: "./public/images/favicon-32x32.png",
+        src: "./public/images/mozzy-icon.webp",
         replacesTitle: false,
       },
       favicon: "/favicon.ico",
