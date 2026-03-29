@@ -9,7 +9,7 @@ Documentation and landing pages for the mosaigoio projects. Built with [Starligh
 
 ## What's Here
 
-**Landing pages** (`src/pages/`) -- standalone Astro pages for each project:
+**Landing pages** (`src/pages/`) — standalone Astro pages for each project:
 
 | Page | URL | Description |
 |------|-----|-------------|
@@ -17,7 +17,7 @@ Documentation and landing pages for the mosaigoio projects. Built with [Starligh
 | `mosoptics.astro` | [mosaigo.io/mosoptics](https://mosaigo.io/mosoptics) | Vision tracking step library |
 | `mosii.astro` | [mosaigo.io/mosii](https://mosaigo.io/mosii) | Assistive communication product |
 
-**Documentation** (`src/content/docs/`) -- Starlight-powered Markdown docs:
+**Documentation** (`src/content/docs/`) — Starlight-powered Markdown docs:
 
 ```
 docs/
@@ -66,7 +66,7 @@ npm run preview
 
 ### Documentation pages
 
-Add or edit Markdown files in `src/content/docs/`. Starlight uses the directory structure for navigation -- files are grouped by their parent folder, which maps to sidebar sections defined in `astro.config.mjs`.
+Add or edit Markdown files in `src/content/docs/`. Starlight uses the directory structure for navigation — files are grouped by their parent folder, which maps to sidebar sections defined in `astro.config.mjs`.
 
 ```bash
 # Add a new doc page
