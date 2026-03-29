@@ -16,6 +16,6 @@ jobs:
             --offline
             --no-progress
             --include-fragments
-            --root dist
+            --root-dir dist
             'dist/**/*.html'
           fail: true

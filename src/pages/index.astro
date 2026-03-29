@@ -49,7 +49,6 @@
           id="signup-form"
           action="https://docs.google.com/forms/d/e/1FAIpQLSfN7C3Q2BmUPWx5H0oMtXJGqnf1ijtFr2K4dX0r8FXeF2CGww/formResponse"
           method="POST"
-          target="hidden-form"
         >
           <div style="display: flex; flex-direction: column; gap: 12px;">
             <input
@@ -74,10 +73,10 @@
             </button>
           </div>
         </form>
-        <iframe name="hidden-form" style="display:none;"></iframe>
         <p id="signup-thanks" style="display:none; margin-top: 12px; color: var(--success); font-size: 0.88rem;">
           Thanks! We'll keep you posted.
         </p>
+        <p id="signup-error" style="display:none; margin-top: 12px; color: #e55; font-size: 0.88rem;"></p>
       </div>
     </section>
 
@@ -85,12 +84,49 @@
       <p>&copy; 2025-present mosaigoio contributors</p>
     </footer>
     <script is:inline>
-      document.getElementById('signup-form').addEventListener('submit', function() {
+      document.getElementById('signup-form').addEventListener('submit', function(e) {
+        e.preventDefault();
         var form = this;
-        setTimeout(function() {
+        var btn = form.querySelector('button[type="submit"]');
+        var errorEl = document.getElementById('signup-error');
+        var thanksEl = document.getElementById('signup-thanks');
+        var name = form.querySelector('[name="entry.222938406"]').value.trim();
+        var email = form.querySelector('[name="entry.649963799"]').value.trim();
+
+        errorEl.style.display = 'none';
+        errorEl.textContent = '';
+
+        // Client-side validation
+        if (!name) {
+          errorEl.textContent = 'Please enter your name.';
+          errorEl.style.display = 'block';
+          return;
+        }
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+          errorEl.textContent = 'Please enter a valid email address.';
+          errorEl.style.display = 'block';
+          return;
+        }
+
+        btn.disabled = true;
+        btn.textContent = 'Sending\u2026';
+
+        var data = new URLSearchParams(new FormData(form));
+        fetch(form.action, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: data.toString()
+        }).then(function() {
           form.style.display = 'none';
-          document.getElementById('signup-thanks').style.display = 'block';
-        }, 500);
+          thanksEl.style.display = 'block';
+        }).catch(function(err) {
+          btn.disabled = false;
+          btn.textContent = 'Notify me';
+          errorEl.textContent = 'Something went wrong — please try again.';
+          errorEl.style.display = 'block';
+          console.error('Form submission error:', err);
+        });
       });
     </script>
   </body>
