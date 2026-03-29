@@ -1,143 +1,97 @@
 ---
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title>mosaigo — Event-Driven Pipeline Framework for Go</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mosaigo — Composable Pipeline Engine for Go</title>
     <meta
       name="description"
-      content="mosaigo is a modular, event-driven pipeline framework for Go. Compose type-safe processing steps, observe everything in real time, and swap any piece without touching the rest."
+      content="mosaigo is an open-source pipeline engine for Go. Compose typed, self-describing steps into pipelines for any domain: data processing, computer vision, IoT, audio, or anything that flows."
     />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/assets/css/main.css" />
-    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
   </head>
-  <body class="homepage is-preload">
-    <div id="page-wrapper">
+  <body>
+    <nav class="topnav">
+      <a href="/" class="topnav-logo">
+        <img src="/images/mozzy-icon.webp" alt="mosaigo" />
+        mosaigo
+      </a>
+    </nav>
 
-      <!-- Header -->
-      <section id="header">
+    <section class="hero" style="padding: 90px 24px 24px;">
+      <div class="hero-badge"><span class="dot"></span> Open source &middot; Pure Go</div>
+      <h1>Big solutions from <span class="accent">small steps</span></h1>
+      <p class="tagline" style="margin-bottom:16px;">A composable pipeline engine for Go that handles the hard parts so you can focus on what matters.</p>
+      <img src="/images/mozzy1.webp" alt="Mozzy, the mosaigo mascot" style="max-width: 300px; margin: 24px auto 0; display: block;" />
+      <p class="section-desc" style="margin: 12px auto 0; text-align:center; max-width:580px;">
+        Processing complex data at high throughput with low latency gets hard fast. Resource lifecycles need to happen outside the hot path. Parallel routines need to communicate without blocking. The plumbing grows until it drowns the actual logic.
+      </p>
+      <p class="section-desc" style="margin: 16px auto 0; text-align:center; max-width:580px;">
+        mosaigo takes a different approach. Single-purpose steps that each do one thing, composed into pipelines through configuration or at runtime. Strong typing across every boundary cuts boilerplate, removes repetition, and catches mismatches before anything runs. Steps describe themselves with a small set of metadata, making them discoverable, configurable, and reusable out of the box.
+      </p>
+      <p class="section-desc" style="margin: 16px auto 0; text-align:center; max-width:580px;">
+        Because steps are cheap to write and swap, you can try three approaches instead of committing to one. Built-in observability means you can measure and compare them empirically, not guess. The framework is designed for fast iteration: change a step, reconfigure a pipeline, see what works, keep the winner.
+      </p>
+      <p class="section-desc" style="margin: 16px auto 0; text-align:center; max-width:580px;">
+        We're building it right now.
+      </p>
 
-        <!-- Logo -->
-        <h1><a href="/">mosaigo</a></h1>
-
-        <!-- Nav -->
-        <nav id="nav">
-          <ul>
-            <li class="current"><a href="/">Home</a></li>
-            <li><a href="https://github.com/mosaigoio/mosaigo">GitHub</a></li>
-          </ul>
-        </nav>
-
-        <!-- Banner -->
-        <section id="banner">
-          <header>
-            <h2>Build pipelines like <strong>mosaics</strong></h2>
-            <p>
-              A modular, event-driven pipeline framework for Go. Type-safe steps,
-              built-in observability, and zero-allocation hot paths. Coming soon.
-            </p>
-          </header>
-        </section>
-
-        <!-- Intro -->
-        <section id="intro" class="container">
-          <div class="row">
-            <div class="col-4 col-12-medium">
-              <section class="first">
-                <i class="icon solid featured fa-puzzle-piece"></i>
-                <header>
-                  <h2>Type-Safe Steps</h2>
-                </header>
-                <p>Generic steps catch payload mismatches at compile time. Every step declares its input, output, and config through a single StepDef.</p>
-              </section>
-            </div>
-            <div class="col-4 col-12-medium">
-              <section class="middle">
-                <i class="icon solid featured alt fa-bolt"></i>
-                <header>
-                  <h2>Zero-Alloc Hot Path</h2>
-                </header>
-                <p>Pre-allocated buffers and zero-copy passing. Init() allocates, Process() is allocation-free. Built for 120fps camera pipelines.</p>
-              </section>
-            </div>
-            <div class="col-4 col-12-medium">
-              <section class="last">
-                <i class="icon solid featured alt2 fa-chart-bar"></i>
-                <header>
-                  <h2>Built-In Observability</h2>
-                </header>
-                <p>Every step tracks latency automatically. Topic pub/sub powers multi-engine architectures. Studio shows live pipeline graphs.</p>
-              </section>
-            </div>
+      <div style="margin: 40px auto 0; max-width: 420px;">
+        <h3 style="font-size: 1.1rem; font-weight: 600; margin-bottom: 16px;">Stay in the loop</h3>
+        <form
+          id="signup-form"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSfN7C3Q2BmUPWx5H0oMtXJGqnf1ijtFr2K4dX0r8FXeF2CGww/formResponse"
+          method="POST"
+          target="hidden-form"
+        >
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <input
+              type="text"
+              name="entry.222938406"
+              placeholder="Name"
+              required
+              style="padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-size: 0.92rem; font-family: inherit; outline: none;"
+            />
+            <input
+              type="email"
+              name="entry.649963799"
+              placeholder="Email"
+              required
+              style="padding: 10px 14px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-card); color: var(--text); font-size: 0.92rem; font-family: inherit; outline: none;"
+            />
+            <button
+              type="submit"
+              style="padding: 11px 24px; border-radius: 8px; border: 1px solid var(--primary); background: var(--primary); color: #fff; font-size: 0.92rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.15s;"
+            >
+              Notify me
+            </button>
           </div>
-          <footer>
-            <ul class="actions">
-              <li><a href="https://github.com/mosaigoio/mosaigo" class="button large">View on GitHub</a></li>
-            </ul>
-          </footer>
-        </section>
+        </form>
+        <iframe name="hidden-form" style="display:none;"></iframe>
+        <p id="signup-thanks" style="display:none; margin-top: 12px; color: var(--success); font-size: 0.88rem;">
+          Thanks! We'll keep you posted.
+        </p>
+      </div>
+    </section>
 
-      </section>
-
-      <!-- Main -->
-      <section id="main">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <section class="box" style="text-align: center;">
-                <img src="/images/mozzy1.webp" alt="Mozzy, the mosaigo mascot" style="max-width: 360px; margin: 0 auto; display: block;" />
-                <header>
-                  <h2>Coming Soon</h2>
-                </header>
-                <p>
-                  mosaigo is an open-source pipeline framework that treats every processing step like a tile in a mosaic.
-                  Snap them together, observe them in real time, and swap any piece without touching the rest.
-                  We're building the framework, the documentation, and the tooling right now.
-                  Star the repo on GitHub to follow along.
-                </p>
-                <footer>
-                  <ul class="actions">
-                    <li><a href="https://github.com/mosaigoio/mosaigo" class="button large">Star on GitHub</a></li>
-                  </ul>
-                </footer>
-              </section>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Footer -->
-      <section id="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-              <div id="copyright">
-                <ul class="links">
-                  <li>&copy; 2025-present mosaigoio contributors</li>
-                  <li>Apache-2.0 License</li>
-                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-
-    <!-- Scripts -->
-    <script is:inline src="/assets/js/jquery.min.js"></script>
-    <script is:inline src="/assets/js/jquery.dropotron.min.js"></script>
-    <script is:inline src="/assets/js/browser.min.js"></script>
-    <script is:inline src="/assets/js/breakpoints.min.js"></script>
-    <script is:inline src="/assets/js/util.js"></script>
-    <script is:inline src="/assets/js/main.js"></script>
-
+    <footer class="footer">
+      <p>&copy; 2025-present mosaigoio contributors</p>
+    </footer>
+    <script is:inline>
+      document.getElementById('signup-form').addEventListener('submit', function() {
+        var form = this;
+        setTimeout(function() {
+          form.style.display = 'none';
+          document.getElementById('signup-thanks').style.display = 'block';
+        }, 500);
+      });
+    </script>
   </body>
 </html>

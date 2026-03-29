@@ -1,365 +1,330 @@
 ---
 ---
 
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <title>mosaigo — Event-Driven Pipeline Framework for Go</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mosaigo — Composable Pipeline Engine for Go</title>
     <meta
       name="description"
-      content="mosaigo is a modular, event-driven pipeline framework for Go. Compose type-safe processing steps, observe everything in real time, and swap any piece without touching the rest."
+      content="mosaigo is an open-source pipeline engine for Go. Compose typed, self-describing steps into pipelines for any domain: data processing, computer vision, IoT, audio, or anything that flows."
     />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
-    <link rel="stylesheet" href="/assets/css/main.css" />
-    <link rel="stylesheet" href="/assets/css/fontawesome-all.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
   </head>
-  <body class="homepage is-preload">
-    <div id="page-wrapper">
+  <body>
+    <nav class="topnav">
+      <a href="/hub/" class="topnav-logo">
+        <img src="/images/mozzy-icon.webp" alt="mosaigo" />
+        mosaigo
+      </a>
+      <div class="topnav-links">
+        <a href="/getting-started/" class="topnav-link">Docs</a>
+        <a href="/hub/mosoptics/" class="topnav-link">mosoptics</a>
+        <a href="/hub/mosi/" class="topnav-link">mosi</a>
+      </div>
+    </nav>
 
-      <!-- Header -->
-      <section id="header">
+    <section class="hero">
+      <div class="hero-badge"><span class="dot"></span> Open source &middot; Pure Go</div>
+      <h1>Big solutions from <span class="accent">small steps</span></h1>
+      <p class="tagline">A composable pipeline engine for Go that handles the hard parts so you can focus on what matters.</p>
+      <div class="hero-actions">
+        <a href="/getting-started/" class="btn btn-primary">Get Started</a>
+      </div>
+      <div class="hero-install">
+        <span class="prompt">$</span> go get github.com/mosaigoio/mosaigo@latest
+      </div>
+    </section>
 
-        <!-- Logo -->
-        <h1><a href="/hub/">mosaigo</a></h1>
+    <section class="section">
+      <div class="section-label">Why mosaigo</div>
+      <h2>Every step is a tile. Together, they're a picture.</h2>
+      <p class="section-desc">Single-purpose steps that each do one thing, composed into pipelines through configuration or at runtime. Strong typing across every boundary cuts boilerplate and catches mismatches before anything runs.</p>
+      <div class="diff-grid">
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">&#9881;</div>
+          <h3>Type-Safe Generic Steps</h3>
+          <p><code>TypedEngineStep[TIN, TOUT]</code> catches payload mismatches at compile time. Every step declares its input, output, config schema, and metadata through <code>StepDef</code>.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">&#9670;</div>
+          <h3>Self-Describing Pipeline</h3>
+          <p>Steps register themselves with full metadata. The framework auto-generates step catalogs, validates pipeline wiring before execution, and serializes issues to REST/WebSocket.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">&#9201;</div>
+          <h3>Zero-Alloc Hot Path</h3>
+          <p>Designed for real-time: pre-allocated buffers, zero-copy payload passing. Init() allocates, Process() is allocation-free, Close() releases. 120fps camera pipelines, not batch ETL.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">&#9783;</div>
+          <h3>Built-In Observability</h3>
+          <p>Every step automatically tracks latency via <code>MarkTime</code>. Topic pub/sub enables multi-engine architectures. Studio UI shows live pipeline graphs with per-step timing.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">&#8644;</div>
+          <h3>Hexagonal by Default</h3>
+          <p>Steps never import infrastructure. Assembly happens at the top. Ports define contracts, adapters are swappable by config. Your step doesn't know about routers or drivers.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">&#9874;</div>
+          <h3>Config, YAML, or API</h3>
+          <p>Three ways to build pipelines: programmatic Go API, YAML factory from the step registry, or web service payload via REST/WebSocket. Same validation, same steps.</p>
+        </div>
+      </div>
+    </section>
 
-        <!-- Nav -->
-        <nav id="nav">
+    <section class="section">
+      <div class="section-label">In practice</div>
+      <h2>A pipeline in 15 lines</h2>
+      <p class="section-desc">Build, validate, and run. Every step comes from the registry, wired by the engine, observable by default.</p>
+      <div class="code-showcase">
+        <div>
+          <div class="code-header">main.go</div>
+          <div class="code-block" set:html={`<span class="kw">package</span> main
+
+<span class="kw">import</span> (
+    <span class="st">"github.com/mosaigoio/mosaigo/engine"</span>
+    <span class="st">"github.com/mosaigoio/mosaigo/mos"</span>
+)
+
+<span class="kw">func</span> <span class="fn">main</span>() {
+    <span class="cm">// Build from registered steps</span>
+    eng := engine.<span class="fn">NewBuilder</span>(<span class="st">"my-pipeline"</span>).
+        <span class="fn">AddByName</span>(<span class="st">"capture.session"</span>).
+        <span class="fn">AddByName</span>(<span class="st">"vision.detect.ultraface"</span>).
+        <span class="fn">AddByName</span>(<span class="st">"vision.gaze.l2cs"</span>).
+        <span class="fn">Build</span>()
+
+    <span class="cm">// Validate the full pipeline, all issues, not fail-fast</span>
+    <span class="kw">if</span> issues := eng.<span class="fn">Validate</span>(); <span class="fn">len</span>(issues) &gt; <span class="st">0</span> {
+        mos.<span class="fn">LogIssues</span>(issues)
+        <span class="kw">return</span>
+    }
+
+    eng.<span class="fn">Run</span>() <span class="cm">// blocks, processes frames, observable via Studio</span>
+}`} />
+        </div>
+        <div class="code-text" style="padding-top:32px;">
+          <h3>What's happening here</h3>
+          <p>Steps are resolved from the global <code>StepDef</code> registry by name. Each step was registered at init time with its config type, I/O payloads, and metadata.</p>
           <ul>
-            <li class="current"><a href="/hub/">Home</a></li>
-            <li><a href="/hub/mosoptics/">mosoptics</a></li>
-            <li><a href="/hub/eyemia/">EyeMia</a></li>
-            <li>
-              <a href="#">Docs</a>
-              <ul>
-                <li><a href="/getting-started/">Getting Started</a></li>
-                <li><a href="/steps/">Step Catalog</a></li>
-                <li><a href="/docs-mosoptics/">mosoptics Docs</a></li>
-                <li><a href="/docs-eyemia/">EyeMia Docs</a></li>
-              </ul>
-            </li>
-            <li><a href="https://github.com/mosaigoio/mosaigo">GitHub</a></li>
+            <li>Steps compile in, no dynamic plugins, no reflection at runtime</li>
+            <li>The validator walks the full pipeline and collects every issue</li>
+            <li>Process() is the hot path, zero allocation, MarkTime instrumented</li>
+            <li>Topic pub/sub enables multi-engine architectures at different frame rates</li>
+            <li>Config overridable: defaults &lt; YAML &lt; env var &lt; runtime API</li>
           </ul>
-        </nav>
-
-        <!-- Banner -->
-        <section id="banner">
-          <header>
-            <h2>Build pipelines like <strong>mosaics</strong></h2>
-            <p>
-              A modular, event-driven pipeline framework for Go.
-              Compose type-safe processing steps, observe everything in real time,
-              and swap any piece without touching the rest.
-            </p>
-          </header>
-        </section>
-
-        <!-- Intro -->
-        <section id="intro" class="container">
-          <div class="row">
-            <div class="col-4 col-12-medium">
-              <section class="first">
-                <i class="icon solid featured fa-puzzle-piece"></i>
-                <header>
-                  <h2>Type-Safe Steps</h2>
-                </header>
-                <p>Generic steps catch payload mismatches at compile time. Every step declares its input, output, and config through a single StepDef.</p>
-              </section>
-            </div>
-            <div class="col-4 col-12-medium">
-              <section class="middle">
-                <i class="icon solid featured alt fa-bolt"></i>
-                <header>
-                  <h2>Zero-Alloc Hot Path</h2>
-                </header>
-                <p>Pre-allocated buffers and zero-copy passing. Init() allocates, Process() is allocation-free. Built for 120fps camera pipelines, not batch ETL.</p>
-              </section>
-            </div>
-            <div class="col-4 col-12-medium">
-              <section class="last">
-                <i class="icon solid featured alt2 fa-chart-bar"></i>
-                <header>
-                  <h2>Built-In Observability</h2>
-                </header>
-                <p>Every step tracks latency automatically. Topic pub/sub powers multi-engine architectures. Studio shows live pipeline graphs with per-step timing.</p>
-              </section>
-            </div>
-          </div>
-          <footer>
-            <ul class="actions">
-              <li><a href="/getting-started/" class="button large">Get Started</a></li>
-              <li><a href="https://github.com/mosaigoio/mosaigo" class="button alt large">View on GitHub</a></li>
-            </ul>
-          </footer>
-        </section>
-
-      </section>
-
-      <!-- Main -->
-      <section id="main">
-        <div class="container">
-          <div class="row">
-            <div class="col-12">
-
-              <!-- Portfolio -->
-              <section>
-                <header class="major">
-                  <h2>What you can build</h2>
-                </header>
-                <div class="row">
-                  <div class="col-4 col-6-medium col-12-small">
-                    <section class="box">
-                      <a href="/getting-started/" class="image featured"><img src="/images/portfolio-pipeline.webp" alt="Data pipeline visualization" /></a>
-                      <header>
-                        <h3>Composable Pipelines</h3>
-                      </header>
-                      <p>Type-safe steps snap together like tiles. Build complex data flows from simple, reusable pieces that validate at compile time.</p>
-                      <footer>
-                        <ul class="actions">
-                          <li><a href="/getting-started/" class="button alt">Get Started</a></li>
-                        </ul>
-                      </footer>
-                    </section>
-                  </div>
-                  <div class="col-4 col-6-medium col-12-small">
-                    <section class="box">
-                      <a href="/hub/mosoptics/" class="image featured"><img src="/images/portfolio-vision.webp" alt="Computer vision and gaze tracking" /></a>
-                      <header>
-                        <h3>Computer Vision</h3>
-                      </header>
-                      <p>Face detection, gaze estimation, and stereo processing. All as pipeline steps through mosoptics, the vision library for mosaigo.</p>
-                      <footer>
-                        <ul class="actions">
-                          <li><a href="/hub/mosoptics/" class="button alt">Learn More</a></li>
-                        </ul>
-                      </footer>
-                    </section>
-                  </div>
-                  <div class="col-4 col-6-medium col-12-small">
-                    <section class="box">
-                      <a href="/hub/eyemia/" class="image featured"><img src="/images/portfolio-eyemia.webp" alt="Eye gaze communication board" /></a>
-                      <header>
-                        <h3>Assistive Communication</h3>
-                      </header>
-                      <p>EyeMia turns eye gaze into communication for people with Rett Syndrome and other motor disabilities. Open source and affordable.</p>
-                      <footer>
-                        <ul class="actions">
-                          <li><a href="/hub/eyemia/" class="button alt">Learn More</a></li>
-                        </ul>
-                      </footer>
-                    </section>
-                  </div>
-                  <div class="col-4 col-6-medium col-12-small">
-                    <section class="box">
-                      <a href="/hub/mosoptics/" class="image featured"><img src="/images/portfolio-hardware.webp" alt="Edge computing device with stereo camera" /></a>
-                      <header>
-                        <h3>Edge Hardware</h3>
-                      </header>
-                      <p>Run on Jetson Orin, Raspberry Pi, or any edge device. GPU-accelerated inference with TensorRT, CoreML, or CUDA at the edge.</p>
-                      <footer>
-                        <ul class="actions">
-                          <li><a href="/hub/mosoptics/" class="button alt">Learn More</a></li>
-                        </ul>
-                      </footer>
-                    </section>
-                  </div>
-                  <div class="col-4 col-6-medium col-12-small">
-                    <section class="box">
-                      <a href="#" class="image featured"><img src="/images/portfolio-studio.webp" alt="Studio observability dashboard" /></a>
-                      <header>
-                        <h3>Studio Dashboard</h3>
-                      </header>
-                      <p>Live pipeline visualization with per-step latency, throughput metrics, and camera preview. See what's happening inside your pipeline.</p>
-                      <footer>
-                        <ul class="actions">
-                          <li><a href="/getting-started/" class="button alt">Learn More</a></li>
-                        </ul>
-                      </footer>
-                    </section>
-                  </div>
-                  <div class="col-4 col-6-medium col-12-small">
-                    <section class="box">
-                      <a href="/steps/" class="image featured"><img src="/images/portfolio-steps.webp" alt="Step catalog mosaic" /></a>
-                      <header>
-                        <h3>Step Catalog</h3>
-                      </header>
-                      <p>Browse, compose, and configure from a growing library of self-describing pipeline steps. Each one comes with full metadata built in.</p>
-                      <footer>
-                        <ul class="actions">
-                          <li><a href="/steps/" class="button alt">Browse Steps</a></li>
-                        </ul>
-                      </footer>
-                    </section>
-                  </div>
-                </div>
-              </section>
-
-            </div>
-            <div class="col-12">
-
-              <!-- Blog / Features -->
-              <section>
-                <header class="major">
-                  <h2>Get Going</h2>
-                </header>
-                <div class="row">
-                  <div class="col-6 col-12-small">
-                    <section class="box">
-                      <a href="/getting-started/" class="image featured"><img src="/images/feature-getstarted.webp" alt="Quick start with Go code" /></a>
-                      <header>
-                        <h3>Quick Start Guide</h3>
-                      </header>
-                      <p>Install mosaigo, create your first pipeline, and see it run. The framework handles the wiring so you can focus on your domain logic. Three ways to build: Go API, YAML config, or REST endpoint.</p>
-                      <footer>
-                        <ul class="actions">
-                          <li><a href="/getting-started/" class="button icon solid fa-file-alt">Read the Guide</a></li>
-                        </ul>
-                      </footer>
-                    </section>
-                  </div>
-                  <div class="col-6 col-12-small">
-                    <section class="box">
-                      <a href="/getting-started/" class="image featured"><img src="/images/feature-architecture.webp" alt="Three-layer architecture" /></a>
-                      <header>
-                        <h3>Architecture Overview</h3>
-                      </header>
-                      <p>Understand the three-layer design: the engine framework at the bottom, domain step libraries in the middle, and your product on top. Clean boundaries, clear contracts, no leaky abstractions.</p>
-                      <footer>
-                        <ul class="actions">
-                          <li><a href="/getting-started/" class="button icon solid fa-file-alt">Read More</a></li>
-                        </ul>
-                      </footer>
-                    </section>
-                  </div>
-                </div>
-              </section>
-
-            </div>
-          </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Footer -->
-      <section id="footer">
-        <div class="container">
-          <div class="row">
-            <div class="col-8 col-12-medium">
-              <section>
-                <header>
-                  <h2>Why mosaigo?</h2>
-                </header>
-                <div class="row">
-                  <div class="col-6">
-                    <ul class="default">
-                      <li><strong>Composition over configuration.</strong> Pipelines are assembled from independent steps, not configured from a mega-YAML.</li>
-                      <li><strong>The compiler is your first reviewer.</strong> Go generics catch payload mismatches at build time.</li>
-                      <li><strong>Metadata is not optional.</strong> Every step describes itself completely. That powers validation, catalogs, Studio, and the API.</li>
-                    </ul>
-                  </div>
-                  <div class="col-6">
-                    <ul class="default">
-                      <li><strong>Steps don't know where they live.</strong> A step works with domain types, not infrastructure. Ports define contracts.</li>
-                      <li><strong>Fail comprehensively, not fast.</strong> The validator collects every issue into a serializable list. You see all problems at once.</li>
-                      <li><strong>Stdlib unless proven otherwise.</strong> slog, not logrus. net/http, not fiber. Every dependency earns its place.</li>
-                    </ul>
-                  </div>
-                </div>
-              </section>
-            </div>
-            <div class="col-4 col-12-medium">
-              <section>
-                <header>
-                  <h2>About the project</h2>
-                </header>
-                <img src="/images/mozzy1.webp" alt="Mozzy, the mosaigo mascot" style="max-width: 200px; margin: 0 auto 1em; display: block;" />
-                <p>
-                  A mosaic is made of many small tiles, each simple on its own, that together form something meaningful.
-                  That's how we think about pipelines. The "go" is for Go, the language that makes it possible.
-                  Open source, Apache-2.0 licensed.
-                </p>
-                <footer>
-                  <ul class="actions">
-                    <li><a href="https://github.com/mosaigoio" class="button">GitHub</a></li>
-                  </ul>
-                </footer>
-              </section>
-            </div>
-            <div class="col-4 col-6-medium col-12-small">
-              <section>
-                <header>
-                  <h2>Projects</h2>
-                </header>
-                <ul class="divided">
-                  <li><a href="/hub/">mosaigo &middot; Pipeline engine framework (pure Go)</a></li>
-                  <li><a href="/hub/mosoptics/">mosoptics &middot; Computer vision step library</a></li>
-                  <li><a href="/hub/eyemia/">EyeMia &middot; Eye gaze communication system</a></li>
-                  <li><a href="/steps/">Step Catalog &middot; Browse available steps</a></li>
-                  <li><a href="/getting-started/">Getting Started &middot; Your first pipeline</a></li>
-                </ul>
-              </section>
-            </div>
-            <div class="col-4 col-6-medium col-12-small">
-              <section>
-                <header>
-                  <h2>At a glance</h2>
-                </header>
-                <ul class="divided">
-                  <li>Pure Go core, zero CGo</li>
-                  <li>Three pipeline construction modes</li>
-                  <li>Zero allocations in Process()</li>
-                  <li>100% self-describing steps</li>
-                  <li>Apache-2.0 license</li>
-                  <li>Go 1.24+</li>
-                </ul>
-              </section>
-            </div>
-            <div class="col-4 col-12-medium">
-              <section>
-                <header>
-                  <h2>Connect</h2>
-                </header>
-                <ul class="social">
-                  <li><a class="icon brands fa-github" href="https://github.com/mosaigoio"><span class="label">GitHub</span></a></li>
-                </ul>
-                <ul class="contact">
-                  <li>
-                    <h3>License</h3>
-                    <p>Apache-2.0</p>
-                  </li>
-                  <li>
-                    <h3>Install</h3>
-                    <p><code>go get github.com/mosaigoio/mosaigo@latest</code></p>
-                  </li>
-                </ul>
-              </section>
-            </div>
-            <div class="col-12">
-
-              <!-- Copyright -->
-              <div id="copyright">
-                <ul class="links">
-                  <li>&copy; 2025-present mosaigoio contributors</li>
-                  <li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
+    <section class="section" style="text-align:center;">
+      <div class="section-label">How it works</div>
+      <h2>Metadata-driven composition</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">Every step describes itself completely. The framework uses that metadata to validate pipelines, generate catalogs, serve config schemas, and power the Studio UI, all automatically.</p>
+      <div class="arch-visual">
+        <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          Your Product <span class="desc">Compose steps, configure via YAML/API, ship</span>
         </div>
-      </section>
+        <div class="arch-arrow">assembles &#8595;</div>
+        <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+          Domain Step Libraries <span class="desc">CV, IoT, ETL, audio, or your own, all TypedEngineStep</span>
+        </div>
+        <div class="arch-arrow">built on &#8595;</div>
+        <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          mosaigo <span class="desc">Engine, pipeline, typed steps, topics, config, validation, Studio</span>
+        </div>
+      </div>
+      <p class="arch-caption">mosaigo is domain-agnostic. Your step libraries bring the domain knowledge. mosaigo brings the composition, observability, and runtime.</p>
+    </section>
 
+    <div class="stats-row">
+      <div class="stat"><div class="num">0</div><div class="label">CGo in the core</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">Pipeline construction modes</div></div>
+      <div class="stat"><div class="num">0</div><div class="label">Allocations in Process()</div></div>
+      <div class="stat"><div class="num">100%</div><div class="label">Steps self-describing</div></div>
+      <div class="stat"><div class="num">Open</div><div class="label">Source</div></div>
     </div>
 
-    <!-- Scripts -->
-    <script is:inline src="/assets/js/jquery.min.js"></script>
-    <script is:inline src="/assets/js/jquery.dropotron.min.js"></script>
-    <script is:inline src="/assets/js/browser.min.js"></script>
-    <script is:inline src="/assets/js/breakpoints.min.js"></script>
-    <script is:inline src="/assets/js/util.js"></script>
-    <script is:inline src="/assets/js/main.js"></script>
+    <section class="section">
+      <div class="section-label">Ecosystem</div>
+      <h2>What you can build with mosaigo</h2>
+      <p class="section-desc">From data pipelines to real-time computer vision, mosaigo provides the composable foundation.</p>
+      <div class="portfolio-grid">
+        <div class="portfolio-card">
+          <img src="/images/portfolio-pipeline.webp" alt="Data pipeline visualization" loading="lazy" />
+          <div class="card-body">
+            <h3>Composable Pipelines</h3>
+            <p>Type-safe steps snap together like tiles. Build complex data flows from simple, reusable pieces.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/mozzy-eyes2.webp" alt="Computer vision and gaze tracking" loading="lazy" style="border:none;" />
+          <div class="card-body">
+            <h3>Computer Vision</h3>
+            <p>Face detection, gaze estimation, and stereo processing, all as pipeline steps via mosoptics.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-mosi.webp" alt="Eye gaze communication board" loading="lazy" />
+          <div class="card-body">
+            <h3>Assistive Communication</h3>
+            <p>mosi aims to turn eye gaze into communication for people with motor disabilities.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-hardware.webp" alt="Edge computing device with stereo camera" loading="lazy" />
+          <div class="card-body">
+            <h3>Edge Hardware</h3>
+            <p>Run on Jetson Orin, Raspberry Pi, or any edge device. GPU-accelerated inference at the edge.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-studio.webp" alt="Studio observability dashboard" loading="lazy" />
+          <div class="card-body">
+            <h3>Studio Dashboard</h3>
+            <p>Live pipeline visualization with per-step latency, throughput metrics, and camera preview.</p>
+          </div>
+        </div>
+        <div class="portfolio-card">
+          <img src="/images/portfolio-steps.webp" alt="Step catalog mosaic" loading="lazy" />
+          <div class="card-body">
+            <h3>Step Catalog</h3>
+            <p>Browse, compose, and configure from a growing library of self-describing pipeline steps.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="section">
+      <div class="section-label">Get started</div>
+      <h2>From zero to pipeline in minutes</h2>
+      <p class="section-desc">Pick your path: build from code or explore the architecture.</p>
+      <div class="feature-grid">
+        <div class="feature-card">
+          <img src="/images/feature-getstarted.webp" alt="Quick start with Go code" loading="lazy" />
+          <div class="card-body">
+            <h3>Quick Start Guide</h3>
+            <p>Install mosaigo, create your first pipeline, and see it run, all in a few minutes. The framework handles the wiring.</p>
+            <a href="/getting-started/" class="btn btn-primary">Get Started</a>
+          </div>
+        </div>
+        <div class="feature-card">
+          <img src="/images/feature-architecture.webp" alt="Three-layer architecture" loading="lazy" />
+          <div class="card-body">
+            <h3>Architecture Guide</h3>
+            <p>Understand the three-layer design: engine framework, domain step libraries, and your product on top. Clean boundaries, clear contracts.</p>
+            <a href="/getting-started/" class="btn btn-secondary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Iterate fast</div>
+      <h2>Build alternatives, not commitments</h2>
+      <p class="section-desc">Mosaigo is built for experimentation. Don't pick an algorithm, try three. Steps are cheap to write, fast to swap, and the framework measures everything so you can compare empirically.</p>
+      <div class="eco-grid">
+        <div class="eco-card">
+          <div class="eco-badge" style="background:rgba(42,127,191,0.15);color:var(--primary);">compose</div>
+          <h3>Snap steps together</h3>
+          <p>Each step is a single-purpose tile with typed input and output. Rearrange, replace, or duplicate any tile without touching the rest. The pipeline is a composition, not a monolith.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-badge" style="background:rgba(200,152,42,0.15);color:var(--accent);">configure</div>
+          <h3>Runtime-swappable config</h3>
+          <p>Every step declares its config schema via struct tags. Override via YAML, environment variables, or runtime API, no recompile. Defaults &lt; file &lt; env &lt; API, always.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-badge" style="background:rgba(58,143,92,0.15);color:var(--success);">measure</div>
+          <h3>See what's actually happening</h3>
+          <p>MarkTime on every step. Per-step latency in the API. Topic throughput metrics. Studio dashboard. You can't improve what you can't see, and mosaigo makes sure you see everything.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-label">Values</div>
+      <h2>What mosaigo believes</h2>
+      <p class="section-desc">These aren't rules to follow. They're the reason the framework exists.</p>
+      <div class="principle-grid">
+        <div class="principle">
+          <div class="principle-num">01</div>
+          <div>
+            <h4>Composition over configuration</h4>
+            <p>Pipelines are assembled from independent steps, not configured from a mega-YAML. Each step does one thing. Swap, reorder, or duplicate any tile without touching the others.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">02</div>
+          <div>
+            <h4>The compiler is your first reviewer</h4>
+            <p>Go generics catch payload mismatches at build time. If your step expects <code>[TIN]</code> and the previous step outputs something else, you know before you run.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">03</div>
+          <div>
+            <h4>Metadata is not optional</h4>
+            <p>Every step declares its name, config schema, I/O types, and required metadata via <code>StepDef</code>. This powers validation, the step catalog, Studio, and the API.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">04</div>
+          <div>
+            <h4>Steps don't know where they live</h4>
+            <p>A step works with domain types, not infrastructure. Ports define contracts. Adapters are swappable. Testing is trivial.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">05</div>
+          <div>
+            <h4>Fail comprehensively, not fast</h4>
+            <p>The validator walks the full pipeline and collects every issue into a serializable list. You see all the problems at once, not one at a time.</p>
+          </div>
+        </div>
+        <div class="principle">
+          <div class="principle-num">06</div>
+          <div>
+            <h4>Stdlib unless proven otherwise</h4>
+            <p><code>slog</code>, not logrus. <code>net/http</code>, not fiber. Every dependency is evaluated against a strict rubric.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Ready to build?</h2>
+      <p>Read the getting started guide, browse the step catalog, or jump straight into the code.</p>
+      <div class="hero-actions">
+        <a href="/getting-started/" class="btn btn-primary">Read the Docs</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="about-section">
+        <img src="/images/mozzy1.webp" alt="Mozzy, the mosaigo mascot" loading="lazy" />
+        <div class="about-text">
+          <h3>Why "mosaigo"?</h3>
+          <p>A mosaic is made of many small tiles, each simple on its own, that together form something meaningful. That's how we think about pipelines: composable pieces that create a bigger picture. The "go" is for Go, the language that makes it possible.</p>
+          <p style="margin-top:12px;">mosaigo is open source, built in the open, and designed for real-time systems where every frame matters.</p>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="/getting-started/">Docs</a>
+        <a href="/steps/">Step Catalog</a>
+      </div>
+      <p>&copy; 2025-present mosaigoio contributors</p>
+    </footer>
   </body>
 </html>

@@ -50,8 +50,8 @@ export default defineConfig({
           autogenerate: { directory: "docs-mosoptics" },
         },
         {
-          label: "EyeMia",
-          autogenerate: { directory: "docs-eyemia" },
+          label: "mosi",
+          autogenerate: { directory: "docs-mosi" },
         },
         {
           label: "Step Catalog",
