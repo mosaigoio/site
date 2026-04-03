@@ -12,8 +12,10 @@ export default defineConfig({
         src: "./public/images/mozzy-icon.webp",
         replacesTitle: false,
       },
-      favicon: "/favicon.ico",
+      favicon: "/favicon.svg",
       head: [
+        { tag: "link", attrs: { rel: "icon", type: "image/svg+xml", href: "/favicon.svg" } },
+        { tag: "link", attrs: { rel: "icon", type: "image/x-icon", href: "/favicon.ico" } },
         { tag: "link", attrs: { rel: "icon", type: "image/png", sizes: "32x32", href: "/images/favicon-32x32.png" } },
         { tag: "link", attrs: { rel: "apple-touch-icon", sizes: "180x180", href: "/images/apple-touch-icon.png" } },
       ],
