@@ -32,18 +32,6 @@ export default defineConfig({
           autogenerate: { directory: "concepts" },
         },
         {
-          label: "Architecture",
-          autogenerate: { directory: "architecture" },
-        },
-        {
-          label: "API Reference",
-          autogenerate: { directory: "api" },
-        },
-        {
-          label: "Studio",
-          autogenerate: { directory: "studio" },
-        },
-        {
           label: "Guides",
           autogenerate: { directory: "guides" },
         },
