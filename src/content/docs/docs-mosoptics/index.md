@@ -33,6 +33,7 @@ go get github.com/mosaigoio/mosoptics@latest
 | `gpu/` | TensorRT, VPI, CUDA (build-tag gated) |
 | `display/` | Display steps, annotated overlays |
 | `record/` | Recording, playback, session management |
+| `regression/` | Tolerance-aware comparison of pipeline output against golden sessions |
 | `stream/` | MJPEG, RTSP, HLS streaming |
 
 ## Architecture
