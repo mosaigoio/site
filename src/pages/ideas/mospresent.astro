@@ -57,32 +57,32 @@ Slides ──┤           ↑
         <h2>Five things mospresent holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">👤</div>
+            <div class="diff-icon primary">👤</div>
             <h3>Presence over slides</h3>
             <p>The presenter is the primary subject. Slides orbit. No more tiny webcam tile in the corner while the deck hogs the screen.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">📹</div>
+            <div class="diff-icon accent">📹</div>
             <h3>Zero conferencing changes</h3>
             <p>Output as a standard virtual camera. Any tool that can pick a camera — Zoom, Meet, Teams, Slack, Discord — works immediately.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">⚡</div>
+            <div class="diff-icon success">⚡</div>
             <h3>Latency is non-negotiable</h3>
             <p>End-to-end capture → composite → vcam under 80 ms. Heavy work (LLM, STT) runs in parallel and publishes to last-value stores.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🔒</div>
+            <div class="diff-icon light">🔒</div>
             <h3>Local-first speech and vision</h3>
             <p>Whisper runs on-device. LLM runs locally via llama.cpp (or is disabled). Cloud is opt-in for users who want it.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">📄</div>
+            <div class="diff-icon error">📄</div>
             <h3>Your deck, unchanged</h3>
             <p>mospresent reads your .pptx or Google Slides deck directly. You don't re-author your content or learn a new authoring tool.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">🎯</div>
+            <div class="diff-icon muted">🎯</div>
             <h3>Driven by gesture and voice</h3>
             <p>Raise a hand to advance. Point to highlight. Speak a cue. The presenter's body and voice become the slide remote.</p>
           </div>
@@ -114,36 +114,36 @@ Slides ──┤           ↑
         <p class="section-desc">Heavy work never blocks composition. LLM, STT, intent, and slide rendering all run on parallel pipelines and publish to last-value stores — the composite pipeline reads the freshest value every tick.</p>
         <div class="eco-grid">
           <div class="eco-card">
-            <div class="eco-badge" style="background:rgba(42,127,191,0.15);color:var(--primary);">critical path</div>
+            <div class="eco-badge primary">critical path</div>
             <h3>Capture → Composite → DAL</h3>
             <p>Webcam capture (~5 ms) + composite with cached matte/slide/overlays (~15 ms) + DAL publish (~5 ms) = &lt; 30 ms. This runs every frame, no exceptions.</p>
           </div>
           <div class="eco-card">
-            <div class="eco-badge" style="background:rgba(200,152,42,0.15);color:var(--accent);">parallel</div>
+            <div class="eco-badge accent">parallel</div>
             <h3>Segmentation, STT, Gesture</h3>
             <p>Heavier per-frame work runs at its natural cadence on its own pipeline and publishes to last-value stores. The composite reads whatever's newest.</p>
           </div>
           <div class="eco-card">
-            <div class="eco-badge" style="background:rgba(58,143,92,0.15);color:var(--success);">background</div>
+            <div class="eco-badge success">background</div>
             <h3>LLM overlay suggestion</h3>
             <p>Runs at ~1 Hz. Takes the transcript window and current slide, asks a local model for a contextual callout, writes to last-value. Composite picks it up on the next frame.</p>
           </div>
         </div>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">Architecture</div>
         <h2>One virtual camera, many parallel pipelines</h2>
         <div class="arch-visual">
-          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          <div class="arch-layer accent">
             mospresent <span class="desc">Deck ingest · segmentation · gesture · speech · LLM · compose · vcam</span>
           </div>
           <div class="arch-arrow">imports &#8595;</div>
-          <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+          <div class="arch-layer primary">
             mosoptics <span class="desc">Webcam capture · pose · hand detect · background segment</span>
           </div>
           <div class="arch-arrow">built on &#8595;</div>
-          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          <div class="arch-layer deep">
             mosaigo <span class="desc">Engine · topics · last-value stores · Studio</span>
           </div>
         </div>

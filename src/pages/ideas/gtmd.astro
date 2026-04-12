@@ -60,32 +60,32 @@ crm.snapshot   ─┤                                                           
         <h2>Six things gtmd holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">📊</div>
+            <div class="diff-icon primary">📊</div>
             <h3>One source of truth for GTM concepts</h3>
             <p>ICPs, personas, value props, positioning, messaging — all typed concepts in one graph. Every asset links back. No more disconnected spreadsheets.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">⏱️</div>
+            <div class="diff-icon accent">⏱️</div>
             <h3>History is first-class</h3>
             <p>Every concept carries effectiveFrom and supersededBy. When a persona evolves, old assets stay linked to the old version with provenance. You can see what was true when.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">🛡️</div>
+            <div class="diff-icon success">🛡️</div>
             <h3>Identity resolution is conservative</h3>
             <p>Never auto-merge personas or ICPs. Alignment surfaces candidates; humans decide. A false merge corrupts everything downstream—better to have duplicates and review them.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🔎</div>
+            <div class="diff-icon light">🔎</div>
             <h3>Provenance on everything</h3>
             <p>Every node and edge carries source, timestamp, extraction step, confidence score. You can trace any asset back to the fact that inspired it.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🏗️</div>
+            <div class="diff-icon error">🏗️</div>
             <h3>Built on depict, not a standalone tool</h3>
             <p>gtmd is a depict domain module. You get alignment, schema evolution, GraphQL federation, and federation composition for free. Swap extractors. Evolve types. No vendor lock-in.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">🔗</div>
+            <div class="diff-icon muted">🔗</div>
             <h3>Feeds storyarc — the loop is the point</h3>
             <p>storyarc consumes the graph to generate positioning docs, messaging playbooks, and campaign briefs. Changes to the graph flow through automatically. GTM is not a static doc—it's a live system.</p>
           </div>
@@ -111,23 +111,23 @@ crm.snapshot   ─┤                                                           
         </div>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">The ecosystem</div>
         <h2>gtmd sits in the flow from sources to storytelling</h2>
         <div class="arch-visual">
-          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          <div class="arch-layer accent">
             storyarc · dashboards <span class="desc">Feeds positioning, messaging, onboarding from the graph</span>
           </div>
           <div class="arch-arrow">consumes &#8595;</div>
-          <div class="arch-layer" style="background:rgba(58,143,92,0.15);color:var(--success);border:1px solid rgba(58,143,92,0.3);">
+          <div class="arch-layer success">
             gtmd <span class="desc">ICPs · personas · positioning · messaging · funnels · competitors</span>
           </div>
           <div class="arch-arrow">built on &#8595;</div>
-          <div class="arch-layer" style="background:rgba(109,179,224,0.15);color:var(--light);border:1px solid rgba(109,179,224,0.3);">
+          <div class="arch-layer light">
             depict <span class="desc">Alignment · provenance · GraphQL · federation</span>
           </div>
           <div class="arch-arrow">built on &#8595;</div>
-          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          <div class="arch-layer deep">
             mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap</span>
           </div>
         </div>

@@ -58,32 +58,32 @@ Webhook ───┘                                              ↓
         <h2>Six things mosops holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">🕸️</div>
+            <div class="diff-icon primary">🕸️</div>
             <h3>The pipeline graph is the operator</h3>
             <p>No main.go-as-controller. A reconcile loop is a named pipeline with named steps. That's what Studio renders. That's what hot-reload swaps.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">⚡</div>
+            <div class="diff-icon accent">⚡</div>
             <h3>Sub-second inner loop</h3>
             <p>Edit a reconcile step, save, and the live controller hot-swaps it without losing informer state, leader lease, or workqueue position.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">🎯</div>
+            <div class="diff-icon success">🎯</div>
             <h3>Real clusters, not mocks</h3>
             <p>Develop against actual clusters from day one. Studio captures reconcile waterfalls so you can replay any decision the controller made.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🔌</div>
+            <div class="diff-icon light">🔌</div>
             <h3>Multi-backend, one shape</h3>
             <p><code>client.kubernetes</code>, <code>client.podman</code>, <code>client.docker</code> present the same interface. An operator targeting one can target another by swapping one step.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🧱</div>
+            <div class="diff-icon error">🧱</div>
             <h3>Lifecycle built-in</h3>
             <p>Finalizers, leader election, webhooks, conditions, events, rate-limited workqueues — first-class steps, not copy-pasted snippets from a five-year-old sample repo.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">🧩</div>
+            <div class="diff-icon muted">🧩</div>
             <h3>Coexist with Kubebuilder</h3>
             <p>mosops is not a rewrite of controller-runtime. Existing Kubebuilder projects can drop mosops pipelines into their reconcile funcs incrementally.</p>
           </div>
@@ -113,21 +113,21 @@ Webhook ───┘                                              ↓
         </div>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">The inner loop</div>
         <h2>Hot-swap a reconcile step without losing state</h2>
-        <p class="section-desc" style="margin-left:auto;margin-right:auto;max-width:720px;">You edit a step. mosops rebuilds it, pauses the workqueue, swaps the step, resumes — all without dropping informer caches, surrendering the leader lease, or losing in-flight work. The reconcile waterfall in Studio shows exactly which step ran, what it read, what it wrote, and what it returned. The inner loop is measured in <strong>hundreds of milliseconds</strong>, not tens of seconds.</p>
+        <p class="section-desc" style="max-width:720px;">You edit a step. mosops rebuilds it, pauses the workqueue, swaps the step, resumes — all without dropping informer caches, surrendering the leader lease, or losing in-flight work. The reconcile waterfall in Studio shows exactly which step ran, what it read, what it wrote, and what it returned. The inner loop is measured in <strong>hundreds of milliseconds</strong>, not tens of seconds.</p>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">Architecture</div>
         <h2>A mosaigo distribution for controllers</h2>
         <div class="arch-visual">
-          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          <div class="arch-layer accent">
             mosops <span class="desc">Informers · reconcilers · clients · leaders · webhooks · CRD gen</span>
           </div>
           <div class="arch-arrow">built on &#8595;</div>
-          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          <div class="arch-layer deep">
             mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
           </div>
         </div>

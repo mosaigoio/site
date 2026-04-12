@@ -48,32 +48,32 @@
       <p class="section-desc">Single-purpose steps that each do one thing, composed into pipelines through configuration or at runtime. Strong typing across every boundary cuts boilerplate and catches mismatches before anything runs.</p>
       <div class="diff-grid">
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">&#9881;</div>
+          <div class="diff-icon primary">&#9881;</div>
           <h3>Type-Safe Generic Steps</h3>
           <p><code>TypedEngineStep[TIN, TOUT]</code> catches payload mismatches at compile time. Every step declares its input, output, config schema, and metadata through <code>StepDef</code>.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">&#9670;</div>
+          <div class="diff-icon accent">&#9670;</div>
           <h3>Self-Describing Pipeline</h3>
           <p>Steps register themselves with full metadata. The framework auto-generates step catalogs, validates pipeline wiring before execution, and serializes issues to REST/WebSocket.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">&#9201;</div>
+          <div class="diff-icon success">&#9201;</div>
           <h3>Zero-Alloc Hot Path</h3>
           <p>Designed for real-time: pre-allocated buffers, zero-copy payload passing. Init() allocates, Process() is allocation-free, Close() releases. 120fps camera pipelines, not batch ETL.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">&#9783;</div>
+          <div class="diff-icon light">&#9783;</div>
           <h3>Built-In Observability</h3>
           <p>Every step automatically tracks latency via <code>MarkTime</code>. Topic pub/sub enables multi-engine architectures. Studio UI shows live pipeline graphs with per-step timing.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">&#8644;</div>
+          <div class="diff-icon error">&#8644;</div>
           <h3>Hexagonal by Default</h3>
           <p>Steps never import infrastructure. Assembly happens at the top. Ports define contracts, adapters are swappable by config. Your step doesn't know about routers or drivers.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">&#9874;</div>
+          <div class="diff-icon muted">&#9874;</div>
           <h3>Config, YAML, or API</h3>
           <p>Three ways to build pipelines: programmatic Go API, YAML factory from the step registry, or web service payload via REST/WebSocket. Same validation, same steps.</p>
         </div>
@@ -125,20 +125,20 @@
       </div>
     </section>
 
-    <section class="section" style="text-align:center;">
+    <section class="section section-centered">
       <div class="section-label">How it works</div>
       <h2>Metadata-driven composition</h2>
-      <p class="section-desc" style="margin-left:auto;margin-right:auto;">Every step describes itself completely. The framework uses that metadata to validate pipelines, generate catalogs, serve config schemas, and power the Studio UI, all automatically.</p>
+      <p class="section-desc">Every step describes itself completely. The framework uses that metadata to validate pipelines, generate catalogs, serve config schemas, and power the Studio UI, all automatically.</p>
       <div class="arch-visual">
-        <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+        <div class="arch-layer accent">
           Your Product <span class="desc">Compose steps, configure via YAML/API, ship</span>
         </div>
         <div class="arch-arrow">assembles &#8595;</div>
-        <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+        <div class="arch-layer primary">
           Domain Step Libraries <span class="desc">CV, IoT, ETL, audio, or your own, all TypedEngineStep</span>
         </div>
         <div class="arch-arrow">built on &#8595;</div>
-        <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+        <div class="arch-layer deep">
           Mosaigo <span class="desc">Engine, pipeline, typed steps, topics, config, validation, Studio</span>
         </div>
       </div>
@@ -233,17 +233,17 @@
       <p class="section-desc">Mosaigo is built for experimentation. Don't pick an algorithm, try three. Steps are cheap to write, fast to swap, and the framework measures everything so you can compare empirically.</p>
       <div class="eco-grid">
         <div class="eco-card">
-          <div class="eco-badge" style="background:rgba(42,127,191,0.15);color:var(--primary);">compose</div>
+          <div class="eco-badge primary">compose</div>
           <h3>Snap steps together</h3>
           <p>Each step is a single-purpose tile with typed input and output. Rearrange, replace, or duplicate any tile without touching the rest. The pipeline is a composition, not a monolith.</p>
         </div>
         <div class="eco-card">
-          <div class="eco-badge" style="background:rgba(200,152,42,0.15);color:var(--accent);">configure</div>
+          <div class="eco-badge accent">configure</div>
           <h3>Runtime-swappable config</h3>
           <p>Every step declares its config schema via struct tags. Override via YAML, environment variables, or runtime API, no recompile. Defaults &lt; file &lt; env &lt; API, always.</p>
         </div>
         <div class="eco-card">
-          <div class="eco-badge" style="background:rgba(58,143,92,0.15);color:var(--success);">measure</div>
+          <div class="eco-badge success">measure</div>
           <h3>See what's actually happening</h3>
           <p>MarkTime on every step. Per-step latency in the API. Topic throughput metrics. Studio dashboard. You can't improve what you can't see, and Mosaigo makes sure you see everything.</p>
         </div>
@@ -306,32 +306,32 @@
       <p class="section-desc">Mosaigo is written in Go because the language directly solves the problems real-time pipeline systems face. Not because it's trendy, but because the tradeoffs are right.</p>
       <div class="diff-grid">
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">&#9881;</div>
+          <div class="diff-icon primary">&#9881;</div>
           <h3>Goroutines over threads</h3>
           <p>Each pipeline and step runs in its own goroutine. Goroutines are lightweight (a few KB of stack), scheduled by the Go runtime, and scale to thousands without the overhead of OS threads. Channels provide safe communication between concurrent routines without shared memory bugs.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">&#9670;</div>
+          <div class="diff-icon accent">&#9670;</div>
           <h3>Compile-time type safety</h3>
           <p>Go generics let <code>TypedEngineStep[TIN, TOUT]</code> catch payload mismatches at build time, not at 2 AM in production. Strong typing eliminates type casting boilerplate, reduces runtime errors, and makes steps self-documenting through their type signatures.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">&#9201;</div>
+          <div class="diff-icon success">&#9201;</div>
           <h3>Compiled and efficient</h3>
           <p>Go compiles to a single static binary with no runtime dependencies. It starts in milliseconds, uses memory intelligently with a low-pause garbage collector, and runs with lower latency than interpreted languages. Deploy a single binary to edge hardware, no Python environment to manage.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">&#9783;</div>
+          <div class="diff-icon light">&#9783;</div>
           <h3>Productive and readable</h3>
           <p>Go enforces simplicity. One way to format code. Explicit error handling. No inheritance hierarchies. A step definition is several functions and typed attributes following Go idioms. New contributors read and write steps quickly because the language stays out of the way.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">&#8644;</div>
+          <div class="diff-icon error">&#8644;</div>
           <h3>Stdlib-first ecosystem</h3>
           <p><code>slog</code> for logging. <code>net/http</code> for servers. <code>encoding/json</code> for serialization. Go's standard library covers most infrastructure needs without external dependencies. Every dependency Mosaigo takes is evaluated against a strict rubric: current, minimal, maintained, and fit for purpose.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">&#9874;</div>
+          <div class="diff-icon muted">&#9874;</div>
           <h3>Why not the others</h3>
           <p>Rust offers memory safety but at the cost of development speed and ecosystem maturity for this domain. Python is productive but too slow and resource-heavy for real-time edge processing. C++ risks memory safety issues and lower productivity. Go hits the right balance of performance, safety, and velocity.</p>
         </div>

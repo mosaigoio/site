@@ -56,32 +56,32 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
         <h2>Six things aossc holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">👤</div>
+            <div class="diff-icon primary">👤</div>
             <h3>Deputies not principals</h3>
             <p>Every role has a named human accountability anchor. The agent proposes; the human decides. Agents amplify human judgment, they don't replace it.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">🔒</div>
+            <div class="diff-icon accent">🔒</div>
             <h3>No autonomous merges</h3>
             <p>The merge button is a human's, always. Agents can draft, comment, suggest — but the final gate is manual. Humans stay in control of what lands on main.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">📦</div>
+            <div class="diff-icon success">📦</div>
             <h3>No autonomous releases</h3>
             <p>The publish button is a human's, always. Agents can collect notes, stage artifacts, run tests — but humans decide when (and whether) to ship.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🛡️</div>
+            <div class="diff-icon light">🛡️</div>
             <h3>No autonomous moderation against humans</h3>
             <p>Agents can flag spam, cross-post content, or auto-label issues. They never silence, ban, or delete without a human anchor reviewing and approving.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">📋</div>
+            <div class="diff-icon error">📋</div>
             <h3>Provenance on every action</h3>
             <p>Every agent action logs: role name, playbook version, human anchor, model checkpoint. Auditable. Reproducible. Explainable. No shadow work.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">💬</div>
+            <div class="diff-icon muted">💬</div>
             <h3>One batched comment per role per PR</h3>
             <p>No walls of bot nags. One maintainer comment. One devrel comment. One security comment. Edit, never delete. Humans read once, not N times.</p>
           </div>
@@ -107,23 +107,23 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
         </div>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">The architecture</div>
         <h2>Forge events flow through Studio to role playbooks</h2>
         <div class="arch-visual">
-          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          <div class="arch-layer accent">
             GitHub / GitLab / Gitea <span class="desc">Events: push, PR, issue, release, dependency</span>
           </div>
           <div class="arch-arrow">events &#8595;</div>
-          <div class="arch-layer" style="background:rgba(58,143,92,0.15);color:var(--success);border:1px solid rgba(58,143,92,0.3);">
+          <div class="arch-layer success">
             Human gate (Studio) <span class="desc">Provenance, role assignment, approval workflow</span>
           </div>
           <div class="arch-arrow">routes &#8595;</div>
-          <div class="arch-layer" style="background:rgba(109,179,224,0.15);color:var(--light);border:1px solid rgba(109,179,224,0.3);">
+          <div class="arch-layer light">
             Role playbooks <span class="desc">maintainer, devrel, security-reviewer, release-manager, standards-enforcer</span>
           </div>
           <div class="arch-arrow">audit log &#8595;</div>
-          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          <div class="arch-layer deep">
             mosaigo <span class="desc">Engine · topics · last-value · Studio · depict audit log</span>
           </div>
         </div>

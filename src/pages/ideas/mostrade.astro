@@ -62,32 +62,32 @@ arbitrage.cross ─────────────────────�
         <h2>Six things mostrade holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🛑</div>
+            <div class="diff-icon error">🛑</div>
             <h3>Never executes trades</h3>
             <p>The adapter interface has no place-order method. Not in v0.1. Not in v1.0. Not ever. mostrade is a brain, not a broker. The hard rule is enforced at the type level.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">⏱️</div>
+            <div class="diff-icon primary">⏱️</div>
             <h3>Rate limits first-class</h3>
             <p>Every venue adapter declares a <code>RateBudget</code>. Steps degrade gracefully (soft + hard). Exceeding the budget fails loudly and early — never silently.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">🌐</div>
+            <div class="diff-icon accent">🌐</div>
             <h3>Multiple venues, equal footing</h3>
             <p>Coinbase, Alpaca, Kalshi, IBKR — none is special. The same canonical ticker shape, the same provenance, the same interface. Cross-venue arbitrage falls out for free.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">📊</div>
+            <div class="diff-icon success">📊</div>
             <h3>Near-real-time, not HFT</h3>
             <p>Targets 100ms–5s latency. mostrade is for portfolio intelligence, signal computation, and arbitrage detection — not for microsecond market-making.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🧠</div>
+            <div class="diff-icon light">🧠</div>
             <h3>Knowledge before action</h3>
             <p>Everything mostrade learns lands in a queryable graph: accounts, positions, assets, sentiment, signals, news, events. The graph is the product.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">💾</div>
+            <div class="diff-icon muted">💾</div>
             <h3>Local-first, pluggable storage</h3>
             <p>DuckDB by default. QuestDB / ClickHouse / TimescaleDB as swappable steps. Your trading data does not need to live in someone else's cloud.</p>
           </div>
@@ -130,15 +130,15 @@ arbitrage.cross ─────────────────────�
         </div>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">Architecture</div>
         <h2>Built on mosaigo, with a hard guardrail</h2>
         <div class="arch-visual">
-          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          <div class="arch-layer accent">
             mostrade <span class="desc">Adapters · normalize · calc · signal · arbitrage · harvest · graph · graphql</span>
           </div>
           <div class="arch-arrow">built on &#8595;</div>
-          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          <div class="arch-layer deep">
             mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
           </div>
         </div>
@@ -175,7 +175,7 @@ arbitrage.cross ─────────────────────�
           <a href="/ideas/mosarch/">mosarch</a>
           <a href="/ideas/aossc/">aossc</a>
         </div>
-        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject · <strong style="color:var(--error);">never executes trades</strong></p>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject · <strong class="text-error">never executes trades</strong></p>
       </footer>
     </div>
   </body>

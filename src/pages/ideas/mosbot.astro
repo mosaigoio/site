@@ -68,32 +68,32 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
         <h2>Six things mosbot holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">🔩</div>
+            <div class="diff-icon primary">🔩</div>
             <h3>Graph is the robot</h3>
             <p>No application, no main loop. A robot is the sum of its pipelines. That framing changes what building a robot feels like.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">🔁</div>
+            <div class="diff-icon accent">🔁</div>
             <h3>Sim and real are the same graph</h3>
             <p><code>mosbot.sim</code> and <code>mosbot.hardware</code> profiles differ only in which adapter steps bind. Pipeline YAML is identical.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">🛡️</div>
+            <div class="diff-icon success">🛡️</div>
             <h3>Safety is a pipeline</h3>
             <p>Not a flag, not a library call. Monitor, violation, latch, watchdog, e-stop — each a first-class step running at the highest cadence.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">📼</div>
+            <div class="diff-icon light">📼</div>
             <h3>Every run is an MCAP file</h3>
             <p>Default-on trajectory logging. Replayable in Foxglove Studio, Isaac Sim, and mosbot's own replay panel.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🧠</div>
+            <div class="diff-icon error">🧠</div>
             <h3>Policies are plug-in steps</h3>
             <p><code>policy.model.run</code> is a generic harness. GR00T, Diffusion Policy, ACT, ONNX, TensorRT — all fit the same interface.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">📊</div>
+            <div class="diff-icon muted">📊</div>
             <h3>Observable by default</h3>
             <p>Every joint, every sensor, every decision visible in Studio and in MCAP. You can't improve what you can't see.</p>
           </div>
@@ -123,25 +123,25 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
         </div>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">Real-time discipline</div>
         <h2>Honest about what Go can and can't do</h2>
-        <p class="section-desc" style="margin-left:auto;margin-right:auto;max-width:720px;">Go's garbage collector is not hard real-time. mosbot targets <strong>soft real-time at 10–100 Hz</strong>, which is adequate for humanoid control, manipulator tracking, mobile base navigation, teleoperation, and policy inference. mosbot is <strong>not</strong> targeted at sub-millisecond servo control or safety-certified systems. The docs say so explicitly.</p>
+        <p class="section-desc" style="max-width:720px;">Go's garbage collector is not hard real-time. mosbot targets <strong>soft real-time at 10–100 Hz</strong>, which is adequate for humanoid control, manipulator tracking, mobile base navigation, teleoperation, and policy inference. mosbot is <strong>not</strong> targeted at sub-millisecond servo control or safety-certified systems. The docs say so explicitly.</p>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">Architecture</div>
         <h2>Robotics-shaped, but still mosaigo underneath</h2>
         <div class="arch-visual">
-          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          <div class="arch-layer accent">
             mosbot <span class="desc">Hardware · kinematics · policies · safety · telemetry · sim bridges</span>
           </div>
           <div class="arch-arrow">optionally imports &#8595;</div>
-          <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+          <div class="arch-layer primary">
             mosoptics <span class="desc">For vision-capable robots</span>
           </div>
           <div class="arch-arrow">built on &#8595;</div>
-          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          <div class="arch-layer deep">
             mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap</span>
           </div>
         </div>

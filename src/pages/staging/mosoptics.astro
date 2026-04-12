@@ -49,32 +49,32 @@
       <p class="section-desc">Real-time computer vision means juggling cameras, models, GPU drivers, frame rates, and latency. mosoptics handles the plumbing so you can focus on the science.</p>
       <div class="diff-grid">
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">&#128247;</div>
+          <div class="diff-icon primary">&#128247;</div>
           <h3>Parallel Camera Streams</h3>
           <p>Run multiple cameras simultaneously with independent pipelines. Stereo capture, multi-angle recording, or mixed resolution. Each stream is an engine with its own frame rate.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">&#9889;</div>
+          <div class="diff-icon accent">&#9889;</div>
           <h3>GPU-Accelerated Inference</h3>
           <p>ONNX Runtime with CUDA, TensorRT on NVIDIA Jetson, CoreML/Metal on Apple M-series. Build-tag gated: same step code, hardware-specific acceleration at build time.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">&#128257;</div>
+          <div class="diff-icon success">&#128257;</div>
           <h3>Rapid Model Experimentation</h3>
           <p>Swap detection models by changing one step name. UltraFace or MediaPipe for face detection? L2CS-Net or 6DRepNet for gaze? Try both, compare with MarkTime, keep the winner.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">&#128065;</div>
+          <div class="diff-icon light">&#128065;</div>
           <h3>Full Gaze Pipeline</h3>
           <p>Camera capture, face detection, face mesh, eye region extraction, pupil tracking, gaze estimation, stereo triangulation, focal point mapping. Every stage is a replaceable step.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">&#127919;</div>
+          <div class="diff-icon error">&#127919;</div>
           <h3>60-120fps Real-Time</h3>
           <p>Pre-allocated frame buffers, zero-copy payload passing, batched CGo calls. Designed for Jetson Orin Nano at 60fps, Apple M-series at 120fps.</p>
         </div>
         <div class="diff-card">
-          <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">&#128300;</div>
+          <div class="diff-icon muted">&#128300;</div>
           <h3>Studio Visualization</h3>
           <p>Live pipeline visualization showing per-step frame rates, latency heatmaps, and annotated video output. Debug gaze vectors and face mesh overlays in real time.</p>
         </div>
@@ -97,10 +97,10 @@
       </div>
     </section>
 
-    <section class="section" style="text-align:center;">
+    <section class="section section-centered">
       <div class="section-label">Packages</div>
       <h2>Every vision task is a step</h2>
-      <p class="section-desc" style="margin-left:auto;margin-right:auto;">mosoptics packages map directly to pipeline steps. Import what you need, compose the pipeline you want.</p>
+      <p class="section-desc">mosoptics packages map directly to pipeline steps. Import what you need, compose the pipeline you want.</p>
       <div class="pkg-grid">
         <div class="pkg-card">
           <div class="pkg-name">cam/</div>
@@ -135,21 +135,21 @@
           <div class="pkg-desc">ONNX Runtime wrapper, model loading</div>
         </div>
       </div>
-      <div style="display:flex;gap:12px;max-width:800px;margin:16px auto 0;justify-content:center;">
-        <div class="pkg-card" style="flex:1;">
-          <div class="pkg-name" style="color:var(--accent);">gpu/</div>
+      <div class="pkg-row">
+        <div class="pkg-card">
+          <div class="pkg-name accent">gpu/</div>
           <div class="pkg-desc">TensorRT, VPI, CUDA (build-tag gated)</div>
         </div>
-        <div class="pkg-card" style="flex:1;">
-          <div class="pkg-name" style="color:var(--accent);">display/</div>
+        <div class="pkg-card">
+          <div class="pkg-name accent">display/</div>
           <div class="pkg-desc">Display steps, annotated overlays</div>
         </div>
-        <div class="pkg-card" style="flex:1;">
-          <div class="pkg-name" style="color:var(--accent);">record/</div>
+        <div class="pkg-card">
+          <div class="pkg-name accent">record/</div>
           <div class="pkg-desc">Recording, playback, session management</div>
         </div>
-        <div class="pkg-card" style="flex:1;">
-          <div class="pkg-name" style="color:var(--accent);">stream/</div>
+        <div class="pkg-card">
+          <div class="pkg-name accent">stream/</div>
           <div class="pkg-desc">MJPEG, RTSP, HLS streaming</div>
         </div>
       </div>
@@ -161,37 +161,37 @@
       <p class="section-desc">mosoptics wraps each model in a standard Mosaigo step. Swap models by name, measure with MarkTime, keep the one that works.</p>
       <div class="eco-grid">
         <div class="eco-card">
-          <div class="eco-badge" style="background:rgba(42,127,191,0.15);color:var(--primary);">face detection</div>
+          <div class="eco-badge primary">face detection</div>
           <h3>UltraFace &middot; MediaPipe &middot; SCRFD</h3>
           <p>Lightweight face detection optimized for edge devices. UltraFace at ~2ms/frame on Jetson, MediaPipe with full 468-point mesh. Each model is a drop-in step replacement.</p>
         </div>
         <div class="eco-card">
-          <div class="eco-badge" style="background:rgba(200,152,42,0.15);color:var(--accent);">gaze estimation</div>
+          <div class="eco-badge accent">gaze estimation</div>
           <h3>L2CS-Net &middot; 6DRepNet &middot; GazeML</h3>
           <p>Appearance-based gaze estimation from eye crops. L2CS-Net for direct gaze vector, 6DRepNet for head pose, combined for focal point estimation.</p>
         </div>
         <div class="eco-card">
-          <div class="eco-badge" style="background:rgba(58,143,92,0.15);color:var(--success);">hardware targets</div>
+          <div class="eco-badge success">hardware targets</div>
           <h3>Jetson Orin &middot; Apple M-series &middot; x86 CUDA</h3>
           <p>Same pipeline definition, hardware-optimized execution. TensorRT on Jetson (INT8/FP16), CoreML on macOS, CUDA on workstations. Build tags select the right backend.</p>
         </div>
       </div>
     </section>
 
-    <section class="section" style="text-align:center;">
+    <section class="section section-centered">
       <div class="section-label">Architecture</div>
       <h2>Built on Mosaigo, focused on vision</h2>
-      <p class="section-desc" style="margin-left:auto;margin-right:auto;">mosoptics is a collection of Go packages that each export Mosaigo steps. The CGo boundary lives here. Mosaigo stays pure Go.</p>
+      <p class="section-desc">mosoptics is a collection of Go packages that each export Mosaigo steps. The CGo boundary lives here. Mosaigo stays pure Go.</p>
       <div class="arch-visual">
-        <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+        <div class="arch-layer accent">
           Your Application <span class="desc">mosii, research tools, custom products</span>
         </div>
         <div class="arch-arrow">imports &#8595;</div>
-        <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+        <div class="arch-layer primary">
           mosoptics <span class="desc">cam, face, eye, gaze, pose, stereo, onnx, gpu (CGo)</span>
         </div>
         <div class="arch-arrow">built on &#8595;</div>
-        <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+        <div class="arch-layer deep">
           Mosaigo <span class="desc">Engine, pipeline, typed steps, topics, config, validation, Studio (pure Go)</span>
         </div>
       </div>

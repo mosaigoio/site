@@ -61,32 +61,32 @@ provenance.attach ────────┘                                   
         <h2>Six things depict holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">📐</div>
+            <div class="diff-icon primary">📐</div>
             <h3>GraphQL is the schema language</h3>
             <p>Types are concepts. Field references are relations. Subscriptions are change notifications. No new query language — developers already know this one.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">🔍</div>
+            <div class="diff-icon accent">🔍</div>
             <h3>Provenance on every fact</h3>
             <p>Every node and edge carries a source, a timestamp, the step that asserted it, and a confidence score. Stripping provenance is a bug, not an optimization.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">⚖️</div>
+            <div class="diff-icon success">⚖️</div>
             <h3>Alignment is explicit</h3>
             <p>Two facts that look the same may not be. Alignment is its own pipeline stage with named strategies you can step through. LLMs propose; alignment decides.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🧩</div>
+            <div class="diff-icon light">🧩</div>
             <h3>Composable via federation</h3>
             <p>Domain ontologies (mosarch, gtmd) are modules that import the core types and add their own. GraphQL Federation is the composition primitive.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🔄</div>
+            <div class="diff-icon error">🔄</div>
             <h3>Schema evolves while running</h3>
             <p><code>schema.evolve</code> is a pipeline step. Add a type, rename a field, merge two concepts — all without restarting, all with provenance.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">🗄️</div>
+            <div class="diff-icon muted">🗄️</div>
             <h3>Storage is a swappable step</h3>
             <p>In-memory for dev. DuckDB / KuzuDB for embedded. Neo4j / Postgres for teams that already have them. The store is a step — swap it without changing anything else.</p>
           </div>
@@ -116,19 +116,19 @@ provenance.attach ────────┘                                   
         </div>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">The ecosystem</div>
         <h2>depict is the foundation for domain ontologies</h2>
         <div class="arch-visual">
-          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          <div class="arch-layer accent">
             mosarch · gtmd · storyarc · your-domain <span class="desc">Domain modules that extend the core ontology</span>
           </div>
           <div class="arch-arrow">extend &#8595;</div>
-          <div class="arch-layer" style="background:rgba(58,143,92,0.15);color:var(--success);border:1px solid rgba(58,143,92,0.3);">
+          <div class="arch-layer success">
             depict <span class="desc">Core types · alignment · provenance · GraphQL · federation</span>
           </div>
           <div class="arch-arrow">built on &#8595;</div>
-          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          <div class="arch-layer deep">
             mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
           </div>
         </div>

@@ -59,32 +59,32 @@ ingest.openapi┘                                                               
         <h2>Six things mosarch holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">📐</div>
+            <div class="diff-icon primary">📐</div>
             <h3>Architecture is a graph not a diagram</h3>
             <p>Systems are nodes. Relationships are edges. Every concept is typed (capability, component, service, endpoint, protocol, decision). The graph is the source of truth. Diagrams are rendered views.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">👥</div>
+            <div class="diff-icon accent">👥</div>
             <h3>Views are queries not documents</h3>
             <p>Developer sees different architecture than network admin, security, infra, compliance. Each is a pre-built query against the same graph. No separate docs. No drift. Every view is generated, current, role-specific.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">⚖️</div>
+            <div class="diff-icon success">⚖️</div>
             <h3>Decisions are first-class nodes</h3>
             <p>ADRs live in the graph as Decision nodes. Options and tradeoffs are edges. Analysis queries span the decision space. You ask the graph "what are the security tradeoffs for this component?" not a spreadsheet.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🔄</div>
+            <div class="diff-icon light">🔄</div>
             <h3>Ingests from running systems</h3>
             <p>Kubernetes clusters are live sources. Terraform plans are ingested. OpenAPI specs define interfaces. Dockerfile inspections extract layer facts. Architecture drifts—detection is a query, not a manual review.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">📊</div>
+            <div class="diff-icon error">📊</div>
             <h3>Diagrams are derived projections</h3>
             <p>SVG, interactive, Mermaid—all rendered on-demand from the same graph. Change the architecture in depict, all diagrams auto-update. Render for a specific stakeholder role, a specific timeframe, a specific decision scope.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">🔗</div>
+            <div class="diff-icon muted">🔗</div>
             <h3>Built on depict</h3>
             <p>Every node and edge carries provenance: source document, ingest step, alignment decision, timestamp. Architecture drift is traceable. You know which component came from k8s vs. terraform vs. hand-authored markdown.</p>
           </div>
@@ -112,23 +112,23 @@ ingest.openapi┘                                                               
         </div>
       </section>
 
-      <section class="section" style="text-align:center;">
+      <section class="section section-centered">
         <div class="section-label">The architecture</div>
         <h2>Four layers, one model</h2>
         <div class="arch-visual">
-          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          <div class="arch-layer accent">
             Diagrams+Views <span class="desc">SVG · Interactive · Mermaid · Per-role UI</span>
           </div>
           <div class="arch-arrow">render &#8595;</div>
-          <div class="arch-layer" style="background:rgba(109,179,224,0.15);color:var(--light);border:1px solid rgba(109,179,224,0.3);">
+          <div class="arch-layer light">
             mosarch <span class="desc">TOGAF · C4 · ArchiMate · ADRs · Decisions</span>
           </div>
           <div class="arch-arrow">query &#8595;</div>
-          <div class="arch-layer" style="background:rgba(58,143,92,0.15);color:var(--success);border:1px solid rgba(58,143,92,0.3);">
+          <div class="arch-layer success">
             depict <span class="desc">Core types · alignment · provenance · GraphQL · federation</span>
           </div>
           <div class="arch-arrow">built on &#8595;</div>
-          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+          <div class="arch-layer deep">
             mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
           </div>
         </div>

@@ -125,6 +125,18 @@ body.hub-subproject .hub-main {
   margin-left: var(--sidebar-w);
 }
 
+/* Center section headings and descriptions ------------------------------ */
+body.hub-subproject .section .section-label,
+body.hub-subproject .section > h2 {
+  text-align: center;
+}
+
+body.hub-subproject .section .section-desc {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 body.hub-subproject .hero {
   padding-top: 100px;
 }
