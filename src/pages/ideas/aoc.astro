@@ -9,7 +9,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
     <title>AOC: Autonomous Open Community</title>
     <meta
       name="description"
-      content="Autonomous Open Community (AOC) defines named agent roles that co-maintain modular open source projects under explicit human accountability. Every role has a named human accountability anchor. No autonomous merges. No autonomous releases. No autonomous moderation. Provenance on every action."
+      content="Autonomous Open Community (AOC) is agent-managed open source. Agents in named roles run the project: architecture, documentation, releases, security, evangelism, support, and community growth. Project owners define principles. Users and contributors shape direction. The community never sleeps."
     />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
@@ -27,130 +27,264 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
         <div class="hub-status-row">
           <span class="hub-chip draft">🧊 Draft</span>
           <span class="hub-chip">mosaigo meta-project</span>
-          <span class="hub-chip">Agent roles · Human gates · Provenance</span>
-          <span class="hub-chip">Never merges autonomously</span>
+          <span class="hub-chip">Agent-managed community</span>
+          <span class="hub-chip">Principles-driven</span>
         </div>
         <h1>Autonomous Open <span class="accent">Community</span></h1>
-        <p class="tagline">Autonomous Open Community (AOC) defines named agent roles: maintainer, devrel, security-reviewer, release-manager, and standards-enforcer. These roles co-maintain modular open source projects. Every role has a named human accountability anchor. No autonomous merges. No autonomous releases. No autonomous moderation. Provenance on every action.</p>
+        <p class="tagline">Autonomous Open Community (AOC) is agent-managed open source. Agents in named roles run every part of the project: architecture reviews, documentation, release management, security, evangelism, backporting, and community growth. Project owners define what good looks like. Users and contributors shape where it goes. The community never sleeps.</p>
       </section>
 
       <section class="section">
         <div class="intent-callout">
           <h3>Intent</h3>
-          <p>Maintainer burnout scales with project count. Triage volume, repetitive PR review, release grunt work. These all grow linearly as the number of projects multiply. Agents can handle the predictable parts (event normalization, routing, triage, scanning) under explicit human gates. But the final gate stays with a named human. The merge button is the maintainer's. The publish button is the release manager's. Every agent action carries provenance: role, playbook version, human anchor, model checkpoint. This is co-maintenance, not autonomous maintenance. Agents are deputies; humans are principals.</p>
+          <p>Open source projects die when nobody has time. Docs go stale. Issues pile up. Security reviews slip. Nobody writes the changelog. Nobody records the walkthrough. Nobody answers the new contributor's question on a Saturday. AOC changes this by putting agents in charge of all the ongoing work. Owners write principles that define exactly what good looks like for their project. Agents then operate persistently in named roles to make those principles real. But "autonomous" does not mean "closed." The "open" in AOC means the community actively listens: user feedback, contributor ideas, issue patterns, discussion threads, and adoption signals all flow into how the project evolves. Agents watch for opportunities to grow the project in the right ways and surface them to owners.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="section-label">The idea in one picture</div>
-        <h2>From forge events to human-gated action</h2>
-        <p class="section-desc">Every box is a step. Every arrow is a handoff. The human gate is where the principal decides, always.</p>
-        <div class="pipe-diagram">forge.events ─→ event.normalize ─→ route.by.role ─┬─→ maintainer.run ─┐
-                                              ├─→ devrel.run     ├─→ proposal.queue ─→ provenance.attach ─→ human.gate ─→ action.dispatch ─→ forge.write
-                                              ├─→ security.run   │
-                                              └─→ dependency.run ┘</div>
+        <h2>Owners steer. Agents run. The community shapes direction.</h2>
+        <p class="section-desc">Principles flow down from owners. Community signals flow up from users and contributors. Agent roles operate in between, keeping everything moving.</p>
+        <div class="pipe-diagram">owner.principles ──→ role.config ──┬─→ architect.run     ─┐
+                                        ├─→ documenter.run    │
+community.signals ─→ feedback.collect ─├─→ evangelist.run    ├→ review ─→ publish
+                                        ├─→ security.run      │
+forge.events ──────→ event.normalize ──├─→ release-mgr.run   │
+                                        ├─→ community.run     │
+                                        └─→ growth.watch     ─┘</div>
       </section>
 
       <section class="section">
-        <div class="section-label">Design principles</div>
-        <h2>Six things AOC holds firm</h2>
+        <div class="section-label">What agents do</div>
+        <h2>Nine roles that keep a project alive</h2>
+        <p class="section-desc">Each role is a set of mosaigo pipeline steps operating against the owner's principles. Together they cover everything a healthy open source project needs.</p>
         <div class="diff-grid">
           <div class="diff-card">
-            <div class="diff-icon primary">👤</div>
-            <h3>Deputies not principals</h3>
-            <p>Every role has a named human accountability anchor. The agent proposes; the human decides. Agents amplify human judgment, they don't replace it.</p>
+            <div class="diff-icon primary">🏗️</div>
+            <h3>Architecture guardian</h3>
+            <p>Reviews PRs against architecture principles. Flags drift. Detects breaking changes. Tracks ADRs. Monitors code complexity and tech debt. Keeps the codebase aligned with the design the owner defined.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon accent">🔒</div>
-            <h3>No autonomous merges</h3>
-            <p>The merge button is a human's, always. Agents can draft, comment, suggest, but the final gate is manual. Humans stay in control of what lands on main.</p>
+            <div class="diff-icon accent">📖</div>
+            <h3>Documentation writer</h3>
+            <p>Keeps docs in sync with code. Writes getting-started guides, API references, migration guides, and tutorials. Checks for broken links and stale pages. Compiles FAQs from recurring community questions.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon success">📦</div>
-            <h3>No autonomous releases</h3>
-            <p>The publish button is a human's, always. Agents can collect notes, stage artifacts, run tests, but humans decide when (and whether) to ship.</p>
+            <h3>Release manager</h3>
+            <p>Creates release branches, generates changelogs, builds artifacts, signs releases, publishes to registries. Manages the full lifecycle: pre-releases, RCs, GA, hotfixes, LTS branches, and backports to supported versions.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon light">🛡️</div>
-            <h3>No autonomous moderation against humans</h3>
-            <p>Agents can flag spam, cross-post content, or auto-label issues. They never silence, ban, or delete without a human anchor reviewing and approving.</p>
+            <h3>Security reviewer</h3>
+            <p>Scans dependencies for CVEs. Runs static analysis on every PR. Generates SBOMs. Monitors OpenSSF Scorecard. Handles vulnerability disclosure workflow: acknowledge, assess severity, coordinate fix, publish advisory, backport patches.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon error">📋</div>
-            <h3>Provenance on every action</h3>
-            <p>Every agent action logs: role name, playbook version, human anchor, model checkpoint. Auditable. Reproducible. Explainable. No shadow work.</p>
+            <div class="diff-icon error">📢</div>
+            <h3>Community evangelist</h3>
+            <p>Writes newsletters, drafts blog posts, scripts video walkthroughs, creates social content. Tracks download metrics and engagement. Maintains example projects and showcases. Keeps the community aware of what's happening.</p>
           </div>
           <div class="diff-card">
-            <div class="diff-icon muted">💬</div>
-            <h3>One batched comment per role per PR</h3>
-            <p>No walls of bot nags. One maintainer comment. One devrel comment. One security comment. Edit, never delete. Humans read once, not N times.</p>
+            <div class="diff-icon muted">🤝</div>
+            <h3>Community maintainer</h3>
+            <p>Triages and labels issues. Routes PRs to reviewers. Welcomes new contributors. Answers questions in Discussions, Discord, and forums. Detects duplicates. Closes stale issues with clear explanations. Recognizes top contributors.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon primary">🗺️</div>
+            <h3>Roadmap planner</h3>
+            <p>Manages the RFC and proposal process. Tracks milestone progress. Surfaces feature demand from issues and discussions. Maintains the deprecation timeline. Generates milestone completion reports for owners.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">🔧</div>
+            <h3>Infrastructure keeper</h3>
+            <p>Maintains CI/CD pipelines. Updates runner images and action versions. Monitors build times and costs. Manages versioned documentation hosting. Rotates credentials. Keeps the project's tooling healthy.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🌱</div>
+            <h3>Growth watcher</h3>
+            <p>Monitors adoption signals, contributor patterns, and ecosystem health. Identifies opportunities to expand: new integrations, new platforms, new audiences. Surfaces growth ideas to owners with supporting data.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Open means open</div>
+        <h2>The community shapes direction</h2>
+        <p class="section-desc">Autonomous does not mean closed. AOC actively listens to every signal from users and contributors, and uses that input to guide the project.</p>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">💬</div>
+            <h3>Every voice counts</h3>
+            <p>Issues, discussions, forum posts, PR comments, feature requests, bug reports. Every form of input is collected, categorized, and surfaced. Popular requests bubble up. Pain points get flagged.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">📊</div>
+            <h3>Data-driven decisions</h3>
+            <p>Which features do people ask for most? Where do new users get stuck? What are the top support questions? Agents compile this data and present it to owners so decisions are grounded, not guessed.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🔄</div>
+            <h3>Feedback loops</h3>
+            <p>When a contributor submits an RFC, it gets acknowledged, assigned reviewers, and tracked through a discussion period. Outcomes are recorded and communicated. Nobody's idea disappears into a void.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Principles-driven</div>
+        <h2>Owners define what good looks like</h2>
+        <p class="section-desc">Every agent role runs from a set of principles written by the project owner. These are specific, versioned, and auditable.</p>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">📐</div>
+            <h3>Architecture standards</h3>
+            <p>Which patterns are allowed. How dependencies are evaluated. What the module boundaries look like. The architect agent enforces exactly these rules on every PR.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">✍️</div>
+            <h3>Documentation quality</h3>
+            <p>Every public function documented. Getting-started works in under 5 minutes. No jargon without explanation. The documenter agent follows these rules and flags violations.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🤝</div>
+            <h3>Community tone</h3>
+            <p>Welcoming to beginners. Direct answers over jargon. Respond to issues within 24 hours. Never close without explanation. The community agent lives by this.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">📦</div>
+            <h3>Release cadence</h3>
+            <p>How often to release. How many versions to support. When to cut LTS branches. How long deprecation windows last. The release manager follows the schedule the owner defined.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon error">🛡️</div>
+            <h3>Security posture</h3>
+            <p>Maximum time from CVE disclosure to patch. Required SAST checks. Dependency pin policy. SBOM generation rules. The security agent holds the project to these standards.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">📢</div>
+            <h3>Growth strategy</h3>
+            <p>Which audiences to reach. What content to produce. How often to publish newsletters. Whether to pursue conference presence. The evangelist and growth agents follow this plan.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Release lifecycle</div>
+        <h2>From branch to backport</h2>
+        <p class="section-desc">Release management is more than tagging a commit. AOC handles the full lifecycle across multiple supported versions.</p>
+        <div class="eco-grid">
+          <div class="eco-card">
+            <div class="eco-badge primary">branching</div>
+            <h3>Branch strategy</h3>
+            <p>Feature branches, release branches, hotfix branches. Naming conventions enforced. Branch protection rules applied. Agents create release branches and manage merges.</p>
+          </div>
+          <div class="eco-card">
+            <div class="eco-badge accent">versioning</div>
+            <h3>Semver lifecycle</h3>
+            <p>Pre-release alphas and betas. Release candidates distributed to early testers. GA with full artifacts, signatures, and SBOMs. Patch releases for critical fixes. All following semver strictly.</p>
+          </div>
+          <div class="eco-card">
+            <div class="eco-badge success">backporting</div>
+            <h3>LTS and backports</h3>
+            <p>Supported version matrix maintained and published. Security and critical fixes cherry-picked to supported branches. Patch releases issued. EOL timelines communicated with advance notice.</p>
           </div>
         </div>
       </section>
 
       <section class="section">
         <div class="section-label">Step library (target)</div>
-        <h2>Normalization, routing, role playbooks, gates</h2>
+        <h2>Each role is a set of pipeline steps</h2>
         <div class="pkg-grid">
-          <div class="pkg-card"><div class="pkg-name">forge.github.events</div><div class="pkg-desc">Ingest GitHub webhooks: push, pull_request, issues, releases</div></div>
-          <div class="pkg-card"><div class="pkg-name">event.normalize</div><div class="pkg-desc">Canonicalize events across forges (GitHub, GitLab, Gitea)</div></div>
-          <div class="pkg-card"><div class="pkg-name">route.by.role</div><div class="pkg-desc">Dispatch normalized events to maintainer, devrel, security, release, dependency queues</div></div>
-          <div class="pkg-card"><div class="pkg-name">maintainer.triage</div><div class="pkg-desc">Auto-categorize issues by template, label, priority</div></div>
-          <div class="pkg-card"><div class="pkg-name">maintainer.review</div><div class="pkg-desc">Analyze PR diffs, flag breaking changes, suggest test coverage</div></div>
-          <div class="pkg-card"><div class="pkg-name">devrel.draft.post</div><div class="pkg-desc">Draft release notes, announcement posts, social copy from PR metadata</div></div>
-          <div class="pkg-card"><div class="pkg-name">security.cve.scan</div><div class="pkg-desc">Scan dependencies for known CVEs, surface severity and fixes</div></div>
-          <div class="pkg-card"><div class="pkg-name">security.sast.diff</div><div class="pkg-desc">Run static analysis on PR diffs, flag patterns and anti-patterns</div></div>
-          <div class="pkg-card"><div class="pkg-name">release.collect.notes</div><div class="pkg-desc">Aggregate commit messages, PR titles, changelog entries for a tag range</div></div>
-          <div class="pkg-card"><div class="pkg-name">release.stage</div><div class="pkg-desc">Create a release draft with collected notes and auto-generated summary</div></div>
-          <div class="pkg-card"><div class="pkg-name">dependency.scan</div><div class="pkg-desc">Detect dependency updates, check compatibility, flag breaking changes</div></div>
-          <div class="pkg-card"><div class="pkg-name">dependency.upgrade.pr</div><div class="pkg-desc">Draft a PR for dependency upgrade with test results and changelog</div></div>
+          <div class="pkg-card"><div class="pkg-name">forge.events</div><div class="pkg-desc">Ingest webhooks: push, PR, issue, release, discussion</div></div>
+          <div class="pkg-card"><div class="pkg-name">event.normalize</div><div class="pkg-desc">Canonicalize across forges (GitHub, GitLab, Gitea)</div></div>
+          <div class="pkg-card"><div class="pkg-name">principles.load</div><div class="pkg-desc">Load owner principles from versioned config per role</div></div>
+          <div class="pkg-card"><div class="pkg-name">feedback.collect</div><div class="pkg-desc">Aggregate user signals: issues, discussions, surveys, metrics</div></div>
+          <div class="pkg-card"><div class="pkg-name">architect.review</div><div class="pkg-desc">Review PRs against architecture principles, flag drift</div></div>
+          <div class="pkg-card"><div class="pkg-name">architect.adr</div><div class="pkg-desc">Track ADRs, flag significant changes missing records</div></div>
+          <div class="pkg-card"><div class="pkg-name">docs.sync</div><div class="pkg-desc">Detect staleness, draft updates from code changes</div></div>
+          <div class="pkg-card"><div class="pkg-name">docs.generate</div><div class="pkg-desc">Write guides, API refs, migration notes, FAQs</div></div>
+          <div class="pkg-card"><div class="pkg-name">release.branch</div><div class="pkg-desc">Create release branches, manage freeze and merge policy</div></div>
+          <div class="pkg-card"><div class="pkg-name">release.build</div><div class="pkg-desc">Build artifacts, sign, generate SBOM, publish to registries</div></div>
+          <div class="pkg-card"><div class="pkg-name">release.backport</div><div class="pkg-desc">Cherry-pick fixes to supported branches, run tests, issue patches</div></div>
+          <div class="pkg-card"><div class="pkg-name">security.scan</div><div class="pkg-desc">CVE scan, SAST, container scan, license check, scorecard</div></div>
+          <div class="pkg-card"><div class="pkg-name">security.advisory</div><div class="pkg-desc">Disclosure workflow: acknowledge, assess, fix, publish, notify</div></div>
+          <div class="pkg-card"><div class="pkg-name">evangelist.content</div><div class="pkg-desc">Newsletters, blog posts, video scripts, social content</div></div>
+          <div class="pkg-card"><div class="pkg-name">community.triage</div><div class="pkg-desc">Label, route, dedupe, welcome, recognize, close stale</div></div>
+          <div class="pkg-card"><div class="pkg-name">roadmap.rfc</div><div class="pkg-desc">Manage proposals: submit, review, discuss, decide, track</div></div>
+          <div class="pkg-card"><div class="pkg-name">infra.ci</div><div class="pkg-desc">Maintain pipelines, update tooling, monitor costs and health</div></div>
+          <div class="pkg-card"><div class="pkg-name">growth.watch</div><div class="pkg-desc">Monitor adoption, identify expansion opportunities, report</div></div>
         </div>
       </section>
 
       <section class="section section-centered">
         <div class="section-label">The architecture</div>
-        <h2>Forge events flow through Studio to role playbooks</h2>
+        <h2>Principles down. Community signals up. Agents in between.</h2>
         <div class="arch-visual">
           <div class="arch-layer accent">
-            GitHub / GitLab / Gitea <span class="desc">Events: push, PR, issue, release, dependency</span>
+            Project owners <span class="desc">Define principles: architecture, docs, tone, security, releases, growth</span>
           </div>
-          <div class="arch-arrow">events &#8595;</div>
+          <div class="arch-arrow">principles &#8595;</div>
+          <div class="arch-layer primary">
+            Agent roles <span class="desc">Architect, documenter, release-mgr, security, evangelist, community, roadmap, infra, growth</span>
+          </div>
+          <div class="arch-arrow">&#8593; signals &nbsp;&nbsp;&nbsp; activity &#8595;</div>
           <div class="arch-layer success">
-            Human gate (Studio) <span class="desc">Provenance, role assignment, approval workflow</span>
+            Users and contributors <span class="desc">Issues, PRs, discussions, feedback, adoption, feature requests, RFCs</span>
           </div>
-          <div class="arch-arrow">routes &#8595;</div>
-          <div class="arch-layer light">
-            Role playbooks <span class="desc">maintainer, devrel, security-reviewer, release-manager, standards-enforcer</span>
-          </div>
-          <div class="arch-arrow">audit log &#8595;</div>
+          <div class="arch-arrow">built on &#8595;</div>
           <div class="arch-layer deep">
-            mosaigo <span class="desc">Engine · topics · last-value · Studio · depict audit log</span>
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · provenance</span>
           </div>
         </div>
       </section>
 
       <section class="section">
-        <div class="section-label">The Five Hard Rules</div>
-        <h2>Core identity of AOC</h2>
+        <div class="section-label">Guardrails</div>
+        <h2>What agents never do alone</h2>
+        <p class="section-desc">Agents run the community, but some actions always need a human owner to approve.</p>
         <div class="principle-grid">
-          <div class="principle"><div class="principle-num">1</div><div><h4>Human anchor on every role</h4><p>Every agent role is bound to a named human. That human is accountable for the role's decisions. Agents amplify; humans answer.</p></div></div>
-          <div class="principle"><div class="principle-num">2</div><div><h4>No silent automation</h4><p>Every agent action is visible. Comments, PRs, label changes. All carry provenance. Humans see what agents do, why, and by whom.</p></div></div>
-          <div class="principle"><div class="principle-num">3</div><div><h4>The human gate is final</h4><p>No matter how confident the agent is, the final button press is human. Merge. Publish. Moderate. All require a human principal to decide.</p></div></div>
-          <div class="principle"><div class="principle-num">4</div><div><h4>Playbooks are live code, not black boxes</h4><p>Every step in a role's playbook is readable, versionable, auditable. Humans can inspect what the agent is doing and why.</p></div></div>
-          <div class="principle"><div class="principle-num">5</div><div><h4>No role escalation without explicit approval</h4><p>An agent role never makes decisions outside its scope. A maintainer doesn't release. A devrel doesn't merge. Scope creep is a bug.</p></div></div>
+          <div class="principle"><div class="principle-num">1</div><div><h4>Merge to main</h4><p>Agents review, comment, and approve. The merge button is the owner's.</p></div></div>
+          <div class="principle"><div class="principle-num">2</div><div><h4>Publish a release</h4><p>Agents stage everything and hand over a ready package. The owner clicks publish.</p></div></div>
+          <div class="principle"><div class="principle-num">3</div><div><h4>Moderate humans</h4><p>Agents flag issues and suggest actions. They never ban, silence, or delete without owner approval.</p></div></div>
+          <div class="principle"><div class="principle-num">4</div><div><h4>Change the principles</h4><p>Agents can suggest principle updates based on what they observe. Only owners edit the principles.</p></div></div>
+          <div class="principle"><div class="principle-num">5</div><div><h4>Accept or reject RFCs</h4><p>Agents facilitate the process: acknowledge, assign reviewers, track discussion. Owners make the final call on direction.</p></div></div>
+          <div class="principle"><div class="principle-num">6</div><div><h4>Spend money or grant access</h4><p>Infrastructure changes, billing decisions, and permission grants always require a human.</p></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Cadence</div>
+        <h2>What happens and when</h2>
+        <p class="section-desc">Agents work at every timescale. Some tasks happen on every PR. Others happen once a quarter. Nothing falls through the cracks.</p>
+        <div class="eco-grid">
+          <div class="eco-card">
+            <div class="eco-badge primary">per-PR</div>
+            <h3>Every pull request</h3>
+            <p>Lint, test, SAST scan, coverage check, architecture review, breaking change detection, CLA/DCO verification, reviewer assignment, contributor welcome.</p>
+          </div>
+          <div class="eco-card">
+            <div class="eco-badge accent">weekly</div>
+            <h3>Every week</h3>
+            <p>Newsletter compilation, stale issue cleanup, dependency scan, broken link check, tech debt metrics, community question summary, download tracking.</p>
+          </div>
+          <div class="eco-card">
+            <div class="eco-badge success">per-release</div>
+            <h3>Every release</h3>
+            <p>Changelog, release notes, artifact build, registry publish, SBOM, signing, backport assessment, docs versioning, blog post, video walkthrough, announcement.</p>
+          </div>
         </div>
       </section>
 
       <section class="section">
         <div class="section-label">Roadmap</div>
-        <h2>From one role to a full co-maintenance system</h2>
+        <h2>From one role to a thriving community</h2>
         <div class="principle-grid">
-          <div class="principle"><div class="principle-num">01</div><div><h4>One role one project (maintainer)</h4><p>Single maintainer role on a single test project. Event normalization. Issue triage. PR triage. One human gate. Audit log in Studio.</p></div></div>
-          <div class="principle"><div class="principle-num">02</div><div><h4>Release-manager + standards-enforcer</h4><p>Add release-manager (collect notes, stage, publish gate). Add standards-enforcer (code style, lint, format checks). Two projects.</p></div></div>
-          <div class="principle"><div class="principle-num">03</div><div><h4>Security-reviewer + dependency-tender</h4><p>Add security-reviewer (CVE scan, SAST on diffs). Add dependency role (detect updates, suggest upgrades, run compatibility tests).</p></div></div>
-          <div class="principle"><div class="principle-num">04</div><div><h4>Devrel + storyarc integration</h4><p>Add devrel role (draft posts, release notes, announcement copy). Integrate with storyarc for templated storytelling.</p></div></div>
-          <div class="principle"><div class="principle-num">05</div><div><h4>Roadmapper + multi-project</h4><p>Add roadmapper role (aggregate issues, PRs across projects, project health dashboard). Scale to 5-10 projects.</p></div></div>
-          <div class="principle"><div class="principle-num">06</div><div><h4>Module-owner + sub-scoping</h4><p>Add module-owner role (owns a sub-project or component). Roles can delegate to other roles. Hierarchical accountability.</p></div></div>
+          <div class="principle"><div class="principle-num">01</div><div><h4>Community maintainer on one project</h4><p>Issue triage, PR routing, FAQ responses, contributor welcome. One set of owner principles. Audit log in Studio.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Architecture guardian + documentation writer</h4><p>PR review against architecture principles. Doc sync from code changes. Migration guide drafting. ADR tracking.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Release manager with full lifecycle</h4><p>Branching, versioning, artifact builds, registry publishing, backporting to LTS branches, hotfix workflow, deprecation tracking.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Security reviewer + infrastructure keeper</h4><p>CVE scanning, SAST, SBOM, advisory workflow, supply chain verification. CI maintenance, credential rotation, build monitoring.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Evangelist + growth watcher</h4><p>Newsletters, blog posts, video scripts, social content. Adoption tracking, ecosystem monitoring, expansion opportunity identification.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Multi-project scaling + feedback loops</h4><p>Same principles, many repos. Cross-project health dashboard. RFC process. Community signal aggregation. The project grows itself.</p></div></div>
         </div>
       </section>
 
