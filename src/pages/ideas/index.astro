@@ -1,0 +1,270 @@
+---
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roadmap Ideas - What Mosaigo Pipelines Can Enable</title>
+    <meta
+      name="description"
+      content="Explore the roadmap of project ideas built on mosaigo composable pipelines. From home surveillance to robotics, trading to content production."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <style is:inline>
+      .ideas-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+        gap: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+      .idea-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 28px;
+        transition: border-color 0.15s, transform 0.15s;
+        text-decoration: none;
+        color: inherit;
+        display: flex;
+        flex-direction: column;
+      }
+      .idea-card:hover {
+        border-color: var(--primary);
+        transform: translateY(-2px);
+      }
+      .idea-card h3 {
+        font-size: 1.15rem;
+        margin-bottom: 8px;
+        color: var(--text);
+      }
+      .idea-card .idea-tagline {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.6;
+        flex: 1;
+      }
+      .idea-card .idea-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin-top: 16px;
+      }
+      .idea-card .idea-tag {
+        font-size: 0.68rem;
+        font-weight: 600;
+        padding: 3px 10px;
+        border-radius: 100px;
+        background: rgba(42,127,191,0.1);
+        color: var(--primary);
+      }
+      .idea-card .idea-tag.vision {
+        background: rgba(200,152,42,0.1);
+        color: var(--accent);
+      }
+      .idea-card .idea-tag.intelligence {
+        background: rgba(58,143,92,0.1);
+        color: var(--success);
+      }
+      .idea-card .idea-tag.community {
+        background: rgba(109,179,224,0.1);
+        color: var(--light);
+      }
+      .category-label {
+        font-size: 0.72rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.14em;
+        color: var(--text-muted);
+        margin-bottom: 16px;
+        padding-top: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="topnav">
+      <a href="/staging/" class="topnav-logo">
+        <img src="/images/mozzy-icon.webp" alt="mosaigo" />
+        mosaigo
+      </a>
+      <div class="topnav-links">
+        <a href="/staging/" class="topnav-link">Staging</a>
+        <a href="/getting-started/" class="topnav-link">Docs</a>
+        <a href="/ideas/" class="topnav-link active">Roadmap Ideas</a>
+      </div>
+    </nav>
+
+    <section class="hero">
+      <div class="hero-badge"><span class="dot"></span> Roadmap Ideas</div>
+      <h1>What <span class="accent">mosaigo pipelines</span> can enable</h1>
+      <p class="tagline">These are early-stage project concepts. Each one is a composable distribution built on mosaigo's pipeline engine, exploring a different domain. Nothing here is built yet. Everything is a direction worth exploring.</p>
+    </section>
+
+    <section class="section">
+      <div class="section-label">How to read this</div>
+      <h2>Every idea starts with the same foundation</h2>
+      <p class="section-desc">Each project below reuses mosaigo's composable pipeline engine. Domain-specific steps snap into the same framework that powers mosoptics and mosii. The question isn't whether the plumbing works. It's which problems are worth solving first.</p>
+
+      <div class="arch-visual" style="margin-top: 30px;">
+        <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+          Roadmap Ideas <span class="desc">moshome, mospresent, mosbot, mosops, mostrade, depict, gtmd, storyarc, mosarch, aossc</span>
+        </div>
+        <div class="arch-arrow">all built on &#8595;</div>
+        <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+          Staging Projects <span class="desc"><a href="/staging/" style="color:inherit;">mosaigo</a> + <a href="/staging/mosoptics/" style="color:inherit;">mosoptics</a> + <a href="/staging/mosii/" style="color:inherit;">mosii</a></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="category-label">Distributions (vision + control)</div>
+      <div class="ideas-grid">
+        <a href="/ideas/moshome/" class="idea-card">
+          <h3>moshome</h3>
+          <p class="idea-tagline">Own your home cameras. Local-first, composable home surveillance with no subscriptions, no cloud lock-in. An open-source alternative to Ring, Nest, and Blink.</p>
+          <div class="idea-tags">
+            <span class="idea-tag vision">mosoptics</span>
+            <span class="idea-tag">RTSP</span>
+            <span class="idea-tag">local-first</span>
+          </div>
+        </a>
+        <a href="/ideas/mospresent/" class="idea-card">
+          <h3>mospresent</h3>
+          <p class="idea-tagline">Virtual camera presentation tool. You become the content: slide elements float around you in a lightboard aesthetic. Gesture and voice drive navigation.</p>
+          <div class="idea-tags">
+            <span class="idea-tag vision">mosoptics</span>
+            <span class="idea-tag">virtual camera</span>
+            <span class="idea-tag">conferencing</span>
+          </div>
+        </a>
+        <a href="/ideas/mosbot/" class="idea-card">
+          <h3>mosbot</h3>
+          <p class="idea-tagline">Composable robot control with real-time telemetry, safety-first design, and sim/real parity through pipeline graphs.</p>
+          <div class="idea-tags">
+            <span class="idea-tag vision">mosoptics</span>
+            <span class="idea-tag">robotics</span>
+            <span class="idea-tag">control</span>
+          </div>
+        </a>
+        <a href="/ideas/mosops/" class="idea-card">
+          <h3>mosops</h3>
+          <p class="idea-tagline">Design-studio experience for building Kubernetes operators. Hot-reload steps while holding the leader lease. See what reconcilers actually do.</p>
+          <div class="idea-tags">
+            <span class="idea-tag">Kubernetes</span>
+            <span class="idea-tag">operators</span>
+            <span class="idea-tag">hot-reload</span>
+          </div>
+        </a>
+        <a href="/ideas/mostrade/" class="idea-card">
+          <h3>mostrade</h3>
+          <p class="idea-tagline">Pipeline-based trading intelligence. Normalize feeds, compute signals, track portfolio. Human always decides on trades. Framework never auto-executes.</p>
+          <div class="idea-tags">
+            <span class="idea-tag">trading</span>
+            <span class="idea-tag">signals</span>
+            <span class="idea-tag">GraphQL</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-label" style="margin-top: 40px;">Intelligence (knowledge + content)</div>
+      <div class="ideas-grid">
+        <a href="/ideas/depict/" class="idea-card">
+          <h3>depict</h3>
+          <p class="idea-tagline">Semantic ontology engine with GraphQL as the schema language. Provenance on every fact. Alignment as an explicit pipeline stage. The knowledge graph is alive.</p>
+          <div class="idea-tags">
+            <span class="idea-tag intelligence">foundation</span>
+            <span class="idea-tag">GraphQL</span>
+            <span class="idea-tag">ontology</span>
+          </div>
+        </a>
+        <a href="/ideas/gtmd/" class="idea-card">
+          <h3>gtmd</h3>
+          <p class="idea-tagline">Go-to-market domain ontology. ICP, personas, positioning, messaging, funnels, and campaigns as data with provenance, not documents that drift.</p>
+          <div class="idea-tags">
+            <span class="idea-tag intelligence">depict module</span>
+            <span class="idea-tag">GTM</span>
+            <span class="idea-tag">marketing</span>
+          </div>
+        </a>
+        <a href="/ideas/storyarc/" class="idea-card">
+          <h3>storyarc</h3>
+          <p class="idea-tagline">Content production from a graph. Story-arc templates with typed slots pull facts from depict/gtmd. LLM renders prose, not strategy.</p>
+          <div class="idea-tags">
+            <span class="idea-tag intelligence">depict module</span>
+            <span class="idea-tag">content</span>
+            <span class="idea-tag">templates</span>
+          </div>
+        </a>
+        <a href="/ideas/mosarch/" class="idea-card">
+          <h3>mosarch</h3>
+          <p class="idea-tagline">Enterprise architecture as a typed graph. Decisions as first-class nodes. Per-stakeholder diagrams generated from one model.</p>
+          <div class="idea-tags">
+            <span class="idea-tag intelligence">depict module</span>
+            <span class="idea-tag">architecture</span>
+            <span class="idea-tag">diagrams</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="category-label" style="margin-top: 40px;">Community</div>
+      <div class="ideas-grid">
+        <a href="/ideas/aossc/" class="idea-card">
+          <h3>aossc</h3>
+          <p class="idea-tagline">Autonomous open-source software community framework. Agent-assisted OSS maintenance with named roles, explicit boundaries, and accountability.</p>
+          <div class="idea-tags">
+            <span class="idea-tag community">community</span>
+            <span class="idea-tag">agents</span>
+            <span class="idea-tag">governance</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section" style="text-align:center;">
+      <div class="section-label">Shared dependencies</div>
+      <h2>Three things every idea needs from the core</h2>
+      <p class="section-desc" style="margin-left:auto;margin-right:auto;">These are the load-bearing capabilities in mosaigo that all roadmap ideas depend on.</p>
+      <div class="diff-grid" style="max-width:900px;margin:30px auto 0;">
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">&#8644;</div>
+          <h3>Hot-Swap Semantics</h3>
+          <p>Swap pipeline steps at runtime without losing state. moshome, mospresent, mosbot, and mosops all depend on this capability.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">&#9783;</div>
+          <h3>Studio Visibility</h3>
+          <p>The graphical differentiator that makes pipelines obviously better than logs. Every idea needs meaningful Studio visualization.</p>
+        </div>
+        <div class="diff-card">
+          <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">&#128065;</div>
+          <h3>mosoptics Foundation</h3>
+          <p>Shared vision steps power the video-heavy distributions: moshome, mospresent, mosbot. These import mosoptics, not raw OpenCV.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <h2>Start with what's real</h2>
+      <p>The ideas above are where we're headed. Below is what's being built right now.</p>
+      <div class="hero-actions">
+        <a href="/staging/" class="btn btn-primary">View Staging Projects</a>
+        <a href="/getting-started/" class="btn btn-secondary">Read the Docs</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="footer-links">
+        <a href="/staging/">Staging</a>
+        <a href="/getting-started/">Docs</a>
+        <a href="https://github.com/mosaigoio">GitHub</a>
+      </div>
+      <p>&copy; 2025-present mosaigoio contributors</p>
+    </footer>
+  </body>
+</html>

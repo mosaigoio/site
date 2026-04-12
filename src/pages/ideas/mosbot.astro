@@ -1,0 +1,179 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mosbot — The pipeline graph IS the robot</title>
+    <meta
+      name="description"
+      content="mosbot is a mosaigo distribution for robotics. Composable steps for motors, sensors, kinematics, policies, safety, and telemetry. The same pipeline runs in Isaac Sim and on real hardware."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="mosbot" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft — concept only</span>
+          <span class="hub-chip">mosaigo distribution</span>
+          <span class="hub-chip">gobot + ONNX + TensorRT</span>
+          <span class="hub-chip">Isaac Sim · Omniverse</span>
+        </div>
+        <h1>The pipeline graph <span class="accent">IS the robot</span>.</h1>
+        <p class="tagline">mosbot turns the mosaigo event-loop + step + topic model into a robotics framework. Motors, sensors, cameras, policies, safety monitors, loggers — all reusable steps. The same pipeline runs in NVIDIA Isaac Sim and on real hardware. Sim-to-real is a config flip.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>Robotics has been waiting for the composition model web services got ten years ago. <strong>Small focused steps. Typed topics. Parallel pipelines. Live observability. Swappable by config.</strong> Mosaigo already has those primitives. mosbot brings them to robots — and proves that sim and hardware are the same graph with different adapter steps.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>Four parallel pipelines, one robot</h2>
+        <p class="section-desc">Each pipeline runs at its own natural cadence. Vision at 30 Hz, control at 100 Hz, safety at 200 Hz, logging continuous. Topics and last-value stores coordinate between them.</p>
+        <div class="pipe-diagram">┌───────── Vision pipeline ─────────┐
+│ capture → detect → pose → feature │─┐
+└───────────────────────────────────┘ │
+                                      ↓  topics + last-value
+┌───────── Control pipeline ────────┐ │
+│ sensors → policy.model.run →      │←┘
+│ kinematics.ik → actuator.write    │─┐
+└───────────────────────────────────┘ │
+                                      ↓
+┌───────── Safety pipeline ─────────┐ │
+│ monitor → violation? → latch      │←┘
+└───────────────────────────────────┘
+                                      ↓
+┌───────── Logging pipeline ────────┐
+│ trajectory.log.mcap → foxglove    │
+└───────────────────────────────────┘</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Design principles</div>
+        <h2>Six things mosbot holds firm</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">🔩</div>
+            <h3>Graph is the robot</h3>
+            <p>No application, no main loop. A robot is the sum of its pipelines. That framing changes what building a robot feels like.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">🔁</div>
+            <h3>Sim and real are the same graph</h3>
+            <p><code>mosbot.sim</code> and <code>mosbot.hardware</code> profiles differ only in which adapter steps bind. Pipeline YAML is identical.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">🛡️</div>
+            <h3>Safety is a pipeline</h3>
+            <p>Not a flag, not a library call. Monitor, violation, latch, watchdog, e-stop — each a first-class step running at the highest cadence.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">📼</div>
+            <h3>Every run is an MCAP file</h3>
+            <p>Default-on trajectory logging. Replayable in Foxglove Studio, Isaac Sim, and mosbot's own replay panel.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🧠</div>
+            <h3>Policies are plug-in steps</h3>
+            <p><code>policy.model.run</code> is a generic harness. GR00T, Diffusion Policy, ACT, ONNX, TensorRT — all fit the same interface.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">📊</div>
+            <h3>Observable by default</h3>
+            <p>Every joint, every sensor, every decision visible in Studio and in MCAP. You can't improve what you can't see.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Hardware, kinematics, policy, safety</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">gobot.adapter.raspi</div><div class="pkg-desc">Raspberry Pi GPIO/I²C/SPI resource</div></div>
+          <div class="pkg-card"><div class="pkg-name">actuator.servo.write</div><div class="pkg-desc">Position write for servo-class actuators</div></div>
+          <div class="pkg-card"><div class="pkg-name">actuator.dynamixel.chain</div><div class="pkg-desc">Multi-servo chain control</div></div>
+          <div class="pkg-card"><div class="pkg-name">sensor.imu.read</div><div class="pkg-desc">IMU read publishing topic</div></div>
+          <div class="pkg-card"><div class="pkg-name">sensor.lidar.scan</div><div class="pkg-desc">2D/3D LiDAR point clouds</div></div>
+          <div class="pkg-card"><div class="pkg-name">urdf.load</div><div class="pkg-desc">Load URDF/SDF into shared state</div></div>
+          <div class="pkg-card"><div class="pkg-name">kinematics.inverse</div><div class="pkg-desc">IK via pure-Go library or FFI</div></div>
+          <div class="pkg-card"><div class="pkg-name">policy.model.run</div><div class="pkg-desc">Generic ONNX/TensorRT policy runner</div></div>
+          <div class="pkg-card"><div class="pkg-name">policy.groot.harness</div><div class="pkg-desc">GR00T-specific preprocessing wrapper</div></div>
+          <div class="pkg-card"><div class="pkg-name">safety.monitor</div><div class="pkg-desc">Bounds checks + violation detection</div></div>
+          <div class="pkg-card"><div class="pkg-name">safety.latch</div><div class="pkg-desc">Forces actuators to safe state on violation</div></div>
+          <div class="pkg-card"><div class="pkg-name">safety.watchdog</div><div class="pkg-desc">Heartbeat deadline enforcement</div></div>
+          <div class="pkg-card"><div class="pkg-name">trajectory.log.mcap</div><div class="pkg-desc">Rolling MCAP segments for replay</div></div>
+          <div class="pkg-card"><div class="pkg-name">foxglove.serve</div><div class="pkg-desc">MCAP-over-WebSocket for Foxglove Studio</div></div>
+          <div class="pkg-card"><div class="pkg-name">isaac.bridge.in</div><div class="pkg-desc">Isaac Sim sensor/command exchange</div></div>
+          <div class="pkg-card"><div class="pkg-name">omniverse.publish.usd</div><div class="pkg-desc">Publish robot state to USD</div></div>
+        </div>
+      </section>
+
+      <section class="section" style="text-align:center;">
+        <div class="section-label">Real-time discipline</div>
+        <h2>Honest about what Go can and can't do</h2>
+        <p class="section-desc" style="margin-left:auto;margin-right:auto;max-width:720px;">Go's garbage collector is not hard real-time. mosbot targets <strong>soft real-time at 10–100 Hz</strong>, which is adequate for humanoid control, manipulator tracking, mobile base navigation, teleoperation, and policy inference. mosbot is <strong>not</strong> targeted at sub-millisecond servo control or safety-certified systems. The docs say so explicitly.</p>
+      </section>
+
+      <section class="section" style="text-align:center;">
+        <div class="section-label">Architecture</div>
+        <h2>Robotics-shaped, but still mosaigo underneath</h2>
+        <div class="arch-visual">
+          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+            mosbot <span class="desc">Hardware · kinematics · policies · safety · telemetry · sim bridges</span>
+          </div>
+          <div class="arch-arrow">optionally imports &#8595;</div>
+          <div class="arch-layer" style="background:rgba(42,127,191,0.15);color:var(--primary);border:1px solid rgba(42,127,191,0.3);">
+            mosoptics <span class="desc">For vision-capable robots</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From single joint to full humanoid</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>Simulated single-joint control</h4><p>Isaac Sim bridge + trivial proportional controller. Prove the sim loop.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Multi-joint arm with kinematics</h4><p>URDF loading, FK/IK, Cartesian trajectory tracking on a 7-DOF sim arm.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Safety pipeline</h4><p>Monitor + latch + watchdog + e-stop. Deliberate violation → system latches → manual reset.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>MCAP logging and replay</h4><p>Every run produces an MCAP file. Foxglove integration. Replay panel in Studio.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Policy harness</h4><p>Generic ONNX/TensorRT runner. Drive the sim arm with an externally-trained policy.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Real hardware + vision + GR00T</h4><p>Swap sim bridge for real hardware. Add mosoptics vision pipeline. Run a GR00T checkpoint on a bench robot.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/staging/mosoptics/">mosoptics</a>
+          <a href="/ideas/moshome/">moshome</a>
+          <a href="/ideas/mospresent/">mospresent</a>
+          <a href="/ideas/mosops/">mosops</a>
+          <a href="/ideas/mostrade/">mostrade</a>
+          <a href="/ideas/depict/">depict</a>
+          <a href="/ideas/mosarch/">mosarch</a>
+          <a href="/ideas/aossc/">aossc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>

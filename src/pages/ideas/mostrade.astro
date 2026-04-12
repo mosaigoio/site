@@ -1,0 +1,182 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mostrade — Trading intelligence as a live pipeline graph</title>
+    <meta
+      name="description"
+      content="mostrade is a mosaigo distribution that connects to trading APIs (Coinbase, Alpaca, Kalshi, and others), respects rate limits, computes signals and arbitrage, exposes everything through GraphQL, and never executes trades."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="mostrade" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft — concept only</span>
+          <span class="hub-chip">mosaigo distribution</span>
+          <span class="hub-chip">Coinbase · Alpaca · Kalshi · IBKR</span>
+          <span class="hub-chip">GraphQL + reactive UI</span>
+          <span class="hub-chip">Never executes trades</span>
+        </div>
+        <h1>Trading intelligence as a <span class="accent">live pipeline graph</span>.</h1>
+        <p class="tagline">mostrade connects to multiple trading venues, respects their rate limits as first-class budgets, normalizes feeds, computes sentiment and signals, builds a knowledge graph of accounts and assets, and exposes everything through GraphQL with subscriptions. It is a brain for your portfolio. It is not a broker.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>Most retail traders juggle four to six apps to do anything serious — one for crypto, one for equities, one for prediction markets, one for tax tracking, one for charting, one for sentiment. None of them talk to each other. The data lives in five places. mostrade's bet: <strong>every part of the workflow is a pipeline step, every piece of state is a topic, the whole system is one live graph you can query, subscribe to, and build a UI on top of.</strong> It does not execute trades. Not in v0.1, not in v1.0, not ever.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>Many feeds, one graph</h2>
+        <p class="section-desc">Each venue is an adapter step with a declared rate budget. Each feed lands as a normalized topic. The knowledge graph builds itself from the topics. GraphQL serves it.</p>
+        <div class="pipe-diagram">feed.coinbase.websocket ─┐
+feed.alpaca.websocket ───┤──→ normalize.ticker ──→ store.tsdb ──┐
+feed.kalshi.websocket ───┘                                      │
+sentiment.news.rss ─┐                                           │
+sentiment.llm.run ──┴──→ normalize.sentiment ──→ store.tsdb ────┤
+                                                                ├──→ graph.build ──→ graphql.serve
+portfolio.load.account ──→ calc.positions ──→ calc.exposure ───┤
+signal.threshold ──────────────────────────────────────────────┤
+arbitrage.cross ───────────────────────────────────────────────┘</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Design principles</div>
+        <h2>Six things mostrade holds firm</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🛑</div>
+            <h3>Never executes trades</h3>
+            <p>The adapter interface has no place-order method. Not in v0.1. Not in v1.0. Not ever. mostrade is a brain, not a broker. The hard rule is enforced at the type level.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">⏱️</div>
+            <h3>Rate limits first-class</h3>
+            <p>Every venue adapter declares a <code>RateBudget</code>. Steps degrade gracefully (soft + hard). Exceeding the budget fails loudly and early — never silently.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">🌐</div>
+            <h3>Multiple venues, equal footing</h3>
+            <p>Coinbase, Alpaca, Kalshi, IBKR — none is special. The same canonical ticker shape, the same provenance, the same interface. Cross-venue arbitrage falls out for free.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">📊</div>
+            <h3>Near-real-time, not HFT</h3>
+            <p>Targets 100ms–5s latency. mostrade is for portfolio intelligence, signal computation, and arbitrage detection — not for microsecond market-making.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🧠</div>
+            <h3>Knowledge before action</h3>
+            <p>Everything mostrade learns lands in a queryable graph: accounts, positions, assets, sentiment, signals, news, events. The graph is the product.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">💾</div>
+            <h3>Local-first, pluggable storage</h3>
+            <p>DuckDB by default. QuestDB / ClickHouse / TimescaleDB as swappable steps. Your trading data does not need to live in someone else's cloud.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The killer chart</div>
+        <h2>Multi-timeframe trend strip</h2>
+        <p class="section-desc" style="max-width:760px;">A single 320×120 widget shows direction across <strong>5Y · 1Y · 3M · 1M · 1W · 1D · 1H · 15s</strong>. Each cell is a sparkline plus a slope chip with σ-normalized direction (strong-up / mild-up / flat / mild-down / strong-down). One glance tells you whether the asset is trending in the direction you're betting on, across every horizon that matters. Hover for values. Click to promote a timeframe to the main chart.</p>
+        <div class="pipe-diagram">┌─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┬─────────┐
+│   5Y ↗  │   1Y ↗  │   3M →  │   1M ↘  │   1W ↗  │   1D ↗  │   1H →  │  15s ↗  │
+│ ~/~~~   │ ~~~/~   │ ~~~~~   │ ~~~\\~~  │ ~~/~~   │ ~~~/~   │ ~~~~~   │ ~~~/~   │
+└─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┴─────────┘</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Adapters, normalizers, calcs, signals</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">feed.coinbase.websocket</div><div class="pkg-desc">Coinbase Advanced Trade WebSocket adapter</div></div>
+          <div class="pkg-card"><div class="pkg-name">feed.alpaca.websocket</div><div class="pkg-desc">Alpaca market data + trade streams</div></div>
+          <div class="pkg-card"><div class="pkg-name">feed.kalshi.websocket</div><div class="pkg-desc">Kalshi prediction market orderbook deltas</div></div>
+          <div class="pkg-card"><div class="pkg-name">feed.ibkr.tws</div><div class="pkg-desc">Interactive Brokers TWS bridge</div></div>
+          <div class="pkg-card"><div class="pkg-name">feed.robinhood.unofficial</div><div class="pkg-desc">Unofficial REST adapter (caveats apply)</div></div>
+          <div class="pkg-card"><div class="pkg-name">normalize.ticker</div><div class="pkg-desc">Canonical ticker shape across venues</div></div>
+          <div class="pkg-card"><div class="pkg-name">normalize.orderbook</div><div class="pkg-desc">Canonical L2 / L3 book delta</div></div>
+          <div class="pkg-card"><div class="pkg-name">store.tsdb.duckdb</div><div class="pkg-desc">Embedded time-series store, default</div></div>
+          <div class="pkg-card"><div class="pkg-name">store.tsdb.questdb</div><div class="pkg-desc">High-throughput TSDB step</div></div>
+          <div class="pkg-card"><div class="pkg-name">sentiment.llm.run</div><div class="pkg-desc">FinBERT / FinLlama sentiment scoring</div></div>
+          <div class="pkg-card"><div class="pkg-name">sentiment.news.rss</div><div class="pkg-desc">News ingestion adapter</div></div>
+          <div class="pkg-card"><div class="pkg-name">calc.positions</div><div class="pkg-desc">Aggregate positions across accounts</div></div>
+          <div class="pkg-card"><div class="pkg-name">calc.exposure</div><div class="pkg-desc">Net / gross / per-asset exposure</div></div>
+          <div class="pkg-card"><div class="pkg-name">calc.trend.multiscale</div><div class="pkg-desc">σ-normalized slope across 8 timeframes</div></div>
+          <div class="pkg-card"><div class="pkg-name">signal.threshold</div><div class="pkg-desc">Configurable indicator thresholds → events</div></div>
+          <div class="pkg-card"><div class="pkg-name">arbitrage.cross.venue</div><div class="pkg-desc">Fee-aware cross-venue spread detector</div></div>
+          <div class="pkg-card"><div class="pkg-name">harvest.candidates</div><div class="pkg-desc">Tax-loss harvesting candidates (wash-sale aware)</div></div>
+          <div class="pkg-card"><div class="pkg-name">graph.build</div><div class="pkg-desc">Build the knowledge graph from topics</div></div>
+          <div class="pkg-card"><div class="pkg-name">graphql.serve</div><div class="pkg-desc">Query + subscription API for the graph</div></div>
+        </div>
+      </section>
+
+      <section class="section" style="text-align:center;">
+        <div class="section-label">Architecture</div>
+        <h2>Built on mosaigo, with a hard guardrail</h2>
+        <div class="arch-visual">
+          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+            mostrade <span class="desc">Adapters · normalize · calc · signal · arbitrage · harvest · graph · graphql</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
+          </div>
+        </div>
+        <p class="arch-caption">The adapter interface omits place-order entirely. The guardrail is enforced at the type level, not just in policy.</p>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From one feed to multi-venue intelligence</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>One feed end-to-end</h4><p>Coinbase WebSocket → normalize → DuckDB → GraphQL → one TradingView chart. Studio shows the whole pipeline.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Multi-venue + portfolio</h4><p>Add Alpaca. Pull positions. Compute net exposure across accounts. The graph spans both venues.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Sentiment + signals + events</h4><p>News ingestion, FinBERT scoring, threshold-based signal events as topics.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Knowledge graph + GraphQL subs</h4><p>Build the knowledge graph from topics. Subscriptions wired up. Reactive UI updates live.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>The multi-timeframe trend strip</h4><p>The killer widget. 8 cells, σ-normalized slope per cell. ECharts implementation.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Cross-venue arbitrage</h4><p>Add Kraken or Binance. Fee-aware net-after-cost spread detection.</p></div></div>
+          <div class="principle"><div class="principle-num">07</div><div><h4>Tax-loss harvesting</h4><p>Wash-sale-aware harvesting candidates. Conservative by default.</p></div></div>
+          <div class="principle"><div class="principle-num">08</div><div><h4>Kalshi + prediction markets</h4><p>Treat prediction markets as just another venue. Same canonical shape.</p></div></div>
+          <div class="principle"><div class="principle-num">09</div><div><h4>More venues, better analytics</h4><p>Robinhood, IBKR, backtesting framework, scenario analysis.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/staging/mosoptics/">mosoptics</a>
+          <a href="/ideas/moshome/">moshome</a>
+          <a href="/ideas/mospresent/">mospresent</a>
+          <a href="/ideas/mosbot/">mosbot</a>
+          <a href="/ideas/mosops/">mosops</a>
+          <a href="/ideas/depict/">depict</a>
+          <a href="/ideas/gtmd/">gtmd</a>
+          <a href="/ideas/storyarc/">storyarc</a>
+          <a href="/ideas/mosarch/">mosarch</a>
+          <a href="/ideas/aossc/">aossc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject · <strong style="color:var(--error);">never executes trades</strong></p>
+      </footer>
+    </div>
+  </body>
+</html>

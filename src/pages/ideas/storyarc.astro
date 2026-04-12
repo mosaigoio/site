@@ -1,0 +1,159 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>storyarc — One context, many narratives</title>
+    <meta
+      name="description"
+      content="storyarc treats every deliverable—a slide deck, a blog post, a LinkedIn post, an email—as a narrative arc assembled from typed concepts in the depict+gtmd knowledge graph."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="storyarc" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft</span>
+          <span class="hub-chip">mosaigo distribution</span>
+          <span class="hub-chip">pptx · docx · md · LinkedIn · email</span>
+          <span class="hub-chip">depict + gtmd powered</span>
+        </div>
+        <h1>One context. Many narratives. <span class="accent">Zero contradictions.</span></h1>
+        <p class="tagline">storyarc treats every deliverable—a slide deck, a blog post, a LinkedIn post, an email—as a narrative arc assembled from typed concepts in the depict+gtmd knowledge graph. Change one fact and every asset that referenced it surfaces as needing review.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>AI made drafting faster without fixing re-explaining, contradictions, drift, or attribution. A sales team writes a case study. The customer success team writes an email. The marketing team writes a LinkedIn post. All three versions of "what value did we deliver?" are subtly different. Someone updates the case study six months later. The email and post now contradict the source. storyarc fixes this: one brief becomes multiple deliverables, all derived from the same typed facts in the gtmd graph. Change a fact once; every asset that uses it flags for review. <strong>The narrative structure is explicit, the source is visible, and contradictions are impossible.</strong></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>From brief to assets to backreferences</h2>
+        <p class="section-desc">Every box is a hot-swappable step. Every arrow carries context. The graph is the source; renderers are stateless.</p>
+        <div class="pipe-diagram">brief.parse ─→ context.fetch ─→ template.select ─→ arc.shape ─┬─→ renderer.pptx ─┐
+                                                           │              ├─→ renderer.docx  ├─→ asset.publish ─→ gtmd.asset.backref
+                                                           ├─→ renderer.md      │
+                                                           ├─→ renderer.linkedin ┤
+                                                           └─→ renderer.email   ┘</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Design principles</div>
+        <h2>Six things storyarc holds firm</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">📋</div>
+            <h3>The graph is the context (not the writer's head)</h3>
+            <p>All facts that a narrative arc needs—customer details, value props, messaging, outcomes—live as typed concepts in gtmd. The writer references them; the arc is shaped by the graph, not by memory or chaos.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">🎬</div>
+            <h3>A story arc is a sequence of typed beats</h3>
+            <p>A narrative is not free prose. It is a sequence of beats: Problem, Context, Transformation, Outcome, Next Step. Each beat is typed, has a template, can be reused across formats. Same arc shape, different rendering.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">🖨️</div>
+            <h3>The LLM is a renderer (not a knowledge source)</h3>
+            <p>The LLM fills in the prose, chooses vivid words, adapts tone for channel. It does not make up facts. Facts come from the graph. The LLM sees typed slots and renders them into prose without inventing.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🛑</div>
+            <h3>Structure beats hallucination</h3>
+            <p>Every fact in the arc is tagged with its source in gtmd. The LLM cannot invent facts; it can only render them. Structure constrains the model; typed beats surface missing context before rendering.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🔗</div>
+            <h3>Every asset records its back-references</h3>
+            <p>When an asset is published, we record which concepts it used: this customer, this value prop, this outcome. If the concept changes later, we can surface the asset as needing review. Provenance flows both ways.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">📝</div>
+            <h3>Drafts only (never auto-publishes)</h3>
+            <p>storyarc produces drafts that humans review, edit, and approve. Once approved, we record the final version's back-references into gtmd. An asset is never published without explicit human sign-off.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Parsing, fetching, shaping, and rendering</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">brief.parse</div><div class="pkg-desc">Parse a brief: title, format, audience, context pointers, beat sequence</div></div>
+          <div class="pkg-card"><div class="pkg-name">context.fetch.gtmd</div><div class="pkg-desc">Query depict+gtmd for all facts referenced in the brief</div></div>
+          <div class="pkg-card"><div class="pkg-name">template.select</div><div class="pkg-desc">Choose the narrative template matching format, audience, tone</div></div>
+          <div class="pkg-card"><div class="pkg-name">arc.shape</div><div class="pkg-desc">Build the beat sequence: assign facts to beats, detect missing context</div></div>
+          <div class="pkg-card"><div class="pkg-name">renderer.pptx</div><div class="pkg-desc">Render arc as PowerPoint slide deck with speaker notes</div></div>
+          <div class="pkg-card"><div class="pkg-name">renderer.docx</div><div class="pkg-desc">Render arc as Word document with formatting and citations</div></div>
+          <div class="pkg-card"><div class="pkg-name">renderer.markdown</div><div class="pkg-desc">Render arc as markdown blog post with frontmatter</div></div>
+          <div class="pkg-card"><div class="pkg-name">renderer.linkedin</div><div class="pkg-desc">Render arc as LinkedIn post: hook, insight, CTA, hashtags</div></div>
+          <div class="pkg-card"><div class="pkg-name">renderer.email</div><div class="pkg-desc">Render arc as email: subject, preview, body, signature</div></div>
+          <div class="pkg-card"><div class="pkg-name">renderer.landing</div><div class="pkg-desc">Render arc as landing page copy: headline, subhead, sections, CTA</div></div>
+          <div class="pkg-card"><div class="pkg-name">asset.publish</div><div class="pkg-desc">Record final approved asset and its back-references into gtmd</div></div>
+          <div class="pkg-card"><div class="pkg-name">drift.detect</div><div class="pkg-desc">Watch for gtmd changes that invalidate published assets; flag for review</div></div>
+        </div>
+      </section>
+
+      <section class="section" style="text-align:center;">
+        <div class="section-label">The ecosystem</div>
+        <h2>storyarc is the narrative output layer</h2>
+        <div class="arch-visual">
+          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+            Assets: slides · docs · blog · LinkedIn · email <span class="desc">Rendered narratives in their native formats</span>
+          </div>
+          <div class="arch-arrow">generated by &#8595;</div>
+          <div class="arch-layer" style="background:rgba(58,143,92,0.15);color:var(--success);border:1px solid rgba(58,143,92,0.3);">
+            storyarc <span class="desc">Brief parsing · context fetching · arc shaping · multi-format rendering</span>
+          </div>
+          <div class="arch-arrow">consumes &#8595;</div>
+          <div class="arch-layer" style="background:rgba(109,179,224,0.15);color:var(--light);border:1px solid rgba(109,179,224,0.3);">
+            depict + gtmd <span class="desc">Knowledge graph: customers, value props, outcomes, messaging, personas</span>
+          </div>
+          <div class="arch-arrow">powered by &#8595;</div>
+          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From one arc one format to drift detection and style control</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>One arc one format (fake graph)</h4><p>Parse a brief, shape one arc, render to markdown. Use a fake hand-authored gtmd graph. Humans can edit the markdown and we surface what changed from the arc.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Two arcs two formats</h4><p>Support two narrative templates. Render the same arc to both markdown and LinkedIn. Show that one fact maps to different prose in different formats.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Real depict+gtmd integration</h4><p>Connect to a live depict instance. Fetch facts from gtmd via GraphQL. Brief references the graph by concept ID. Arc shapes from real facts.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>pptx+docx renderers</h4><p>Render to PowerPoint and Word. Handle speaker notes, formatting, citations, embedded imagery. Test that the arc is format-agnostic.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Back-references + drift detection</div><p>Record which assets used which concepts. Watch for gtmd changes. Flag assets as stale when upstream facts change. Queue them for review.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Style + voice configuration</h4><p>Per-audience tone control (formal / conversational / irreverent). Per-channel templates (email vs LinkedIn has different arc shapes). Voice carryover across assets.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/ideas/depict/">depict</a>
+          <a href="/ideas/gtmd/">gtmd</a>
+          <a href="/ideas/mosarch/">mosarch</a>
+          <a href="/ideas/mostrade/">mostrade</a>
+          <a href="/ideas/aossc/">aossc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>

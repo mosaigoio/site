@@ -1,0 +1,103 @@
+---
+// IdeasSidebar.astro
+// Shared sidebar navigation for /ideas/<subproject>/ pages.
+
+export interface Props {
+  active?:
+    | "moshome"
+    | "mospresent"
+    | "mosbot"
+    | "mosops"
+    | "mostrade"
+    | "depict"
+    | "gtmd"
+    | "storyarc"
+    | "mosarch"
+    | "aossc";
+}
+
+const { active } = Astro.props;
+
+const distributions = [
+  { key: "moshome", label: "moshome", href: "/ideas/moshome/" },
+  { key: "mospresent", label: "mospresent", href: "/ideas/mospresent/" },
+  { key: "mosbot", label: "mosbot", href: "/ideas/mosbot/" },
+  { key: "mosops", label: "mosops", href: "/ideas/mosops/" },
+  { key: "mostrade", label: "mostrade", href: "/ideas/mostrade/" },
+];
+
+const intelligence = [
+  { key: "depict", label: "depict", href: "/ideas/depict/" },
+  { key: "gtmd", label: "gtmd", href: "/ideas/gtmd/" },
+  { key: "storyarc", label: "storyarc", href: "/ideas/storyarc/" },
+  { key: "mosarch", label: "mosarch", href: "/ideas/mosarch/" },
+];
+
+const community = [
+  { key: "aossc", label: "aossc", href: "/ideas/aossc/" },
+];
+---
+
+<aside class="hub-sidebar">
+  <a href="/ideas/" class="hub-sidebar-logo">
+    <img src="/images/mozzy-icon.webp" alt="mosaigo" />
+    Roadmap Ideas
+  </a>
+
+  <div class="hub-sidebar-section">Staging</div>
+  <a href="/staging/" class="hub-sidebar-link">mosaigo</a>
+  <a href="/staging/mosoptics/" class="hub-sidebar-link">mosoptics</a>
+  <a href="/staging/mosii/" class="hub-sidebar-link">mosii</a>
+
+  <div class="hub-sidebar-section">Distributions</div>
+  {
+    distributions.map((item) => (
+      <a
+        href={item.href}
+        class={`hub-sidebar-link ${active === item.key ? "active" : ""}`}
+      >
+        {item.label}
+        <span class="tag draft">idea</span>
+      </a>
+    ))
+  }
+
+  <div class="hub-sidebar-section">Intelligence</div>
+  {
+    intelligence.map((item) => (
+      <a
+        href={item.href}
+        class={`hub-sidebar-link ${active === item.key ? "active" : ""}`}
+      >
+        {item.label}
+        <span class="tag draft">idea</span>
+      </a>
+    ))
+  }
+
+  <div class="hub-sidebar-section">Community</div>
+  {
+    community.map((item) => (
+      <a
+        href={item.href}
+        class={`hub-sidebar-link ${active === item.key ? "active" : ""}`}
+      >
+        {item.label}
+        <span class="tag draft">idea</span>
+      </a>
+    ))
+  }
+
+  <div class="hub-sidebar-section">Resources</div>
+  <a href="/getting-started/" class="hub-sidebar-link">Docs</a>
+  <a href="/steps/" class="hub-sidebar-link">Step Catalog</a>
+  <a href="https://github.com/mosaigoio" class="hub-sidebar-link">GitHub</a>
+
+  <div class="hub-sidebar-footer">
+    <p>
+      These are <strong style="color:var(--accent);">roadmap ideas</strong>,
+      early concepts exploring what mosaigo pipelines can enable.
+      Browse the direction before anything gets built.
+    </p>
+  </div>
+</aside>

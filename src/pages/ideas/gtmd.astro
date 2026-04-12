@@ -1,0 +1,162 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gtmd — Go-to-market knowledge as a living graph</title>
+    <meta
+      name="description"
+      content="gtmd defines ICPs, personas, value props, positioning, messaging, channels, campaigns, funnel stages, and competitors as typed concepts in a depict knowledge graph."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="gtmd" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft</span>
+          <span class="hub-chip">depict domain ontology</span>
+          <span class="hub-chip">ICPs · Personas · Messaging · Funnel</span>
+        </div>
+        <h1>Your GTM strategy is a graph, <span class="accent">not a Google Doc.</span></h1>
+        <p class="tagline">gtmd defines ICPs, personas, value props, positioning, messaging, channels, campaigns, funnel stages, and competitors as typed concepts in a depict knowledge graph. Change a persona and every downstream asset surfaces as needing review.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>Teams re-explain their business every time they write content because the concepts live scattered across stale docs. GTM strategy becomes a living graph: ICPs and personas as queryable types, messaging that traces back to positioning that traces back to value props, campaigns that link to funnels that link to metrics. One concept changes—every downstream asset flags for review. The graph is the source of truth, and every edge carries provenance.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>From sources to actionable strategy</h2>
+        <p class="section-desc">Every box is a hot-swappable step. Facts flow in, extraction surfaces entities, alignment builds the graph, and live dashboards and storytelling tools consume the result.</p>
+        <div class="pipe-diagram">notion.ingest ──┐
+gdocs.ingest   ─┤
+transcripts    ─┼─→ extract.gtm.facts ─→ align.gtm.ontology ─→ depict.store.graph ─┐
+crm.snapshot   ─┤                                                                   │
+               │                                                                   ├─→ storyarc
+               └─────────────────────────────────────────────────────────────────┤
+                                                                                   ├─→ dashboards
+                                                                                   │
+                                                                                   └─→ onboarding</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Design principles</div>
+        <h2>Six things gtmd holds firm</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">📊</div>
+            <h3>One source of truth for GTM concepts</h3>
+            <p>ICPs, personas, value props, positioning, messaging — all typed concepts in one graph. Every asset links back. No more disconnected spreadsheets.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">⏱️</div>
+            <h3>History is first-class</h3>
+            <p>Every concept carries effectiveFrom and supersededBy. When a persona evolves, old assets stay linked to the old version with provenance. You can see what was true when.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">🛡️</div>
+            <h3>Identity resolution is conservative</h3>
+            <p>Never auto-merge personas or ICPs. Alignment surfaces candidates; humans decide. A false merge corrupts everything downstream—better to have duplicates and review them.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🔎</div>
+            <h3>Provenance on everything</h3>
+            <p>Every node and edge carries source, timestamp, extraction step, confidence score. You can trace any asset back to the fact that inspired it.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🏗️</div>
+            <h3>Built on depict, not a standalone tool</h3>
+            <p>gtmd is a depict domain module. You get alignment, schema evolution, GraphQL federation, and federation composition for free. Swap extractors. Evolve types. No vendor lock-in.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">🔗</div>
+            <h3>Feeds storyarc — the loop is the point</h3>
+            <p>storyarc consumes the graph to generate positioning docs, messaging playbooks, and campaign briefs. Changes to the graph flow through automatically. GTM is not a static doc—it's a live system.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Ingestion, extraction, alignment, and integration</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">ingest.notion</div><div class="pkg-desc">Notion database + page adapter for ICP specs, persona docs</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.gdocs</div><div class="pkg-desc">Google Docs adapter for positioning, messaging playbooks</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.transcripts</div><div class="pkg-desc">Customer call transcripts for persona validation</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.crm.snapshot</div><div class="pkg-desc">CRM snapshot adapter (HubSpot, Salesforce) for account segmentation</div></div>
+          <div class="pkg-card"><div class="pkg-name">extract.gtm.facts</div><div class="pkg-desc">Entity + relation extraction for ICPs, personas, value props, messaging</div></div>
+          <div class="pkg-card"><div class="pkg-name">align.gtm.conservative</div><div class="pkg-desc">Name-match merge strategy, never auto-merge personas or ICPs</div></div>
+          <div class="pkg-card"><div class="pkg-name">align.gtm.review.first</div><div class="pkg-desc">Low-confidence alignment candidates surface to human review queue</div></div>
+          <div class="pkg-card"><div class="pkg-name">gtm.context.fetch</div><div class="pkg-desc">Query the graph for persona, positioning, and messaging context</div></div>
+          <div class="pkg-card"><div class="pkg-name">campaign.track</div><div class="pkg-desc">Link campaigns to funnels, personas, and messaging used</div></div>
+          <div class="pkg-card"><div class="pkg-name">metric.source</div><div class="pkg-desc">Ingest and link performance metrics to funnels and personas</div></div>
+          <div class="pkg-card"><div class="pkg-name">competitor.ingest</div><div class="pkg-desc">Ingest competitor positioning and messaging for comparison</div></div>
+          <div class="pkg-card"><div class="pkg-name">asset.backref.record</div><div class="pkg-desc">Record which assets reference which concepts for impact analysis</div></div>
+        </div>
+      </section>
+
+      <section class="section" style="text-align:center;">
+        <div class="section-label">The ecosystem</div>
+        <h2>gtmd sits in the flow from sources to storytelling</h2>
+        <div class="arch-visual">
+          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+            storyarc · dashboards <span class="desc">Feeds positioning, messaging, onboarding from the graph</span>
+          </div>
+          <div class="arch-arrow">consumes &#8595;</div>
+          <div class="arch-layer" style="background:rgba(58,143,92,0.15);color:var(--success);border:1px solid rgba(58,143,92,0.3);">
+            gtmd <span class="desc">ICPs · personas · positioning · messaging · funnels · competitors</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer" style="background:rgba(109,179,224,0.15);color:var(--light);border:1px solid rgba(109,179,224,0.3);">
+            depict <span class="desc">Alignment · provenance · GraphQL · federation</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From hand-authored to fully ingested and linked</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>Minimum viable graph</h4><p>5 types (ICP, Persona, ValueProp, Positioning, Message), hand-authored in JSON, queryable via GraphQL.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Extraction + review queue</h4><p>Extract ICPs and personas from Notion + GDocs, surface low-confidence suggestions, human review before merge.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>History + supersession</h4><p>Add effectiveFrom/supersededBy to every concept. Track persona evolution. Link old assets to old versions.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Notion + GDocs ingestion</h4><p>Watch Notion databases for ICP specs, ingest GDocs positioning docs, crawl transcripts for persona validation.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Campaigns + funnel + metrics</h4><p>Link campaigns to personas and funnels. Ingest performance metrics. See which messaging resonates with which segments.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Competitor intel</h4><p>Ingest competitor positioning and messaging. Compare against your own. Detect gaps and opportunities in the graph.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/ideas/depict/">depict</a>
+          <a href="/ideas/storyarc/">storyarc</a>
+          <a href="/ideas/mosarch/">mosarch</a>
+          <a href="/ideas/mostrade/">mostrade</a>
+          <a href="/ideas/aossc/">aossc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>

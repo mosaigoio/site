@@ -1,0 +1,164 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>depict — A semantic ontology engine for mosaigo</title>
+    <meta
+      name="description"
+      content="depict is a semantic ontology engine. GraphQL is the schema language. mosaigo is the runtime. The knowledge graph is alive."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="depict" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft — concept only</span>
+          <span class="hub-chip">mosaigo foundation</span>
+          <span class="hub-chip">GraphQL · Provenance · Alignment</span>
+          <span class="hub-chip">Domain ontologies</span>
+        </div>
+        <h1>A semantic ontology engine. <span class="accent">The graph is alive.</span></h1>
+        <p class="tagline">depict defines shared meaning as GraphQL types, ingests facts from messy sources, aligns them against the ontology with provenance, and serves the resulting knowledge graph through queries and subscriptions. Domain modules (mosarch, gtmd) extend it. The whole pipeline is visible in Studio.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>Most ontology tools force you into RDF/OWL/SPARQL before you've stored a single fact. Most graph databases give you schema but no semantics, no provenance, no alignment. Most LLM "knowledge graph" tools extract but never learn. depict picks the part of each that pays for itself: <strong>GraphQL as the schema language, mosaigo as the runtime, provenance on every fact, and alignment as an explicit pipeline stage you can step through.</strong></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>Ingest, extract, align, serve</h2>
+        <p class="section-desc">Every box is a hot-swappable step. Every arrow is a topic. The schema itself is just another topic — evolving the ontology is another pipeline run.</p>
+        <div class="pipe-diagram">ingest.crm     ─┐
+ingest.files   ─┤
+ingest.api     ─┼─→ extract.facts ─→ align.ontology ─→ store.graph ─┐
+ingest.llm     ─┤          ↑                                        │
+                │          │                                        ├─→ graphql.serve
+schema.evolve ─┘          │                                        │
+                           │                                        ├─→ subscribe.changes
+provenance.attach ────────┘                                        │
+                                                                    └─→ infer.derived</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Design principles</div>
+        <h2>Six things depict holds firm</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(42,127,191,0.12);color:var(--primary);">📐</div>
+            <h3>GraphQL is the schema language</h3>
+            <p>Types are concepts. Field references are relations. Subscriptions are change notifications. No new query language — developers already know this one.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(200,152,42,0.12);color:var(--accent);">🔍</div>
+            <h3>Provenance on every fact</h3>
+            <p>Every node and edge carries a source, a timestamp, the step that asserted it, and a confidence score. Stripping provenance is a bug, not an optimization.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(58,143,92,0.12);color:var(--success);">⚖️</div>
+            <h3>Alignment is explicit</h3>
+            <p>Two facts that look the same may not be. Alignment is its own pipeline stage with named strategies you can step through. LLMs propose; alignment decides.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(109,179,224,0.12);color:var(--light);">🧩</div>
+            <h3>Composable via federation</h3>
+            <p>Domain ontologies (mosarch, gtmd) are modules that import the core types and add their own. GraphQL Federation is the composition primitive.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(181,48,48,0.12);color:var(--error);">🔄</div>
+            <h3>Schema evolves while running</h3>
+            <p><code>schema.evolve</code> is a pipeline step. Add a type, rename a field, merge two concepts — all without restarting, all with provenance.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon" style="background:rgba(107,107,120,0.12);color:var(--text-secondary);">🗄️</div>
+            <h3>Storage is a swappable step</h3>
+            <p>In-memory for dev. DuckDB / KuzuDB for embedded. Neo4j / Postgres for teams that already have them. The store is a step — swap it without changing anything else.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Ingestion, extraction, alignment, serving</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">ingest.files</div><div class="pkg-desc">Watch a folder of markdown / JSON / CSV</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.api</div><div class="pkg-desc">Poll or webhook from an external API</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.crm</div><div class="pkg-desc">CRM snapshot adapter (HubSpot, Salesforce)</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.notion</div><div class="pkg-desc">Notion database + page adapter</div></div>
+          <div class="pkg-card"><div class="pkg-name">extract.llm</div><div class="pkg-desc">Entity + relation extraction via LLM</div></div>
+          <div class="pkg-card"><div class="pkg-name">extract.regex</div><div class="pkg-desc">Pattern-based fact extraction</div></div>
+          <div class="pkg-card"><div class="pkg-name">align.name.similarity</div><div class="pkg-desc">Conservative name-match merge strategy</div></div>
+          <div class="pkg-card"><div class="pkg-name">align.embedding</div><div class="pkg-desc">Embedding-based similarity (suggested, never auto)</div></div>
+          <div class="pkg-card"><div class="pkg-name">provenance.attach</div><div class="pkg-desc">Tag every fact with source + step + time</div></div>
+          <div class="pkg-card"><div class="pkg-name">store.graph.memory</div><div class="pkg-desc">In-memory property graph for dev</div></div>
+          <div class="pkg-card"><div class="pkg-name">store.graph.duckdb</div><div class="pkg-desc">Embedded persistent store</div></div>
+          <div class="pkg-card"><div class="pkg-name">store.graph.neo4j</div><div class="pkg-desc">External property graph adapter</div></div>
+          <div class="pkg-card"><div class="pkg-name">schema.evolve</div><div class="pkg-desc">Live schema migration with provenance</div></div>
+          <div class="pkg-card"><div class="pkg-name">graphql.serve</div><div class="pkg-desc">Queries, subscriptions, mutations</div></div>
+          <div class="pkg-card"><div class="pkg-name">infer.derived</div><div class="pkg-desc">Named inference rules for derived facts</div></div>
+          <div class="pkg-card"><div class="pkg-name">review.queue</div><div class="pkg-desc">Low-confidence alignment candidates for humans</div></div>
+        </div>
+      </section>
+
+      <section class="section" style="text-align:center;">
+        <div class="section-label">The ecosystem</div>
+        <h2>depict is the foundation for domain ontologies</h2>
+        <div class="arch-visual">
+          <div class="arch-layer" style="background:rgba(200,152,42,0.15);color:var(--accent);border:1px solid rgba(200,152,42,0.3);">
+            mosarch · gtmd · storyarc · your-domain <span class="desc">Domain modules that extend the core ontology</span>
+          </div>
+          <div class="arch-arrow">extend &#8595;</div>
+          <div class="arch-layer" style="background:rgba(58,143,92,0.15);color:var(--success);border:1px solid rgba(58,143,92,0.3);">
+            depict <span class="desc">Core types · alignment · provenance · GraphQL · federation</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer" style="background:rgba(27,79,122,0.3);color:var(--light);border:1px solid rgba(27,79,122,0.5);">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From one source to a federated ontology</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>One schema, one source, one query</h4><p>Tiny core types, ingest from markdown, extract with LLM, align conservatively, store in memory, query via GraphQL.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Provenance + subscriptions</h4><p>Every fact tagged with source+step+time. Subscriptions for live change notification.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Persistent store + hot-swap alignment</h4><p>Embedded store survives restarts. Two named alignment strategies, swappable at runtime.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Schema evolution</h4><p>Add, rename, soft-delete types without restart. Schema changes have provenance.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Domain modules + federation</h4><p>Module packaging convention. Apollo Router gateway. mosarch + gtmd federated.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Inference + derived facts</h4><p>Named rules. Derived facts carry provenance pointing at their source facts.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/staging/mosoptics/">mosoptics</a>
+          <a href="/ideas/gtmd/">gtmd</a>
+          <a href="/ideas/mosarch/">mosarch</a>
+          <a href="/ideas/storyarc/">storyarc</a>
+          <a href="/ideas/mostrade/">mostrade</a>
+          <a href="/ideas/aossc/">aossc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>
