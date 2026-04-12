@@ -11,10 +11,10 @@ Many people with severe motor disabilities have full cognitive ability but no wa
 
 ## Stakeholders
 
-- **Non-verbal individuals** — communicate needs, wants, and feelings through eye gaze
-- **Caregivers & family** — configure boards, adjust sensitivity, track usage
-- **Teachers & therapists** — customize grids for learning objectives, track attention
-- **Developers & researchers** — extend, adapt, and improve the system
+- **Non-verbal individuals**: communicate needs, wants, and feelings through eye gaze
+- **Caregivers & family**: configure boards, adjust sensitivity, track usage
+- **Teachers & therapists**: customize grids for learning objectives, track attention
+- **Developers & researchers**: extend, adapt, and improve the system
 
 ## Capabilities
 

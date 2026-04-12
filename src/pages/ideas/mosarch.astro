@@ -6,7 +6,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mosarch — Architecture as a live, semantic graph</title>
+    <title>mosarch: Architecture as a live, semantic graph</title>
     <meta
       name="description"
       content="mosarch models systems from business capabilities through components, interfaces, and protocols as typed concepts in a depict knowledge graph. Every stakeholder gets a different view of the same architecture. Every view is a query, not a separate document."
@@ -25,7 +25,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
     <div class="hub-main">
       <section class="hero">
         <div class="hub-status-row">
-          <span class="hub-chip draft">🧊 Draft — concept only</span>
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
           <span class="hub-chip">depict domain ontology</span>
           <span class="hub-chip">TOGAF · C4 · ArchiMate · ADRs</span>
           <span class="hub-chip">Multi-stakeholder views</span>
@@ -37,14 +37,14 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
       <section class="section">
         <div class="intent-callout">
           <h3>Intent</h3>
-          <p>Architecture lives in 12 different disconnected tools — visio, confluence, git repos, terraform, kubernetes, openapi, jira, notion, lucidchart, miro, gsheet, email. Everyone knows they disagree. Nobody wins. mosarch's bet: <strong>architecture is a single knowledge graph, views are queries over that graph, and diagrams are derived from views.</strong> Ingest facts from running systems. Model decisions as first-class nodes. Every stakeholder asks the same graph for their view. The whole system has provenance.</p>
+          <p>Architecture lives in 12 different disconnected tools: Visio, Confluence, git repos, terraform, kubernetes, openapi, jira, notion, lucidchart, miro, gsheet, email. Everyone knows they disagree. Nobody wins. mosarch's bet: <strong>architecture is a single knowledge graph, views are queries over that graph, and diagrams are derived from views.</strong> Ingest facts from running systems. Model decisions as first-class nodes. Every stakeholder asks the same graph for their view. The whole system has provenance.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="section-label">The idea in one picture</div>
         <h2>Ingest, extract, align, query, render</h2>
-        <p class="section-desc">Every input is a live fact source. Every output is a derived view. The middle is depict — aligned facts with provenance.</p>
+        <p class="section-desc">Every input is a live fact source. Every output is a derived view. The middle is depict: aligned facts with provenance.</p>
         <div class="pipe-diagram">ingest.docs ──┐
 ingest.repos ─┤
 ingest.k8s ───┼──→ extract.arch.facts ──→ align.arch.ontology ──→ depict.store.graph ──┐
@@ -76,12 +76,12 @@ ingest.openapi┘                                                               
           <div class="diff-card">
             <div class="diff-icon light">🔄</div>
             <h3>Ingests from running systems</h3>
-            <p>Kubernetes clusters are live sources. Terraform plans are ingested. OpenAPI specs define interfaces. Dockerfile inspections extract layer facts. Architecture drifts—detection is a query, not a manual review.</p>
+            <p>Kubernetes clusters are live sources. Terraform plans are ingested. OpenAPI specs define interfaces. Dockerfile inspections extract layer facts. Architecture drifts. Detection is a query, not a manual review.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon error">📊</div>
             <h3>Diagrams are derived projections</h3>
-            <p>SVG, interactive, Mermaid—all rendered on-demand from the same graph. Change the architecture in depict, all diagrams auto-update. Render for a specific stakeholder role, a specific timeframe, a specific decision scope.</p>
+            <p>SVG, interactive, Mermaid: all rendered on-demand from the same graph. Change the architecture in depict, all diagrams auto-update. Render for a specific stakeholder role, a specific timeframe, a specific decision scope.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon muted">🔗</div>

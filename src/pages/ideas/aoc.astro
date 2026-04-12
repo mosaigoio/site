@@ -6,10 +6,10 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>aoc — Autonomous Open Community</title>
+    <title>AOC: Autonomous Open Community</title>
     <meta
       name="description"
-      content="aoc defines named agent roles that co-maintain modular open source projects under explicit human accountability. Every role has a named human accountability anchor. No autonomous merges. No autonomous releases. No autonomous moderation. Provenance on every action."
+      content="Autonomous Open Community (AOC) defines named agent roles that co-maintain modular open source projects under explicit human accountability. Every role has a named human accountability anchor. No autonomous merges. No autonomous releases. No autonomous moderation. Provenance on every action."
     />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
@@ -31,13 +31,13 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
           <span class="hub-chip">Never merges autonomously</span>
         </div>
         <h1>Autonomous Open <span class="accent">Community</span></h1>
-        <p class="tagline">aoc defines named agent roles — maintainer, devrel, security-reviewer, release-manager, standards-enforcer — that co-maintain modular open source projects. Every role has a named human accountability anchor. No autonomous merges. No autonomous releases. No autonomous moderation. Provenance on every action.</p>
+        <p class="tagline">Autonomous Open Community (AOC) defines named agent roles: maintainer, devrel, security-reviewer, release-manager, and standards-enforcer. These roles co-maintain modular open source projects. Every role has a named human accountability anchor. No autonomous merges. No autonomous releases. No autonomous moderation. Provenance on every action.</p>
       </section>
 
       <section class="section">
         <div class="intent-callout">
           <h3>Intent</h3>
-          <p>Maintainer burnout scales with project count. Triage volume, repetitive PR review, release grunt work — all grow linearly as the number of projects multiply. Agents can handle the predictable parts (event normalization, routing, triage, scanning) under explicit human gates. But the final gate stays with a named human. The merge button is the maintainer's. The publish button is the release manager's. Every agent action carries provenance: role, playbook version, human anchor, model checkpoint. This is co-maintenance, not autonomous maintenance. Agents are deputies; humans are principals.</p>
+          <p>Maintainer burnout scales with project count. Triage volume, repetitive PR review, release grunt work. These all grow linearly as the number of projects multiply. Agents can handle the predictable parts (event normalization, routing, triage, scanning) under explicit human gates. But the final gate stays with a named human. The merge button is the maintainer's. The publish button is the release manager's. Every agent action carries provenance: role, playbook version, human anchor, model checkpoint. This is co-maintenance, not autonomous maintenance. Agents are deputies; humans are principals.</p>
         </div>
       </section>
 
@@ -53,7 +53,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
 
       <section class="section">
         <div class="section-label">Design principles</div>
-        <h2>Six things aoc holds firm</h2>
+        <h2>Six things AOC holds firm</h2>
         <div class="diff-grid">
           <div class="diff-card">
             <div class="diff-icon primary">👤</div>
@@ -63,12 +63,12 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
           <div class="diff-card">
             <div class="diff-icon accent">🔒</div>
             <h3>No autonomous merges</h3>
-            <p>The merge button is a human's, always. Agents can draft, comment, suggest — but the final gate is manual. Humans stay in control of what lands on main.</p>
+            <p>The merge button is a human's, always. Agents can draft, comment, suggest, but the final gate is manual. Humans stay in control of what lands on main.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon success">📦</div>
             <h3>No autonomous releases</h3>
-            <p>The publish button is a human's, always. Agents can collect notes, stage artifacts, run tests — but humans decide when (and whether) to ship.</p>
+            <p>The publish button is a human's, always. Agents can collect notes, stage artifacts, run tests, but humans decide when (and whether) to ship.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon light">🛡️</div>
@@ -131,10 +131,10 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
 
       <section class="section">
         <div class="section-label">The Five Hard Rules</div>
-        <h2>Core identity of aoc</h2>
+        <h2>Core identity of AOC</h2>
         <div class="principle-grid">
           <div class="principle"><div class="principle-num">1</div><div><h4>Human anchor on every role</h4><p>Every agent role is bound to a named human. That human is accountable for the role's decisions. Agents amplify; humans answer.</p></div></div>
-          <div class="principle"><div class="principle-num">2</div><div><h4>No silent automation</h4><p>Every agent action is visible. Comments, PRs, label changes — all carry provenance. Humans see what agents do, why, and by whom.</p></div></div>
+          <div class="principle"><div class="principle-num">2</div><div><h4>No silent automation</h4><p>Every agent action is visible. Comments, PRs, label changes. All carry provenance. Humans see what agents do, why, and by whom.</p></div></div>
           <div class="principle"><div class="principle-num">3</div><div><h4>The human gate is final</h4><p>No matter how confident the agent is, the final button press is human. Merge. Publish. Moderate. All require a human principal to decide.</p></div></div>
           <div class="principle"><div class="principle-num">4</div><div><h4>Playbooks are live code, not black boxes</h4><p>Every step in a role's playbook is readable, versionable, auditable. Humans can inspect what the agent is doing and why.</p></div></div>
           <div class="principle"><div class="principle-num">5</div><div><h4>No role escalation without explicit approval</h4><p>An agent role never makes decisions outside its scope. A maintainer doesn't release. A devrel doesn't merge. Scope creep is a bug.</p></div></div>

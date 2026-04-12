@@ -6,7 +6,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mospresent — Present like you're broadcasting from the future</title>
+    <title>mospresent: Present like you're broadcasting from the future</title>
     <meta
       name="description"
       content="mospresent is a macOS virtual camera that blends your webcam with transparent slide content from Google Slides or PowerPoint, driven by hand gestures, speech, and optional LLM overlays."
@@ -25,19 +25,19 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
     <div class="hub-main">
       <section class="hero">
         <div class="hub-status-row">
-          <span class="hub-chip draft">🧊 Draft — concept only</span>
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
           <span class="hub-chip">mosaigo distribution</span>
           <span class="hub-chip">macOS virtual camera</span>
           <span class="hub-chip">gesture + voice driven</span>
         </div>
         <h1>Your slides, your face, <span class="accent">one stream</span>.</h1>
-        <p class="tagline">mospresent is a macOS virtual camera that blends your webcam with transparent slide content from Google Slides or PowerPoint — driven by hand gestures, speech, and an optional local LLM. Present in Meet, Zoom, and Teams like you're broadcasting from the future.</p>
+        <p class="tagline">mospresent is a macOS virtual camera that blends your webcam with transparent slide content from Google Slides or PowerPoint, driven by hand gestures, speech, and an optional local LLM. Present in Meet, Zoom, and Teams like you're broadcasting from the future.</p>
       </section>
 
       <section class="section">
         <div class="intent-callout">
           <h3>Intent</h3>
-          <p><strong>In remote meetings, presence beats slides.</strong> Screen-share kills the presenter. Lightboards are beautiful but impractical. mospresent is the software version of a lightboard — your existing deck floats around you, your gestures drive it, your voice cues it, and the output is a standard virtual camera any conferencing app can select. You stay visible. Your audience stays engaged.</p>
+          <p><strong>In remote meetings, presence beats slides.</strong> Screen-share kills the presenter. Lightboards are beautiful but impractical. mospresent is the software version of a lightboard. Your existing deck floats around you, your gestures drive it, your voice cues it, and the output is a standard virtual camera any conferencing app can select. You stay visible. Your audience stays engaged.</p>
         </div>
       </section>
 
@@ -64,7 +64,7 @@ Slides ──┤           ↑
           <div class="diff-card">
             <div class="diff-icon accent">📹</div>
             <h3>Zero conferencing changes</h3>
-            <p>Output as a standard virtual camera. Any tool that can pick a camera — Zoom, Meet, Teams, Slack, Discord — works immediately.</p>
+            <p>Output as a standard virtual camera. Any tool that can pick a camera (Zoom, Meet, Teams, Slack, Discord) works immediately.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon success">⚡</div>
@@ -111,7 +111,7 @@ Slides ──┤           ↑
       <section class="section">
         <div class="section-label">Latency budget</div>
         <h2>Why the critical path is &lt; 30 ms</h2>
-        <p class="section-desc">Heavy work never blocks composition. LLM, STT, intent, and slide rendering all run on parallel pipelines and publish to last-value stores — the composite pipeline reads the freshest value every tick.</p>
+        <p class="section-desc">Heavy work never blocks composition. LLM, STT, intent, and slide rendering all run on parallel pipelines and publish to last-value stores. The composite pipeline reads the freshest value every tick.</p>
         <div class="eco-grid">
           <div class="eco-card">
             <div class="eco-badge primary">critical path</div>

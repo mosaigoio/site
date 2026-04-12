@@ -3,7 +3,7 @@ title: mosoptics
 description: Computer vision step library for the mosaigo pipeline framework.
 ---
 
-mosoptics is a computer vision step library for the [mosaigo](/getting-started/) pipeline framework. It provides production-ready face detection, gaze estimation, stereo capture, and GPU-accelerated ONNX inference — all as composable, typed pipeline steps.
+mosoptics is a computer vision step library for the [mosaigo](/getting-started/) pipeline framework. It provides production-ready face detection, gaze estimation, stereo capture, and GPU-accelerated ONNX inference, all as composable, typed pipeline steps.
 
 ## Prerequisites
 
@@ -38,4 +38,4 @@ go get github.com/mosaigoio/mosoptics@latest
 
 ## Architecture
 
-mosoptics imports `mosaigo/mos` and `mosaigo/engine` as dependencies. Every package exports mosaigo `TypedEngineStep` implementations. The CGo boundary lives in mosoptics — mosaigo stays pure Go.
+mosoptics imports `mosaigo/mos` and `mosaigo/engine` as dependencies. Every package exports mosaigo `TypedEngineStep` implementations. The CGo boundary lives in mosoptics. Mosaigo stays pure Go.

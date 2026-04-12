@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: Get started with mosaigo — install the framework and create your first pipeline.
+description: Get started with mosaigo. Install the framework and create your first pipeline.
 ---
 
 ## Prerequisites

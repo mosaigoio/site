@@ -6,10 +6,10 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>moshome — Own your home cameras. No subscriptions.</title>
+    <title>moshome: Own your home cameras. No subscriptions.</title>
     <meta
       name="description"
-      content="moshome is a local-first, composable home surveillance distribution built on mosaigo and mosoptics. An open-source alternative to Blink, Ring, Nest, and Wyze — with every capability as a reusable pipeline step."
+      content="moshome is a local-first, composable home surveillance distribution built on mosaigo and mosoptics. An open-source alternative to Blink, Ring, Nest, and Wyze, with every capability as a reusable pipeline step."
     />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
@@ -25,26 +25,26 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
     <div class="hub-main">
       <section class="hero">
         <div class="hub-status-row">
-          <span class="hub-chip draft">🧊 Draft — concept only</span>
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
           <span class="hub-chip">mosoptics sub-distribution</span>
           <span class="hub-chip">RTSP · ONVIF</span>
           <span class="hub-chip">Local-first</span>
         </div>
         <h1>Own your <span class="accent">home cameras</span>.<br />No subscriptions. No cloud lock-in.</h1>
-        <p class="tagline">moshome is a local-first, composable home surveillance distribution built on mosaigo pipelines and mosoptics vision steps — an open-source alternative to Blink, Ring, Nest, and Wyze.</p>
+        <p class="tagline">moshome is a local-first, composable home surveillance distribution built on mosaigo pipelines and mosoptics vision steps. An open-source alternative to Blink, Ring, Nest, and Wyze.</p>
       </section>
 
       <section class="section">
         <div class="intent-callout">
           <h3>Intent</h3>
-          <p>moshome is about <strong>sovereignty over the video captured in your own home</strong>. Not a clone of a subscription product. Not a monolithic VMS. A composable pipeline library that turns any RTSP camera into a programmable event-detection and notification system — every capability as a reusable step you can rearrange, swap, or extend.</p>
+          <p>moshome is about <strong>sovereignty over the video captured in your own home</strong>. Not a clone of a subscription product. Not a monolithic VMS. A composable pipeline library that turns any RTSP camera into a programmable event-detection and notification system, with every capability as a reusable step you can rearrange, swap, or extend.</p>
         </div>
       </section>
 
       <section class="section">
         <div class="section-label">The idea in one picture</div>
         <h2>Every arrow is a topic. Every box is a step.</h2>
-        <p class="section-desc">Pipelines are composable. A new idea usually means adding one or two steps — not rebuilding the system.</p>
+        <p class="section-desc">Pipelines are composable. A new idea usually means adding one or two steps, not rebuilding the system.</p>
         <div class="pipe-diagram">RTSP Camera → Capture → Motion → Detect → Zone → Dedupe → Notify
                                                          ↘
                                               Ring Buffer → Clip → Log</div>
@@ -89,7 +89,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
 
       <section class="section">
         <div class="section-label">Step library (target)</div>
-        <h2>Capture, detect, clip, notify — each a step</h2>
+        <h2>Capture, detect, clip, notify: each a step</h2>
         <p class="section-desc">Drop in or swap out any step without touching the rest.</p>
         <div class="pkg-grid">
           <div class="pkg-card"><div class="pkg-name">rtsp.capture</div><div class="pkg-desc">Decode H.264/H.265 RTSP, publish Frame topic</div></div>
@@ -133,7 +133,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
           <div class="principle"><div class="principle-num">01</div><div><h4>Single camera, single event, single notification</h4><p>Prove the end-to-end path on one real camera. <code>rtsp.capture → motion.detect → clip.extract → notify.webhook</code>.</p></div></div>
           <div class="principle"><div class="principle-num">02</div><div><h4>Multi-camera Studio with zones</h4><p>Three cameras concurrently. Camera Map panel. Polygon zone editor. SSD-backed ring buffer.</p></div></div>
           <div class="principle"><div class="principle-num">03</div><div><h4>Object detection + event enrichment</h4><p>YOLOv8n as default. Sidecar JSON metadata. Event log with filtering and clip playback.</p></div></div>
-          <div class="principle"><div class="principle-num">04</div><div><h4>Notification ecosystem</h4><p>Matrix, Signal, Telegram, SMTP, Home Assistant, schedule gates, cooldowns — all as drop-in steps.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Notification ecosystem</h4><p>Matrix, Signal, Telegram, SMTP, Home Assistant, schedule gates, cooldowns. All as drop-in steps.</p></div></div>
           <div class="principle"><div class="principle-num">05</div><div><h4>Audio events</h4><p>Glass break, smoke alarm, doorbell, bark detection via YAMNet-style classifier.</p></div></div>
           <div class="principle"><div class="principle-num">06</div><div><h4>Storage dashboard + community distribution</h4><p>Retention rules, opt-in cold storage, step proposal workflow, camera compatibility matrix.</p></div></div>
         </div>

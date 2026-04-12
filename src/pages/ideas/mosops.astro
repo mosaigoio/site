@@ -6,7 +6,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mosops — Operators you can see, edit, and redeploy while they run</title>
+    <title>mosops: Operators you can see, edit, and redeploy while they run</title>
     <meta
       name="description"
       content="mosops is a mosaigo distribution for building Kubernetes, Podman, and Docker operators as live pipeline graphs. Sub-second inner loop. Real clusters. No YAML archaeology."
@@ -25,13 +25,13 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
     <div class="hub-main">
       <section class="hero">
         <div class="hub-status-row">
-          <span class="hub-chip draft">🧊 Draft — concept only</span>
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
           <span class="hub-chip">mosaigo distribution</span>
           <span class="hub-chip">Kubernetes · Podman · Docker</span>
           <span class="hub-chip">Live Studio</span>
         </div>
         <h1>Operators you can <span class="accent">see, edit, and redeploy</span> while they run.</h1>
-        <p class="tagline">mosops turns Kubernetes controllers into mosaigo pipelines. Informers, reconcilers, clients, webhooks, leaders, finalizers — each a reusable step. The graph is the operator. The inner loop is sub-second. The same framework builds operators for Kubernetes, Podman, and Docker.</p>
+        <p class="tagline">mosops turns Kubernetes controllers into mosaigo pipelines. Informers, reconcilers, clients, webhooks, leaders, finalizers, each a reusable step. The graph is the operator. The inner loop is sub-second. The same framework builds operators for Kubernetes, Podman, and Docker.</p>
       </section>
 
       <section class="section">
@@ -44,7 +44,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
       <section class="section">
         <div class="section-label">The idea in one picture</div>
         <h2>Informer → reconcile → client → status, as a graph</h2>
-        <p class="section-desc">Every arrow is a topic. Every box is a step you can inspect, edit, swap, and hot-reload — with the controller still running against a real cluster.</p>
+        <p class="section-desc">Every arrow is a topic. Every box is a step you can inspect, edit, swap, and hot-reload, with the controller still running against a real cluster.</p>
         <div class="pipe-diagram">Informer ──┐
            ├─→ workqueue ─→ reconcile.dispatch ─→ reconcile.step(s) ─→ client.apply
 Webhook ───┘                                              ↓
@@ -80,7 +80,7 @@ Webhook ───┘                                              ↓
           <div class="diff-card">
             <div class="diff-icon error">🧱</div>
             <h3>Lifecycle built-in</h3>
-            <p>Finalizers, leader election, webhooks, conditions, events, rate-limited workqueues — first-class steps, not copy-pasted snippets from a five-year-old sample repo.</p>
+            <p>Finalizers, leader election, webhooks, conditions, events, rate-limited workqueues. First-class steps, not copy-pasted snippets from a five-year-old sample repo.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon muted">🧩</div>
@@ -116,7 +116,7 @@ Webhook ───┘                                              ↓
       <section class="section section-centered">
         <div class="section-label">The inner loop</div>
         <h2>Hot-swap a reconcile step without losing state</h2>
-        <p class="section-desc" style="max-width:720px;">You edit a step. mosops rebuilds it, pauses the workqueue, swaps the step, resumes — all without dropping informer caches, surrendering the leader lease, or losing in-flight work. The reconcile waterfall in Studio shows exactly which step ran, what it read, what it wrote, and what it returned. The inner loop is measured in <strong>hundreds of milliseconds</strong>, not tens of seconds.</p>
+        <p class="section-desc" style="max-width:720px;">You edit a step. mosops rebuilds it, pauses the workqueue, swaps the step, resumes. All without dropping informer caches, surrendering the leader lease, or losing in-flight work. The reconcile waterfall in Studio shows exactly which step ran, what it read, what it wrote, and what it returned. The inner loop is measured in <strong>hundreds of milliseconds</strong>, not tens of seconds.</p>
       </section>
 
       <section class="section section-centered">

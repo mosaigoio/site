@@ -6,7 +6,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>mostrade — Trading intelligence as a live pipeline graph</title>
+    <title>mostrade: Trading intelligence as a live pipeline graph</title>
     <meta
       name="description"
       content="mostrade is a mosaigo distribution that connects to trading APIs (Coinbase, Alpaca, Kalshi, and others), respects rate limits, computes signals and arbitrage, exposes everything through GraphQL, and never executes trades."
@@ -25,7 +25,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
     <div class="hub-main">
       <section class="hero">
         <div class="hub-status-row">
-          <span class="hub-chip draft">🧊 Draft — concept only</span>
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
           <span class="hub-chip">mosaigo distribution</span>
           <span class="hub-chip">Coinbase · Alpaca · Kalshi · IBKR</span>
           <span class="hub-chip">GraphQL + reactive UI</span>
@@ -38,7 +38,7 @@ import IdeasSidebar from "../../components/IdeasSidebar.astro";
       <section class="section">
         <div class="intent-callout">
           <h3>Intent</h3>
-          <p>Most retail traders juggle four to six apps to do anything serious — one for crypto, one for equities, one for prediction markets, one for tax tracking, one for charting, one for sentiment. None of them talk to each other. The data lives in five places. mostrade's bet: <strong>every part of the workflow is a pipeline step, every piece of state is a topic, the whole system is one live graph you can query, subscribe to, and build a UI on top of.</strong> It does not execute trades. Not in v0.1, not in v1.0, not ever.</p>
+          <p>Most retail traders juggle four to six apps to do anything serious: one for crypto, one for equities, one for prediction markets, one for tax tracking, one for charting, one for sentiment. None of them talk to each other. The data lives in five places. mostrade's bet: <strong>every part of the workflow is a pipeline step, every piece of state is a topic, the whole system is one live graph you can query, subscribe to, and build a UI on top of.</strong> It does not execute trades. Not in v0.1, not in v1.0, not ever.</p>
         </div>
       </section>
 
@@ -69,17 +69,17 @@ arbitrage.cross ─────────────────────�
           <div class="diff-card">
             <div class="diff-icon primary">⏱️</div>
             <h3>Rate limits first-class</h3>
-            <p>Every venue adapter declares a <code>RateBudget</code>. Steps degrade gracefully (soft + hard). Exceeding the budget fails loudly and early — never silently.</p>
+            <p>Every venue adapter declares a <code>RateBudget</code>. Steps degrade gracefully (soft + hard). Exceeding the budget fails loudly and early. Never silently.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon accent">🌐</div>
             <h3>Multiple venues, equal footing</h3>
-            <p>Coinbase, Alpaca, Kalshi, IBKR — none is special. The same canonical ticker shape, the same provenance, the same interface. Cross-venue arbitrage falls out for free.</p>
+            <p>Coinbase, Alpaca, Kalshi, IBKR: none is special. The same canonical ticker shape, the same provenance, the same interface. Cross-venue arbitrage falls out for free.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon success">📊</div>
             <h3>Near-real-time, not HFT</h3>
-            <p>Targets 100ms–5s latency. mostrade is for portfolio intelligence, signal computation, and arbitrage detection — not for microsecond market-making.</p>
+            <p>Targets 100ms–5s latency. mostrade is for portfolio intelligence, signal computation, and arbitrage detection, not for microsecond market-making.</p>
           </div>
           <div class="diff-card">
             <div class="diff-icon light">🧠</div>
