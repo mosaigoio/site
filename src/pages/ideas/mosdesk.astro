@@ -1,0 +1,244 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mosdesk: One keyboard, one mouse, all your machines</title>
+    <meta
+      name="description"
+      content="mosdesk shares a single mouse and keyboard across multiple computers using mosaigo pipelines. Move your cursor off one screen and onto the next. Type on whatever machine has focus. Encrypted end-to-end, zero-trust, no keylogging surface."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="mosdesk" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
+          <span class="hub-chip">mosaigo distribution</span>
+          <span class="hub-chip">Input sharing · Multi-host · Zero-trust</span>
+          <span class="hub-chip">Security-first design</span>
+        </div>
+        <h1>One mouse. One keyboard. <span class="accent">Every machine.</span></h1>
+        <p class="tagline">mosdesk shares a single mouse and keyboard across all your computers. Move the cursor off the right edge of your laptop and it appears on the left edge of your workstation. Start typing and the keystrokes go to whichever machine has focus. Like Synergy, but built on mosaigo pipelines with security as the foundation, not an afterthought.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>If you have more than two computers on your desk, you know the problem. KVM switches are clunky and break flow. Synergy and Barrier solved the ergonomics but left a security gap: input events cross the network, and any tool that captures keystrokes and sends them over a wire is one misconfiguration away from being a keylogger. mosdesk's bet: <strong>build input sharing as a mosaigo pipeline where the transport is encrypted end-to-end with mutual authentication, where no intermediate node can read the input stream, where the connection topology is visible in Studio, and where the security model is auditable, not just assumed.</strong></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>Capture, encrypt, route, inject</h2>
+        <p class="section-desc">Every box is a hot-swappable step. The input stream is encrypted before it leaves the source machine. The target machine decrypts and injects. Nothing in between can read the events.</p>
+        <div class="pipe-diagram">┌─────────────────── Source Host ───────────────────┐
+│                                                    │
+│  input.capture.mouse ──┐                           │
+│  input.capture.keyboard┼→ edge.detect → encrypt.stream ──→ ─┐
+│  input.capture.clipboard┘                          │        │
+│                                                    │        │
+└────────────────────────────────────────────────────┘        │
+                                                              │
+                              mTLS + WireGuard tunnel         │
+                                                              │
+┌─────────────────── Target Host ───────────────────┐        │
+│                                                    │   ◄────┘
+│  decrypt.stream → inject.mouse                     │
+│                 → inject.keyboard                   │
+│                 → inject.clipboard                  │
+│                                                    │
+│  display.topology (Studio)                          │
+│                                                    │
+└────────────────────────────────────────────────────┘
+
+┌─────────────────── Target Host 2 ─────────────────┐
+│  (same pipeline, different edge assignment)         │
+└────────────────────────────────────────────────────┘</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Security model</div>
+        <h2>This is the hard part. Treat it that way.</h2>
+        <p class="section-desc">A tool that captures keystrokes and sends them over a network is inherently dangerous. The security model must be designed to make keylogging structurally impossible, not just policy-prohibited.</p>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">🔐</div>
+            <h3>End-to-end encryption</h3>
+            <p>Input events are encrypted on the source host before they touch the network. Decryption happens on the target host. The transport layer never sees plaintext input. Even if the network is compromised, the input stream is opaque.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">🤝</div>
+            <h3>Mutual authentication</h3>
+            <p>Both hosts prove identity before any input flows. mTLS with pinned certificates. No anonymous connections. No trust-on-first-use without explicit confirmation. Each machine in the topology is a known, verified peer.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🚫</div>
+            <h3>No logging surface</h3>
+            <p>The pipeline never writes input events to disk, never buffers them in a readable queue, never logs them. Input events exist in memory for the duration of the encrypt-transport-decrypt cycle and nowhere else. No step in the pipeline has a "dump to file" option. By design.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">🔍</div>
+            <h3>Auditable topology</h3>
+            <p>Studio shows exactly which hosts are connected, which direction input flows, and which encryption keys are active. You can see the full connection graph. No hidden peers. No silent listeners. The topology is always visible.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon error">⏱️</div>
+            <h3>Short-lived sessions</h3>
+            <p>Connection sessions have a configurable maximum lifetime. Keys rotate on a schedule. Idle connections time out and require re-authentication. A forgotten session on an unattended machine does not stay open forever.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">🛡️</div>
+            <h3>Zero-trust networking</h3>
+            <p>Optional WireGuard tunnel underneath the application-layer encryption. Defense in depth: even if one layer is broken, the other still protects. The network is assumed hostile. Always.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">How it works</div>
+        <h2>Edge detection, routing, injection</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>Screen topology definition</h4><p>You define the physical layout of your screens: laptop on the left, workstation center, dev board on the right. mosdesk knows which edge of which screen connects to which machine. Configure once, change when your desk changes.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Mouse capture and edge detection</h4><p>The source host captures mouse movement at the OS level. When the cursor hits a configured screen edge, mosdesk locks the local cursor and starts sending mouse events to the target host. The cursor appears on the target's screen at the corresponding position.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Keyboard routing</h4><p>Keystrokes route to whichever host currently has mouse focus. When you move the cursor to a target machine, your keyboard follows. All keystrokes are encrypted before leaving the source. The target decrypts and injects them as native OS input events.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Clipboard sharing</h4><p>Copy on one machine, paste on another. Clipboard contents are encrypted in transit just like keystrokes. Clipboard sync is opt-in per host pair. Large clipboard contents (images, files) are chunked and streamed, not buffered entirely in memory.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Multi-host mesh</h4><p>Not limited to two machines. Define a topology with as many hosts as you have. The mesh handles routing automatically. Move through machines left-to-right, wrap around, or jump directly with a hotkey.</p></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Design principles</div>
+        <h2>Six things mosdesk holds firm</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">⚡</div>
+            <h3>Latency is the feature</h3>
+            <p>Input sharing that feels laggy is worse than no input sharing. The pipeline is optimized for sub-5ms latency on a local network. Mouse movement must feel instant. Keyboard input must feel native. If it's perceptible, it's broken.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">🖥️</div>
+            <h3>Cross-platform from day one</h3>
+            <p>Linux, macOS, Windows. The input capture and injection steps are OS-specific. Everything else is shared. You should be able to use your MacBook keyboard to type into your Linux workstation and your Windows gaming rig from the same desk.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🧩</div>
+            <h3>Steps are swappable</h3>
+            <p>Want a different encryption scheme? Swap the encrypt/decrypt steps. Want to add input filtering (block certain key combos on certain hosts)? Add a filter step. The pipeline is composable. The security model is the constraint, not the implementation.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">📐</div>
+            <h3>Topology is configuration</h3>
+            <p>Screen layout, edge assignments, host addresses, authentication, all defined in a configuration file. No GUI required to set up. Version-controllable. Shareable across setups. Change your desk, change the config.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon error">🔒</div>
+            <h3>Security is not optional</h3>
+            <p>There is no "insecure mode" for testing. There is no "skip encryption for local network." The encrypted path is the only path. The mutual-auth path is the only path. Convenience shortcuts in security-critical tools become attack surfaces.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">👁️</div>
+            <h3>Visible in Studio</h3>
+            <p>The full input pipeline is visible in mosaigo Studio. See which hosts are connected. See input event flow rates. See encryption status. See latency per hop. Debug connection issues the same way you debug any pipeline.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">OS integration</div>
+        <h2>Capture and injection per platform</h2>
+        <p class="section-desc">Each OS needs native code for input capture and injection. The rest of the pipeline is platform-independent.</p>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name accent">Linux: libinput / uinput</div><div class="pkg-desc">Capture via libinput, inject via uinput virtual device. Works on X11 and Wayland.</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">macOS: IOKit / CGEvent</div><div class="pkg-desc">Capture via IOKit HID, inject via CGEventPost. Requires accessibility permissions.</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Windows: Raw Input / SendInput</div><div class="pkg-desc">Capture via Raw Input API, inject via SendInput. Works with UAC elevation.</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Capture, encrypt, transport, decrypt, inject</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">input.capture.mouse</div><div class="pkg-desc">OS-native mouse event capture</div></div>
+          <div class="pkg-card"><div class="pkg-name">input.capture.keyboard</div><div class="pkg-desc">OS-native keyboard event capture</div></div>
+          <div class="pkg-card"><div class="pkg-name">input.capture.clipboard</div><div class="pkg-desc">OS-native clipboard change detection</div></div>
+          <div class="pkg-card"><div class="pkg-name">edge.detect</div><div class="pkg-desc">Detect cursor hitting screen edge, trigger host switch</div></div>
+          <div class="pkg-card"><div class="pkg-name">edge.hotkey</div><div class="pkg-desc">Direct host switch via configurable hotkey</div></div>
+          <div class="pkg-card"><div class="pkg-name">encrypt.stream</div><div class="pkg-desc">Encrypt input event stream (ChaCha20-Poly1305)</div></div>
+          <div class="pkg-card"><div class="pkg-name">decrypt.stream</div><div class="pkg-desc">Decrypt input event stream on target host</div></div>
+          <div class="pkg-card"><div class="pkg-name">transport.mtls</div><div class="pkg-desc">mTLS connection with pinned certificates</div></div>
+          <div class="pkg-card"><div class="pkg-name">transport.wireguard</div><div class="pkg-desc">Optional WireGuard tunnel for defense in depth</div></div>
+          <div class="pkg-card"><div class="pkg-name">inject.mouse</div><div class="pkg-desc">OS-native mouse event injection on target</div></div>
+          <div class="pkg-card"><div class="pkg-name">inject.keyboard</div><div class="pkg-desc">OS-native keystroke injection on target</div></div>
+          <div class="pkg-card"><div class="pkg-name">inject.clipboard</div><div class="pkg-desc">OS-native clipboard paste on target</div></div>
+          <div class="pkg-card"><div class="pkg-name">session.manage</div><div class="pkg-desc">Session lifecycle, timeout, key rotation</div></div>
+          <div class="pkg-card"><div class="pkg-name">topology.define</div><div class="pkg-desc">Screen layout and edge assignment config</div></div>
+          <div class="pkg-card"><div class="pkg-name">topology.discover</div><div class="pkg-desc">mDNS discovery of mosdesk peers on local network</div></div>
+          <div class="pkg-card"><div class="pkg-name">filter.input</div><div class="pkg-desc">Optional input filtering rules per host</div></div>
+        </div>
+      </section>
+
+      <section class="section section-centered">
+        <div class="section-label">The architecture</div>
+        <h2>Security wraps every layer</h2>
+        <div class="arch-visual">
+          <div class="arch-layer accent">
+            Input Events <span class="desc">Mouse · Keyboard · Clipboard</span>
+          </div>
+          <div class="arch-arrow">captured by &#8595;</div>
+          <div class="arch-layer primary">
+            mosdesk <span class="desc">Edge detection · Routing · Topology · Session management</span>
+          </div>
+          <div class="arch-arrow">encrypted via &#8595;</div>
+          <div class="arch-layer success">
+            Security Layer <span class="desc">E2E encryption · mTLS · Key rotation · Zero logging · WireGuard</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer deep">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From two machines to a full mesh</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>Two Linux hosts, mouse only</h4><p>Capture mouse on host A via libinput. Encrypt. Transport via mTLS. Decrypt. Inject on host B via uinput. Edge detection on one boundary. Measure latency. It must feel instant.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Add keyboard + clipboard</h4><p>Keyboard capture and injection. Clipboard sync. All encrypted. All zero-log. Verify that no step in the pipeline ever writes input events to disk under any condition.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>macOS support</h4><p>IOKit capture, CGEvent injection. Handle accessibility permission flow gracefully. Test Mac-to-Linux and Linux-to-Mac in both directions.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Multi-host topology</h4><p>Three or more hosts in a defined layout. Cursor flows through the mesh based on edge assignments. Hotkey for direct host jump. Studio shows the full topology with live latency per link.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Session management + key rotation</h4><p>Configurable session lifetime. Automatic key rotation. Idle timeout. Re-authentication required after timeout. No stale sessions on unattended machines.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Windows support</h4><p>Raw Input capture, SendInput injection. Full three-platform mesh. Any combination of Linux, macOS, and Windows hosts in one topology.</p></div></div>
+          <div class="principle"><div class="principle-num">07</div><div><h4>WireGuard tunnel + security audit</h4><p>Optional WireGuard layer for defense in depth. External security audit of the full pipeline. Verify the zero-logging claim under adversarial conditions. Publish the audit results.</p></div></div>
+          <div class="principle"><div class="principle-num">08</div><div><h4>Peer discovery + drag-and-drop files</h4><p>mDNS discovery of mosdesk peers on the local network. Drag a file from one host's desktop, drop it on another. File transfer uses the same encrypted channel. Chunked streaming for large files.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/ideas/moshome/">moshome</a>
+          <a href="/ideas/mosbot/">mosbot</a>
+          <a href="/ideas/mosops/">mosops</a>
+          <a href="/ideas/mostrade/">mostrade</a>
+          <a href="/ideas/aoc/">aoc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>
