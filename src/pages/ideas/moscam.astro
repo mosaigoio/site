@@ -1,0 +1,158 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>moscam: Own your home cameras. No subscriptions.</title>
+    <meta
+      name="description"
+      content="moscam is a local-first, composable home surveillance distribution built on mosaigo and mosoptics. An open-source alternative to Blink, Ring, Nest, and Wyze, with every capability as a reusable pipeline step."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="moscam" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
+          <span class="hub-chip">mosoptics sub-distribution</span>
+          <span class="hub-chip">RTSP · ONVIF</span>
+          <span class="hub-chip">Local-first</span>
+        </div>
+        <h1>Own your <span class="accent">home cameras</span>.<br />No subscriptions. No cloud lock-in.</h1>
+        <p class="tagline">moscam is a local-first, composable home surveillance distribution built on mosaigo pipelines and mosoptics vision steps. An open-source alternative to Blink, Ring, Nest, and Wyze.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>moscam is about <strong>sovereignty over the video captured in your own home</strong>. Not a clone of a subscription product. Not a monolithic VMS. A composable pipeline library that turns any RTSP camera into a programmable event-detection and notification system, with every capability as a reusable step you can rearrange, swap, or extend.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>Every arrow is a topic. Every box is a step.</h2>
+        <p class="section-desc">Pipelines are composable. A new idea usually means adding one or two steps, not rebuilding the system.</p>
+        <div class="pipe-diagram">RTSP Camera → Capture → Motion → Detect → Zone → Dedupe → Notify
+                                                         ↘
+                                              Ring Buffer → Clip → Log</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Design principles</div>
+        <h2>Six things moscam holds firm</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">🏠</div>
+            <h3>Local by default</h3>
+            <p>Your footage never leaves your network. No cloud account, no vendor phone-home, no telemetry. Cloud sinks exist as opt-in steps only.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">🧩</div>
+            <h3>Composable, not monolithic</h3>
+            <p>Every capability is a mosaigo step. Swapping a detector or a notifier is a config change, not a rewrite.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🔒</div>
+            <h3>Privacy is a feature</h3>
+            <p>Zones, masks, retention rules are first-class. Privacy zones mask detection AND recording AND streaming, universally.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">📺</div>
+            <h3>Studio on the LAN</h3>
+            <p>Any device on your home network can view cameras, events, and pipelines. Point a cheap wall tablet at it for an always-on camera map.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon error">🤖</div>
+            <h3>Agent-friendly</h3>
+            <p>"Set up my porch camera to notify me when a package arrives" is a valid prompt. The step library is documented for agents.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">🔓</div>
+            <h3>Apache 2.0 forever</h3>
+            <p>No paid tier. No vendor lock-in. No "moscam Cloud." The project has no server to talk to.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Capture, detect, clip, notify: each a step</h2>
+        <p class="section-desc">Drop in or swap out any step without touching the rest.</p>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">rtsp.capture</div><div class="pkg-desc">Decode H.264/H.265 RTSP, publish Frame topic</div></div>
+          <div class="pkg-card"><div class="pkg-name">onvif.discover</div><div class="pkg-desc">LAN camera discovery, produces inventory</div></div>
+          <div class="pkg-card"><div class="pkg-name">motion.detect</div><div class="pkg-desc">Background subtraction, outputs MotionEvent</div></div>
+          <div class="pkg-card"><div class="pkg-name">zone.mask</div><div class="pkg-desc">Polygon privacy and detection zones</div></div>
+          <div class="pkg-card"><div class="pkg-name">object.detect.coco</div><div class="pkg-desc">YOLO/RT-DETR person/car/package/etc.</div></div>
+          <div class="pkg-card"><div class="pkg-name">audio.classify</div><div class="pkg-desc">Glass break, smoke, doorbell, bark</div></div>
+          <div class="pkg-card"><div class="pkg-name">ring.buffer</div><div class="pkg-desc">Continuous circular video buffer per camera</div></div>
+          <div class="pkg-card"><div class="pkg-name">clip.extract</div><div class="pkg-desc">Cut MP4 from ring buffer on event</div></div>
+          <div class="pkg-card"><div class="pkg-name">event.dedupe</div><div class="pkg-desc">Collapse bursts into InterestEvents</div></div>
+          <div class="pkg-card"><div class="pkg-name">notify.matrix</div><div class="pkg-desc">Matrix message with clip attachment</div></div>
+          <div class="pkg-card"><div class="pkg-name">notify.webhook</div><div class="pkg-desc">Generic HTTP POST sink</div></div>
+          <div class="pkg-card"><div class="pkg-name">notify.homeassistant</div><div class="pkg-desc">MQTT or REST push to Home Assistant</div></div>
+        </div>
+      </section>
+
+      <section class="section section-centered">
+        <div class="section-label">Architecture</div>
+        <h2>Built on mosoptics, scoped to the home</h2>
+        <div class="arch-visual">
+          <div class="arch-layer accent">
+            moscam <span class="desc">Camera map · zone editor · event log · notification router</span>
+          </div>
+          <div class="arch-arrow">builds on &#8595;</div>
+          <div class="arch-layer primary">
+            mosoptics <span class="desc">Capture · detect · overlay · feed service</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer deep">
+            mosaigo <span class="desc">Engine · topics · config · Studio</span>
+          </div>
+        </div>
+        <p class="arch-caption">moscam invents no new primitives. Everything it adds is steps, panels, deployment profiles, and example configs.</p>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From starter site to community distribution</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>Single camera, single event, single notification</h4><p>Prove the end-to-end path on one real camera. <code>rtsp.capture → motion.detect → clip.extract → notify.webhook</code>.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Multi-camera Studio with zones</h4><p>Three cameras concurrently. Camera Map panel. Polygon zone editor. SSD-backed ring buffer.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Object detection + event enrichment</h4><p>YOLOv8n as default. Sidecar JSON metadata. Event log with filtering and clip playback.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Notification ecosystem</h4><p>Matrix, Signal, Telegram, SMTP, Home Assistant, schedule gates, cooldowns. All as drop-in steps.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Audio events</h4><p>Glass break, smoke alarm, doorbell, bark detection via YAMNet-style classifier.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Storage dashboard + community distribution</h4><p>Retention rules, opt-in cold storage, step proposal workflow, camera compatibility matrix.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/staging/mosoptics/">mosoptics</a>
+          <a href="/ideas/mospresent/">mospresent</a>
+          <a href="/ideas/mosbot/">mosbot</a>
+          <a href="/ideas/mosops/">mosops</a>
+          <a href="/ideas/mostrade/">mostrade</a>
+          <a href="/ideas/depict/">depict</a>
+          <a href="/ideas/mosarch/">mosarch</a>
+          <a href="/ideas/aoc/">aoc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>
