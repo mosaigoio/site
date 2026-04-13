@@ -1,0 +1,263 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>teamtopo: Team topologies as a live, queryable graph</title>
+    <meta
+      name="description"
+      content="teamtopo models team topologies, RASCI matrices, interaction modes, and organizational evolution as typed concepts in a depict knowledge graph. Map current state, define target state, track the journey."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="teamtopo" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
+          <span class="hub-chip">depict domain ontology</span>
+          <span class="hub-chip">Team Topologies · RASCI · Conway's Law</span>
+          <span class="hub-chip">Current → Target state</span>
+        </div>
+        <h1>Map your teams. <span class="accent">Navigate to where they need to be.</span></h1>
+        <p class="tagline">teamtopo models team structures, interaction modes, RASCI responsibilities, and organizational evolution as typed concepts in a depict knowledge graph. Map your current state honestly. Define your target state clearly. Track the journey between them. Every role, every interaction, every dependency is queryable, versioned, and visible.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>Team Topologies (Skelton and Pais) gave us a shared language: stream-aligned, platform, enabling, complicated-subsystem. But most organizations model this in slide decks and Miro boards that go stale the week after the offsite. RASCI matrices live in spreadsheets nobody updates. The gap between "how we think we're organized" and "how we actually interact" widens silently. teamtopo's bet: <strong>team structure is a knowledge graph. Roles are typed nodes. Interactions are typed edges. Current state and target state are both queryable snapshots of the same graph. The delta between them is your transformation roadmap.</strong></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Core concepts</div>
+        <h2>The Team Topologies type system</h2>
+        <p class="section-desc">Four team types, three interaction modes, five RASCI roles. All modeled as first-class graph types with relationships between them.</p>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">🔵</div>
+            <h3>Stream-aligned teams</h3>
+            <p>Aligned to a single flow of work. Own a slice of the product. Minimize handoffs. These are the teams that deliver user-facing value directly. Most teams should be stream-aligned.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">🟡</div>
+            <h3>Platform teams</h3>
+            <p>Reduce cognitive load for stream-aligned teams by providing self-service capabilities. APIs, toolchains, infrastructure. The platform is the product. Stream-aligned teams are the customers.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🟢</div>
+            <h3>Enabling teams</h3>
+            <p>Help other teams adopt new capabilities. Temporary by nature. Detect gaps, coach, transfer knowledge, then move on. If they're permanent, something is wrong with the platform.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">⚫</div>
+            <h3>Complicated-subsystem teams</h3>
+            <p>Own a component that requires deep specialist knowledge. Math-heavy, hardware-adjacent, regulatory-complex. Exist to keep that complexity from leaking into stream-aligned teams.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Interaction modes</div>
+        <h2>How teams relate to each other</h2>
+        <p class="section-desc">Three interaction modes define the edges between team nodes. Each mode has different expectations for coupling, communication, and duration.</p>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">🤝</div>
+            <h3>Collaboration</h3>
+            <p>Two teams work closely together for a defined period. High bandwidth, high cost. Use for discovery and innovation. Time-box it. If it persists, reconsider team boundaries.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">📡</div>
+            <h3>X-as-a-Service</h3>
+            <p>One team provides a capability that another consumes through a well-defined API or interface. Low coupling. The provider team owns the contract. The consumer team owns the usage.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🎓</div>
+            <h3>Facilitating</h3>
+            <p>An enabling team helps another team build a new capability. Coaching, pairing, workshops. The goal is to make the facilitation unnecessary. Transfer knowledge, then disengage.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">RASCI mapping</div>
+        <h2>Responsibilities as graph edges</h2>
+        <p class="section-desc">RASCI roles connect people and teams to capabilities, services, and decisions. In the graph, each assignment is a typed edge with provenance.</p>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">R</div>
+            <h3>Responsible</h3>
+            <p>Does the work. Executes the task. Delivers the output. There should be exactly one R per capability. If there are two, the boundary is unclear.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">A</div>
+            <h3>Accountable</h3>
+            <p>Owns the outcome. Signs off. Has the authority to approve or reject. One A per capability, always. Accountability without authority is dysfunction.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">S</div>
+            <h3>Supportive</h3>
+            <p>Provides resources or assistance. Not doing the core work, but helping make it possible. Platform teams often appear in S roles for stream-aligned capabilities.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">C</div>
+            <h3>Consulted</h3>
+            <p>Provides input before a decision or action. Two-way communication. Security, legal, architecture review. Consulted roles create coupling. Minimize them.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">I</div>
+            <h3>Informed</h3>
+            <p>Notified after the fact. One-way communication. Stakeholders, downstream consumers, compliance. Low coupling. The graph tracks who needs to know what.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>Current state, target state, transformation path</h2>
+        <p class="section-desc">The graph holds both snapshots. The delta between them becomes your actionable transformation plan.</p>
+        <div class="pipe-diagram">ingest.orgchart ──┐
+ingest.rasci ─────┤
+ingest.interviews ┼──→ extract.team.facts ──→ align.topo.ontology ──→ depict.store.graph
+ingest.jira ──────┤                                                        │
+ingest.slack ─────┘                                                        │
+                                                    ┌──────────────────────┤
+                                                    │                      │
+                                              current.snapshot       target.snapshot
+                                                    │                      │
+                                                    └───── gap.analyze ────┘
+                                                              │
+                                                    transform.roadmap
+                                                              │
+                                                    ┌─────────┼─────────┐
+                                              view.rasci   view.topo   view.evolution</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Analysis capabilities</div>
+        <h2>What you can ask the graph</h2>
+        <p class="section-desc">Every question is a query. Every answer is a derived view with provenance back to the source data.</p>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">🔍</div>
+            <h3>Current state mapping</h3>
+            <p>"Show me all stream-aligned teams and their platform dependencies." "Which teams have collaboration interactions lasting more than 3 months?" "Where is cognitive load highest?"</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">🎯</div>
+            <h3>Target state design</h3>
+            <p>"What does the target topology look like for our next quarter?" "Which teams need to split?" "Where do we need a new platform capability?" Design the future as a second snapshot.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">📊</div>
+            <h3>Gap analysis</h3>
+            <p>"What's the delta between current and target?" "Which team boundaries need to change?" "What new interaction modes are needed?" "Which RASCI assignments need to shift?"</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">⚖️</div>
+            <h3>Conway's Law alignment</h3>
+            <p>"Does our team structure match our architecture?" Cross-reference teamtopo with mosarch. Detect where team boundaries diverge from system boundaries. Conway's Law is not optional.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon error">📈</div>
+            <h3>Evolution tracking</h3>
+            <p>"How has our topology changed over the last 6 months?" "Are collaboration interactions decreasing as expected?" "Is the platform reducing cognitive load?" Track the transformation over time.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">🔗</div>
+            <h3>Dependency heat maps</h3>
+            <p>"Which teams have the most cross-team dependencies?" "Where are the bottleneck teams?" "Which interaction modes create the most wait time?" Identify structural problems before they become incidents.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Ingest, model, analyze, visualize</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">ingest.orgchart</div><div class="pkg-desc">Import org chart from HR system or CSV</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.rasci.sheet</div><div class="pkg-desc">Import RASCI matrix from spreadsheet (via sheetsync)</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.interaction.jira</div><div class="pkg-desc">Infer team interactions from Jira cross-project links</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.interaction.slack</div><div class="pkg-desc">Infer interaction patterns from Slack channel membership</div></div>
+          <div class="pkg-card"><div class="pkg-name">ingest.interview.notes</div><div class="pkg-desc">Extract team topology facts from interview notes</div></div>
+          <div class="pkg-card"><div class="pkg-name">classify.team.type</div><div class="pkg-desc">Classify teams as stream-aligned, platform, enabling, complicated-subsystem</div></div>
+          <div class="pkg-card"><div class="pkg-name">classify.interaction.mode</div><div class="pkg-desc">Classify interactions as collaboration, x-as-a-service, facilitating</div></div>
+          <div class="pkg-card"><div class="pkg-name">assign.rasci</div><div class="pkg-desc">Map RASCI roles to teams and capabilities</div></div>
+          <div class="pkg-card"><div class="pkg-name">snapshot.current</div><div class="pkg-desc">Capture current state as a versioned snapshot</div></div>
+          <div class="pkg-card"><div class="pkg-name">snapshot.target</div><div class="pkg-desc">Define target state as a versioned snapshot</div></div>
+          <div class="pkg-card"><div class="pkg-name">gap.analyze</div><div class="pkg-desc">Compute delta between current and target snapshots</div></div>
+          <div class="pkg-card"><div class="pkg-name">transform.roadmap</div><div class="pkg-desc">Generate transformation steps from gap analysis</div></div>
+          <div class="pkg-card"><div class="pkg-name">view.rasci.matrix</div><div class="pkg-desc">Render RASCI matrix for a capability set</div></div>
+          <div class="pkg-card"><div class="pkg-name">view.topo.diagram</div><div class="pkg-desc">Render team topology diagram with interaction modes</div></div>
+          <div class="pkg-card"><div class="pkg-name">view.evolution.timeline</div><div class="pkg-desc">Show topology changes over time</div></div>
+          <div class="pkg-card"><div class="pkg-name">view.conway.alignment</div><div class="pkg-desc">Overlay team topology on system architecture (mosarch)</div></div>
+        </div>
+      </section>
+
+      <section class="section section-centered">
+        <div class="section-label">The ecosystem</div>
+        <h2>teamtopo connects teams to architecture</h2>
+        <div class="arch-visual">
+          <div class="arch-layer accent">
+            Views <span class="desc">RASCI matrix · Topology diagram · Evolution timeline · Conway alignment</span>
+          </div>
+          <div class="arch-arrow">render &#8595;</div>
+          <div class="arch-layer light">
+            teamtopo + mosarch <span class="desc">Teams · Interactions · RASCI · Systems · Components · Decisions</span>
+          </div>
+          <div class="arch-arrow">query &#8595;</div>
+          <div class="arch-layer success">
+            depict <span class="desc">Core types · alignment · provenance · GraphQL · federation</span>
+          </div>
+          <div class="arch-arrow">sync &#8597;</div>
+          <div class="arch-layer primary">
+            sheetsync <span class="desc">Bidirectional sheet sync · RASCI sheets · Org data</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer deep">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From a static org chart to a living topology</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>Manual team model + RASCI + one view</h4><p>Define teams as typed nodes. Classify each (stream-aligned, platform, enabling, complicated-subsystem). Assign RASCI roles. Render one topology diagram.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Interaction modes + current snapshot</h4><p>Model interaction modes between teams. Capture current state as a versioned snapshot. Query: "show all collaboration interactions."</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Target state + gap analysis</h4><p>Define target topology as a second snapshot. Compute the delta. Generate a list of structural changes needed: team splits, boundary shifts, new platform capabilities.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>sheetsync integration</h4><p>RASCI matrices sync bidirectionally with sheets. Team leads update responsibilities in their preferred interface. The graph stays current.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Conway's Law alignment (mosarch cross-reference)</h4><p>Overlay team topology on system architecture from mosarch. Detect where team boundaries diverge from system boundaries. Flag Conway violations.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Inferred interactions from tools</h4><p>Jira cross-project links, Slack channel co-membership, PR review patterns. Infer actual interaction modes. Compare inferred vs. declared.</p></div></div>
+          <div class="principle"><div class="principle-num">07</div><div><h4>Evolution tracking + cognitive load scoring</h4><p>Track topology changes over time. Score cognitive load per team based on dependencies, services owned, interaction count. Identify teams at risk of overload.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/ideas/depict/">depict</a>
+          <a href="/ideas/sheetsync/">sheetsync</a>
+          <a href="/ideas/mosarch/">mosarch</a>
+          <a href="/ideas/gtmd/">gtmd</a>
+          <a href="/ideas/aoc/">aoc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>

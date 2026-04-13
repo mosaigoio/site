@@ -1,0 +1,209 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sheetsync: Bidirectional sync between graphs and spreadsheets</title>
+    <meta
+      name="description"
+      content="sheetsync keeps spreadsheets and depict knowledge graphs in sync. Edit in a sheet, changes flow to the graph. Update the graph, changes appear in the sheet. Bidirectional, conflict-aware, provenance-tracked."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="sheetsync" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
+          <span class="hub-chip">depict integration tool</span>
+          <span class="hub-chip">GraphQL · Sheets · Bidirectional</span>
+          <span class="hub-chip">Conflict resolution</span>
+        </div>
+        <h1>Sheets and graphs, <span class="accent">always in sync.</span></h1>
+        <p class="tagline">sheetsync connects spreadsheets to depict knowledge graphs with bidirectional, conflict-aware synchronization. Edit in a sheet, changes flow to the graph. Update the graph through a pipeline, changes appear in the sheet. Both directions carry provenance. Conflicts surface for human resolution, never silently overwrite.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>Knowledge graphs are powerful but not everyone wants to interact through GraphQL queries. Spreadsheets are the most universal data interface on the planet. Every team has people who think in rows and columns. The gap between "the graph has the truth" and "my team lives in sheets" creates drift, manual exports, stale copies, and reconciliation headaches. sheetsync closes that gap. <strong>The graph is the system of record. The sheet is a live, editable view of a slice of that graph. Changes flow both ways with provenance and conflict detection.</strong></p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>Two-way sync with conflict awareness</h2>
+        <p class="section-desc">Every sync operation is a pipeline step. Every change carries its origin. Conflicts pause for human decision, never auto-merge.</p>
+        <div class="pipe-diagram">                          ┌─────────────────┐
+                          │  Google Sheets   │
+                          │  Excel Online    │
+                          │  CSV / TSV       │
+                          └────────┬────────┘
+                                   │
+                         sheet.watch (changes)
+                                   │
+                                   ▼
+sheet.export ◄── graph.to.sheet ◄─── depict.store.graph ───► sheet.to.graph ──► sheet.import
+                                         │
+                                   conflict.detect
+                                         │
+                                   conflict.queue
+                                         │
+                                   human resolves</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Design principles</div>
+        <h2>Six things sheetsync holds firm</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">🔄</div>
+            <h3>Truly bidirectional</h3>
+            <p>Not export-only. Not import-only. Both directions are first-class. A team member edits a cell, the graph updates. A pipeline enriches the graph, the sheet reflects it. Neither direction is second-class.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">⚠️</div>
+            <h3>Conflicts surface, never hide</h3>
+            <p>When the sheet and graph disagree, sheetsync does not pick a winner. It flags the conflict, records both values with provenance, and queues it for a human decision. Silent overwrites are bugs.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">📐</div>
+            <h3>Graph is the system of record</h3>
+            <p>The depict knowledge graph holds the canonical data with full provenance. Sheets are live views, not copies. When you resolve a conflict, the resolution flows back to the graph with its own provenance entry.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">🗺️</div>
+            <h3>Column mapping is explicit</h3>
+            <p>Each sheet has a mapping definition: which columns correspond to which graph types and fields. Mappings are versioned. Changing a mapping is a tracked operation, not a silent schema drift.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon error">🔍</div>
+            <h3>Provenance on every sync</h3>
+            <p>Every value that enters the graph from a sheet carries: sheet name, cell reference, timestamp, user who edited. Every value pushed to a sheet carries: graph node ID, pipeline step, timestamp. Full traceability both ways.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">🧩</div>
+            <h3>Sheet providers are swappable</h3>
+            <p>Google Sheets, Excel Online, local CSV, Notion tables. Each is a provider step. The sync logic does not care which spreadsheet backend you use. Swap providers without changing mappings.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">How it works</div>
+        <h2>Sync lifecycle</h2>
+        <p class="section-desc">A typical sync cycle from sheet edit to graph update, or graph change to sheet reflection.</p>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">↓</div><div><h4>Sheet to graph</h4><p>A user edits a cell. The sheet watcher detects the change. The mapper translates row + column to graph type + field. The importer writes the fact to depict with provenance pointing back to the sheet cell.</p></div></div>
+          <div class="principle"><div class="principle-num">↑</div><div><h4>Graph to sheet</h4><p>A pipeline step enriches a graph node. The subscription fires. The mapper translates graph field back to row + column. The exporter writes the cell with provenance pointing to the pipeline step.</p></div></div>
+          <div class="principle"><div class="principle-num">⚡</div><div><h4>Conflict detection</h4><p>Both sides changed the same logical value since last sync. The conflict detector records both values, flags the cell in the sheet (highlight + comment), and queues the conflict for resolution. No data is lost.</p></div></div>
+          <div class="principle"><div class="principle-num">✓</div><div><h4>Resolution</h4><p>A human picks the winning value (or provides a third). The resolution is a new fact in the graph with its own provenance: "resolved by [person] at [time], chose [value] over [alternative]."</p></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Use cases</div>
+        <h2>Where sheetsync pays for itself</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">👥</div>
+            <h3>Team topologies in sheets</h3>
+            <p>RASCI matrices, team assignments, role mappings. Teams maintain them in sheets. The graph keeps the typed, queryable version. Both stay current.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">📊</div>
+            <h3>Architecture inventories</h3>
+            <p>Service catalogs, dependency matrices, cost allocations. The graph models relationships. The sheet gives finance and leadership a familiar interface.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🎯</div>
+            <h3>GTM data management</h3>
+            <p>ICP definitions, persona attributes, campaign metrics. Marketing teams edit in sheets. The gtmd ontology stays aligned. Storyarc templates pull current data.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">📋</div>
+            <h3>Compliance tracking</h3>
+            <p>Control matrices, audit findings, remediation status. Auditors work in sheets. The graph maintains the relationships between controls, systems, and findings.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Watch, map, sync, resolve</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">sheet.watch.google</div><div class="pkg-desc">Watch Google Sheets for cell changes</div></div>
+          <div class="pkg-card"><div class="pkg-name">sheet.watch.excel</div><div class="pkg-desc">Watch Excel Online for cell changes</div></div>
+          <div class="pkg-card"><div class="pkg-name">sheet.watch.csv</div><div class="pkg-desc">Watch local CSV/TSV for file changes</div></div>
+          <div class="pkg-card"><div class="pkg-name">sheet.map.define</div><div class="pkg-desc">Define column-to-graph-field mappings</div></div>
+          <div class="pkg-card"><div class="pkg-name">sheet.map.infer</div><div class="pkg-desc">LLM-assisted mapping suggestion from headers</div></div>
+          <div class="pkg-card"><div class="pkg-name">sheet.to.graph</div><div class="pkg-desc">Import sheet changes into depict graph</div></div>
+          <div class="pkg-card"><div class="pkg-name">graph.to.sheet</div><div class="pkg-desc">Export graph changes to sheet cells</div></div>
+          <div class="pkg-card"><div class="pkg-name">conflict.detect</div><div class="pkg-desc">Identify concurrent changes to same value</div></div>
+          <div class="pkg-card"><div class="pkg-name">conflict.queue</div><div class="pkg-desc">Queue conflicts for human resolution</div></div>
+          <div class="pkg-card"><div class="pkg-name">conflict.resolve</div><div class="pkg-desc">Record resolution with full provenance</div></div>
+          <div class="pkg-card"><div class="pkg-name">sync.schedule</div><div class="pkg-desc">Configurable sync intervals per sheet</div></div>
+          <div class="pkg-card"><div class="pkg-name">sync.audit.log</div><div class="pkg-desc">Full audit trail of every sync operation</div></div>
+        </div>
+      </section>
+
+      <section class="section section-centered">
+        <div class="section-label">The architecture</div>
+        <h2>Three layers, one sync engine</h2>
+        <div class="arch-visual">
+          <div class="arch-layer accent">
+            Sheet Providers <span class="desc">Google Sheets · Excel Online · CSV · Notion Tables</span>
+          </div>
+          <div class="arch-arrow">sync &#8597;</div>
+          <div class="arch-layer primary">
+            sheetsync <span class="desc">Mapping · Conflict detection · Resolution · Audit</span>
+          </div>
+          <div class="arch-arrow">read/write &#8597;</div>
+          <div class="arch-layer success">
+            depict <span class="desc">Core types · alignment · provenance · GraphQL · federation</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer deep">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From one-way export to full bidirectional sync</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>One sheet, one graph type, export only</h4><p>Pick a depict type. Define a column mapping. Export graph nodes to a Google Sheet. Manual refresh.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Import direction + provenance</h4><p>Sheet edits flow back to the graph. Every imported value carries sheet cell provenance. Two-way works for one sheet.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Conflict detection + resolution queue</h4><p>Detect concurrent changes. Flag conflicts in-sheet. Queue for human resolution. Record resolution provenance.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Multiple sheets, multiple types</h4><p>Sync several sheets against different graph types simultaneously. Cross-sheet references resolved through the graph.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Additional providers</h4><p>Excel Online, CSV watch, Notion table adapter. Provider-agnostic mapping layer proven across backends.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>LLM-assisted mapping + schema inference</h4><p>Point at a new sheet. LLM suggests column-to-field mappings. Human confirms. Mapping versioned and tracked.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/ideas/depict/">depict</a>
+          <a href="/ideas/teamtopo/">teamtopo</a>
+          <a href="/ideas/mosarch/">mosarch</a>
+          <a href="/ideas/gtmd/">gtmd</a>
+          <a href="/ideas/aoc/">aoc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>
