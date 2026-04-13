@@ -1,0 +1,256 @@
+---
+import IdeasSidebar from "../../components/IdeasSidebar.astro";
+---
+
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gtmadvisor: Continuous GTM intelligence from books, news, and market signals</title>
+    <meta
+      name="description"
+      content="gtmadvisor is a continuously-researching knowledge graph that learns from the best GTM books, tracks growth companies, analyzes moats and network effects, watches analyst firms, and applies that knowledge to your specific projects and products."
+    />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="/assets/css/landing.css" />
+    <link rel="stylesheet" href="/assets/css/hub-subproject.css" />
+  </head>
+  <body class="hub-subproject">
+    <IdeasSidebar active="gtmadvisor" />
+
+    <div class="hub-main">
+      <section class="hero">
+        <div class="hub-status-row">
+          <span class="hub-chip draft">🧊 Draft: concept only</span>
+          <span class="hub-chip">depict knowledge base</span>
+          <span class="hub-chip">GTM · Moats · Network Effects · Strategy</span>
+          <span class="hub-chip">Continuous research</span>
+        </div>
+        <h1>A GTM brain that <span class="accent">never stops learning.</span></h1>
+        <p class="tagline">gtmadvisor is a continuously-researching knowledge graph. It reads the classic and leading GTM books. It tracks growth companies and watches for patterns. It studies business moats, network effects, and go-to-market strategies that actually work. It monitors analyst firms and advisory views for signal, not direction. Then it applies all of that to your specific projects, products, companies, and partners.</p>
+      </section>
+
+      <section class="section">
+        <div class="intent-callout">
+          <h3>Intent</h3>
+          <p>Most GTM advice is either generic ("find product-market fit") or locked inside expensive advisory retainers. The best knowledge is scattered across 50 books, hundreds of case studies, and a firehose of analyst reports. Nobody has time to read all of it, connect the dots, and apply the relevant parts to their specific situation. gtmadvisor's bet: <strong>build a knowledge graph that continuously ingests the best GTM thinking, extracts the principles and patterns, tracks real-world examples of those patterns in action, and then acts as an advisor that can reason about your specific context using the full body of knowledge.</strong> It watches. It learns. It connects. It advises. It never prescribes.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Knowledge domains</div>
+        <h2>What the advisor continuously researches</h2>
+        <p class="section-desc">Six domains of GTM knowledge, continuously updated. Each domain feeds typed concepts into the graph with provenance back to the source material.</p>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">📚</div>
+            <h3>Books and classics</h3>
+            <p>The foundational GTM canon. Crossing the Chasm, Blue Ocean Strategy, The Innovator's Dilemma, Traction, Obviously Awesome, Play Bigger, Zero to One, The Cold Start Problem. Principles extracted as typed concepts. New releases added as they prove relevant.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">📈</div>
+            <h3>Growth company patterns</h3>
+            <p>What are the fastest-growing companies doing right now? How did they enter the market? What channels, pricing models, and positioning strategies are working? Continuous research on companies worth watching, with patterns extracted and categorized.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🏰</div>
+            <h3>Business moats</h3>
+            <p>Network effects, switching costs, economies of scale, brand, regulatory capture, data advantages, platform lock-in. Each moat type modeled as a concept with real examples, strengths, weaknesses, and conditions where it applies. Moat analysis as a queryable graph, not a slide deck.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">🌐</div>
+            <h3>Network effects</h3>
+            <p>Direct, indirect, two-sided, data, platform. How they start, how they compound, how they break. Cold start problems and strategies. Marketplace dynamics. The graph tracks which companies have which types of network effects and how they built them.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon error">🔬</div>
+            <h3>Analyst and advisory signals</h3>
+            <p>Gartner, Forrester, IDC, McKinsey, a16z, Sequoia, YC. Their views are signal, not direction. The graph tracks analyst predictions, market sizing, trend calls, and technology adoption curves. Provenance is critical: who said what, when, and how it aged.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">🧭</div>
+            <h3>Strategy-values alignment</h3>
+            <p>Not every GTM strategy fits every company. A company that values transparency will struggle with fear-based marketing. A company that values simplicity will struggle with enterprise sales complexity. The graph models alignment between company values and strategy types.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The idea in one picture</div>
+        <h2>Continuous research, contextual advice</h2>
+        <p class="section-desc">Knowledge flows in from multiple research pipelines. The graph stores principles, patterns, and examples. Advisory queries combine general knowledge with your specific context.</p>
+        <div class="pipe-diagram">research.books ─────┐
+research.news ──────┤
+research.companies ─┤
+research.analysts ──┼──→ extract.gtm.principles ──→ align.knowledge ──→ depict.store.graph
+research.moats ─────┤             │                                          │
+research.networks ──┘             │                                          │
+                                  │                                    ┌─────┴─────┐
+                            provenance.tag                             │           │
+                                                                 advise.project  advise.company
+                                                                       │           │
+                                                                  your context ───┘
+                                                                       │
+                                                                 recommendations
+                                                                 (with reasoning + sources)</div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">How the advisor works</div>
+        <h2>Research, connect, advise</h2>
+        <p class="section-desc">Three phases that run continuously. Research never stops. Connections deepen over time. Advice improves with every new data point.</p>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>Continuous research</h4><p>Pipelines ingest book summaries, news articles, company filings, analyst reports, podcast transcripts. Each source is processed through domain-specific extractors. Every extracted principle, pattern, or example enters the graph with full provenance: source, date, confidence, extraction method.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Pattern connection</h4><p>The graph connects related concepts across sources. A moat strategy mentioned in Zero to One links to the same pattern observed in a growth company's S-1 filing. An analyst prediction links to the book that first described the underlying dynamic. Cross-source connections make the knowledge greater than the sum of its parts.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Contextual advice</h4><p>You describe your situation: product type, market stage, company values, competitive landscape, resources, constraints. The advisor queries the graph for relevant principles, patterns, and examples. It reasons about which strategies align with your values and context. It explains its reasoning with citations. It never says "do this." It says "here's what the evidence suggests, here's why, and here are the companies that tried it."</p></div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Advisory capabilities</div>
+        <h2>What you can ask</h2>
+        <div class="diff-grid">
+          <div class="diff-card">
+            <div class="diff-icon primary">🎯</div>
+            <h3>GTM strategy alignment</h3>
+            <p>"Given our product, market, and values, what GTM strategies have worked for similar companies?" The advisor pulls relevant case studies, principles, and patterns. It flags strategies that conflict with your stated values.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon accent">🏰</div>
+            <h3>Moat analysis</h3>
+            <p>"What kind of moat can we build?" Based on your product category, user base, and data assets, the advisor identifies which moat types are achievable and which are wishful thinking. Real examples of companies that built similar moats.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon success">🌐</div>
+            <h3>Network effect potential</h3>
+            <p>"Do we have network effect potential? What type? How do we get past the cold start?" The graph knows the patterns. Direct, indirect, data, platform. It matches your product dynamics to the closest examples and strategies.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon light">📊</div>
+            <h3>Competitive positioning</h3>
+            <p>"How should we position against [competitor]?" The advisor analyzes positioning frameworks from the knowledge base, looks at how similar competitive dynamics played out historically, and suggests positioning strategies with evidence.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon error">📰</div>
+            <h3>Trend and opportunity spotting</h3>
+            <p>"What trends are emerging that we should watch?" The advisor surfaces patterns from recent news, analyst reports, and growth company moves. It distinguishes signal from noise by cross-referencing with foundational principles.</p>
+          </div>
+          <div class="diff-card">
+            <div class="diff-icon muted">🤝</div>
+            <h3>Partnership evaluation</h3>
+            <p>"Should we partner with [company]? What kind of partnership?" The advisor evaluates partnership potential based on complementary moats, audience overlap, strategic alignment, and historical examples of similar partnerships.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">The book shelf</div>
+        <h2>Foundational knowledge the graph starts with</h2>
+        <p class="section-desc">These are not summaries. The graph extracts typed principles, frameworks, and patterns from each source. New books and sources are added continuously as the research pipelines run.</p>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name accent">Crossing the Chasm</div><div class="pkg-desc">Technology adoption lifecycle, chasm dynamics, beachhead strategy</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Blue Ocean Strategy</div><div class="pkg-desc">Value innovation, strategy canvas, four actions framework</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">The Innovator's Dilemma</div><div class="pkg-desc">Disruptive vs. sustaining innovation, incumbent blind spots</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Obviously Awesome</div><div class="pkg-desc">Positioning methodology, competitive alternatives, unique value</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Play Bigger</div><div class="pkg-desc">Category design, category king dynamics, lightning strike campaigns</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Zero to One</div><div class="pkg-desc">Monopoly theory, last mover advantage, secrets, definite optimism</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">The Cold Start Problem</div><div class="pkg-desc">Network effect types, cold start strategies, tipping points, escape velocity</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Traction</div><div class="pkg-desc">19 traction channels, bullseye framework, channel testing methodology</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">7 Powers</div><div class="pkg-desc">Counter-positioning, scale economies, switching costs, network economies, process power, branding, cornered resource</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Blitzscaling</div><div class="pkg-desc">Speed vs. efficiency tradeoffs, scaling patterns, market timing</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Good Strategy Bad Strategy</div><div class="pkg-desc">Kernel of strategy, diagnosis, guiding policy, coherent action</div></div>
+          <div class="pkg-card"><div class="pkg-name accent">Platform Revolution</div><div class="pkg-desc">Platform business models, governance, monetization, trust</div></div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Key distinction</div>
+        <h2>Guidance, not direction</h2>
+        <div class="intent-callout">
+          <h3>The advisor watches. It never drives.</h3>
+          <p>Analyst firms have opinions. Growth hackers have playbooks. Books have frameworks. All of them are inputs, not instructions. gtmadvisor treats every source as evidence to weigh, not authority to follow. When Gartner says a market will grow 40% and a16z says the same category is overhyped, both views enter the graph with provenance. The advisor presents both, explains the reasoning behind each, and lets you decide. When a framework from Crossing the Chasm conflicts with advice from Blitzscaling, the advisor explains the conditions under which each applies. It reasons. It cites. It never prescribes.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Step library (target)</div>
+        <h2>Research, extract, connect, advise</h2>
+        <div class="pkg-grid">
+          <div class="pkg-card"><div class="pkg-name">research.books.ingest</div><div class="pkg-desc">Ingest book content, extract principles and frameworks</div></div>
+          <div class="pkg-card"><div class="pkg-name">research.news.watch</div><div class="pkg-desc">Continuous news monitoring for GTM-relevant stories</div></div>
+          <div class="pkg-card"><div class="pkg-name">research.companies.track</div><div class="pkg-desc">Track growth companies, filings, launches, pivots</div></div>
+          <div class="pkg-card"><div class="pkg-name">research.analysts.monitor</div><div class="pkg-desc">Monitor analyst reports, predictions, market sizing</div></div>
+          <div class="pkg-card"><div class="pkg-name">research.moats.catalog</div><div class="pkg-desc">Catalog moat types with real examples and conditions</div></div>
+          <div class="pkg-card"><div class="pkg-name">research.networks.analyze</div><div class="pkg-desc">Analyze network effect types, cold start strategies</div></div>
+          <div class="pkg-card"><div class="pkg-name">extract.principles</div><div class="pkg-desc">Extract typed GTM principles from source material</div></div>
+          <div class="pkg-card"><div class="pkg-name">extract.patterns</div><div class="pkg-desc">Identify recurring patterns across companies and sources</div></div>
+          <div class="pkg-card"><div class="pkg-name">extract.case.studies</div><div class="pkg-desc">Structure case studies with context, action, outcome</div></div>
+          <div class="pkg-card"><div class="pkg-name">connect.cross.source</div><div class="pkg-desc">Link related concepts across different sources</div></div>
+          <div class="pkg-card"><div class="pkg-name">connect.pattern.example</div><div class="pkg-desc">Link abstract patterns to concrete company examples</div></div>
+          <div class="pkg-card"><div class="pkg-name">advise.strategy.align</div><div class="pkg-desc">Match strategies to context and values</div></div>
+          <div class="pkg-card"><div class="pkg-name">advise.moat.evaluate</div><div class="pkg-desc">Evaluate moat potential for a specific product</div></div>
+          <div class="pkg-card"><div class="pkg-name">advise.trend.surface</div><div class="pkg-desc">Surface relevant trends with evidence and reasoning</div></div>
+          <div class="pkg-card"><div class="pkg-name">advise.partner.evaluate</div><div class="pkg-desc">Evaluate partnership potential with evidence</div></div>
+          <div class="pkg-card"><div class="pkg-name">age.predictions</div><div class="pkg-desc">Track how analyst predictions age, update confidence</div></div>
+        </div>
+      </section>
+
+      <section class="section section-centered">
+        <div class="section-label">The ecosystem</div>
+        <h2>gtmadvisor feeds into your specific GTM work</h2>
+        <div class="arch-visual">
+          <div class="arch-layer accent">
+            Your Context <span class="desc">Projects · Products · Companies · Partners · Decisions</span>
+          </div>
+          <div class="arch-arrow">advised by &#8595;</div>
+          <div class="arch-layer primary">
+            gtmadvisor <span class="desc">Books · Growth patterns · Moats · Network effects · Analyst signals</span>
+          </div>
+          <div class="arch-arrow">informs &#8595;</div>
+          <div class="arch-layer light">
+            gtmd <span class="desc">Your ICPs · Personas · Positioning · Messaging · Funnels</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer success">
+            depict <span class="desc">Core types · alignment · provenance · GraphQL · federation</span>
+          </div>
+          <div class="arch-arrow">built on &#8595;</div>
+          <div class="arch-layer deep">
+            mosaigo <span class="desc">Engine · topics · last-value · Studio · hot-swap · config</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-label">Roadmap</div>
+        <h2>From a book shelf to a living advisor</h2>
+        <div class="principle-grid">
+          <div class="principle"><div class="principle-num">01</div><div><h4>Seed the graph from 5 books</h4><p>Extract principles, frameworks, and patterns from Crossing the Chasm, Obviously Awesome, 7 Powers, The Cold Start Problem, and Traction. Build the core type system: Principle, Pattern, Example, MoatType, NetworkEffectType.</p></div></div>
+          <div class="principle"><div class="principle-num">02</div><div><h4>Add moat and network effect taxonomies</h4><p>Model all moat types from 7 Powers and network effect types from The Cold Start Problem as first-class graph concepts with real company examples linked.</p></div></div>
+          <div class="principle"><div class="principle-num">03</div><div><h4>Company tracking pipeline</h4><p>Continuous research on 20 growth companies. Track their GTM moves, funding, pivots, market entries. Link observed patterns to principles from the book shelf.</p></div></div>
+          <div class="principle"><div class="principle-num">04</div><div><h4>Analyst signal monitoring</h4><p>Ingest analyst reports and predictions. Track how predictions age. Cross-reference with book principles. Flag when analyst consensus diverges from historical patterns.</p></div></div>
+          <div class="principle"><div class="principle-num">05</div><div><h4>Values-strategy alignment engine</h4><p>Model company values as typed concepts. Map which strategies align and conflict with which values. Advise on strategy fit, not just strategy effectiveness.</p></div></div>
+          <div class="principle"><div class="principle-num">06</div><div><h4>Contextual advisory queries</h4><p>Accept a project or company description. Query the graph for relevant principles, patterns, and examples. Generate advisory output with reasoning, citations, and confidence levels.</p></div></div>
+          <div class="principle"><div class="principle-num">07</div><div><h4>gtmd integration</h4><p>Connect to your specific gtmd graph. Advise on ICP selection, positioning strategy, and messaging approach using the general knowledge base applied to your specific data.</p></div></div>
+          <div class="principle"><div class="principle-num">08</div><div><h4>Expand the book shelf + news feeds</h4><p>Add remaining books. Add RSS, podcast transcript, and newsletter ingestion. Broaden the company tracking list. The graph grows. The advice deepens.</p></div></div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-links">
+          <a href="/staging/">mosaigo</a>
+          <a href="/ideas/depict/">depict</a>
+          <a href="/ideas/gtmd/">gtmd</a>
+          <a href="/ideas/storyarc/">storyarc</a>
+          <a href="/ideas/sheetsync/">sheetsync</a>
+          <a href="/ideas/aoc/">aoc</a>
+        </div>
+        <p>Part of the <a href="/staging/">mosaigoio</a> family · 🧊 draft subproject</p>
+      </footer>
+    </div>
+  </body>
+</html>
