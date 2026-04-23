@@ -36,6 +36,10 @@ export default defineConfig({
           autogenerate: { directory: "guides" },
         },
         {
+          label: "Building apps",
+          autogenerate: { directory: "building-apps" },
+        },
+        {
           label: "mosoptics",
           autogenerate: { directory: "docs-mosoptics" },
         },
